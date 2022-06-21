@@ -15,6 +15,14 @@ a {
     box-sizing: border-box;
 }
 
+*:focus {
+    box-shadow: none !important;
+  }
+  
+  *[data-focus] {
+    box-shadow: none !important;
+  }
+
 .custom-burger-styles {
     padding: 0px !important;
     margin-right: 20px !important;
@@ -59,4 +67,24 @@ footer .chakra-accordion__button .chakra-icon path {
     font-weight: 400;
     line-height: 16px;
     margin-top: 14px;
+}
+
+.borderTopBottom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1500px;
+    width: 5000px;
+    height: 1px;
+    background-color: #cdcdcd;
+}
+
+.borderTopBottom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -1500px;
+    width: 5000px;
+    height: 1px;
+    background-color: #cdcdcd;
 }

@@ -1,24 +1,19 @@
 import { memo } from 'react';
 import NextLink from 'next/link';
-import { Link, Box, Text } from '@chakra-ui/react';
+import { Box, Text, Link } from '@chakra-ui/react';
 import MiniCart from '../MiniCart';
-import WishListIndicator from '../WishListIndicator';
 import User from '../../../public/assets/user-outline.svg';
-import Cart from '../../../public/assets/cart-outline.svg';
 import useTranslation from 'next-translate/useTranslation';
 
-const IconMenu = ({ theColor }) => {
+const IconMenu = () => {
     const { t } = useTranslation('header');
 
     return (
         <Box d="flex" className="icons cart-box-parent" pos="relative" alignItems={'center'}>
-            <NextLink href={'info'} passHref prefetch={false}>
-                <Text textStyle={'sm'}>{t('info')}</Text>
-            </NextLink>
-            <NextLink href={'/user'} passHref prefetch={false}>
-                <Box ml="16px" cursor={'pointer'}>
+            <NextLink href={'/account/information'} prefetch={false} passHref>
+                <Link ml="16px" cursor={'pointer'}>
                     <User />
-                </Box>
+                </Link>
             </NextLink>
             <Box>
                 <MiniCart />

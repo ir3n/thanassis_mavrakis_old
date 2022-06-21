@@ -19,7 +19,8 @@ const breakpoints = {
     md: '768px',
     lg: '960px',
     xl: '1024px',
-    xxl: '1536px'
+    xxl: '1350px',
+    xxxl: '1536px'
 };
 
 const colors = {
@@ -40,6 +41,7 @@ const colors = {
     darkRed: '#B63B34',
     brightRed: '#FF0000',
     brightGreen: '#00DF16',
+    designersGreen: '#1F5A5A',
     primary: '#151515',
     secondary: '#FFFFFF',
     border: '#878787',
@@ -68,9 +70,9 @@ const textStyles = {
         lineHeight: ['48px', '56px']
     },
     h2: {
-        fontSize: ['32px', '40px', '40px'],
+        fontSize: ['32px', '40px'],
         fontWeight: 'bold',
-        lineHeight: ['40px', '48px', '48px']
+        lineHeight: ['40px', '48px']
     },
     h3: {
         fontSize: ['24px', '32px', '32px'],
@@ -78,7 +80,7 @@ const textStyles = {
         lineHeight: ['32px', '40px', '40px']
     },
     h4: {
-        fontSize: ['20px', '22px', '22px'],
+        fontSize: ['20px', '22px'],
         fontWeight: 'bold',
         lineHeight: '24px'
     },
@@ -158,6 +160,11 @@ const components = {
                     bg: 'white',
                     color: 'darkGrey'
                 }
+            },
+            mobileDrawer: {
+                bg: 'white',
+                color: 'brand',
+                border: '0.5px solid #FF8234'
             }
         },
         sizes: {

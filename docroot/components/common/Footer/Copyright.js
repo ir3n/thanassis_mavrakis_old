@@ -10,7 +10,7 @@ export default function Copyright({}) {
                 {t('purchase')}
             </Box>
             <Box as="p" textStyle={'captionSm'}>
-                © 2022 Dust & Cream Museum Shop All Rights Reserved
+                © 2022 Benaki Museum Shop All Rights Reserved
             </Box>
         </Box>
     );

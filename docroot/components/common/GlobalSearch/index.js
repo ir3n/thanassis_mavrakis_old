@@ -5,7 +5,7 @@ import Search from 'components/icons/Search';
 import useTranslation from 'next-translate/useTranslation';
 import Tracking from 'utils/tracking';
 import { getRealLocale } from 'utils/helpers';
-import { Box, Modal, ModalContent, useDisclosure, ModalOverlay } from '@chakra-ui/react';
+import { Box, Modal, Text, ModalContent, useDisclosure, ModalOverlay } from '@chakra-ui/react';
 
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
@@ -14,7 +14,7 @@ let TIMER = null;
 
 export default function GlobalSearch() {
     const router = useRouter();
-    const { t } = useTranslation('common');
+    const { t } = useTranslation('header');
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -54,8 +54,17 @@ export default function GlobalSearch() {
 
     return (
         <>
-            <Box cursor={'pointer'} onClick={onOpen} minW={['50px', '50px', '200px']}>
+            <Box
+                cursor={'pointer'}
+                onClick={onOpen}
+                minW={['auto', 'auto', '50px', '200px']}
+                d={'flex'}
+                alignItems={'baseline'}
+            >
                 <Search color={'black'} boxSize={{ base: '1.2rem', sm: '1.2rem', lg: '1rem' }} />
+                <Text textStyle={'sm'} color={'grey'} ml={'12px'}>
+                    {t('search')}
+                </Text>
             </Box>
 
             <Modal isOpen={isOpen} onClose={() => closeAndClearResults()} width={'300px'}>

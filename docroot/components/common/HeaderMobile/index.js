@@ -104,7 +104,7 @@ const HeaderMobile = ({ customHeight, size }) => {
                         _hover={'none'}
                     />
 
-                    <DrawerBody padding={'0'} overflowY={'hidden'}>
+                    <DrawerBody padding={'0'} overflowY={'hidden'} boxShadow={'15px 0px 10px -15px rgba(0,0,0,0.63)'}>
                         <LevelOneMobileMenu onClose={onClose} />
                     </DrawerBody>
                 </DrawerContent>

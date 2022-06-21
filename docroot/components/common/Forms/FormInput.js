@@ -13,10 +13,12 @@ export default function FormInput({
     error,
     onChange,
     upperCase,
-    value
+    value,
+    backgroundColor,
+    color
 }) {
     return (
-        <FormControl isRequired={isRequired} id={id} isInvalid={error} {...controlProps} w={'fit-content'}>
+        <FormControl isRequired={isRequired} id={id} isInvalid={error} {...controlProps} w={'100%'}>
             <FormLabel textStyle="labelText" marginBottom="0" {...labelProps}>
                 {label}
             </FormLabel>
@@ -27,15 +29,15 @@ export default function FormInput({
                 borderRadius="0"
                 placeholder={placeholder}
                 borderColor={'borderForm'}
-                backgroundColor={'black'}
-                color={'white'}
+                backgroundColor={backgroundColor}
+                color={color}
                 isInvalid={error}
                 isDisabled={isDisabled}
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
                 value={value}
                 {...inputProps}
-                width={'fit-content'}
+                width={'100%'}
             />
             <FormErrorMessage>{error}</FormErrorMessage>
         </FormControl>

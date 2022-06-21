@@ -1,7 +1,7 @@
-import { Box, useBreakpointValue } from '@chakra-ui/react';
-
+import { Box, useBreakpointValue, Text } from '@chakra-ui/react';
 import Container from 'components/common/Container';
 import ProductListHeader from './ProductsListHeader';
+import ProductListHeaderMobile from './ProductListHeaderMobile';
 import ProductListSettings from './ProductsListSettings';
 import ProductListSettingsMobile from './ProductListSettingsMobile';
 import ProductListAccordion from './ProductListAccordion';
@@ -10,6 +10,9 @@ import MetaTagsHandler from 'components/common/MetaTagsHandler';
 import useProducts from 'hooks/useProducts';
 import { getProductCategory } from 'services/product';
 import useProductListing from 'hooks/useProductListing';
+import ProductCategories from './ProductCategories';
+import MenuSeparator from 'components/common/Header/MenuSeparator';
+import NumberOfProducts from './NumberOfProducts';
 
 export default function ProductListView({ page, data, info, pager, facets, sort, breadcrumbs }) {
     const {
@@ -21,12 +24,13 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
         loadingMore,
         productCategoryData,
         isValidating,
-        setSelectedSort
+        setSelectedSort,
+        handlePageSize
     } = useProductListing(page, data, info, pager, facets, sort, useProducts, getProductCategory);
 
     const header = useBreakpointValue({
-        lg: <ProductListHeader info={productCategoryData?.info} breadcrumbs={breadcrumbs} />,
-        xl: <ProductListHeader info={productCategoryData?.info} breadcrumbs={breadcrumbs} />
+        base: <ProductListHeaderMobile info={productCategoryData?.info} />,
+        lg: <ProductListHeader info={productCategoryData?.info} breadcrumbs={breadcrumbs} />
     });
 
     const accordion = useBreakpointValue({
@@ -49,6 +53,11 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                 handleSelectFilter={handleSelectFilter}
             />
         )
+    });
+
+    const numberOfProducts = useBreakpointValue({
+        base: <></>,
+        lg: <NumberOfProducts productCategoryData={productCategoryData} handlePageSize={handlePageSize} />
     });
 
     const productListSettings = useBreakpointValue({
@@ -94,8 +103,9 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
             />
         ),
         lg: (
-            <ProductListSettings
+            <ProductListSettingsMobile
                 selectedSort={selectedSort}
+                facets={productCategoryData?.facets || []}
                 pager={productCategoryData?.pager}
                 sort={productCategoryData?.sort}
                 setSelectedSort={setSelectedSort}
@@ -105,8 +115,21 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
             />
         ),
         xl: (
+            <ProductListSettingsMobile
+                selectedSort={selectedSort}
+                facets={productCategoryData?.facets || []}
+                pager={productCategoryData?.pager}
+                sort={productCategoryData?.sort}
+                setSelectedSort={setSelectedSort}
+                selectedFilters={selectedFilters}
+                handleRemove={handleRemoveFilter}
+                isValidating={isValidating}
+            />
+        ),
+        xxl: (
             <ProductListSettings
                 selectedSort={selectedSort}
+                facets={productCategoryData?.facets || []}
                 pager={productCategoryData?.pager}
                 sort={productCategoryData?.sort}
                 setSelectedSort={setSelectedSort}
@@ -117,6 +140,11 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
         )
     });
 
+    const productCategories = useBreakpointValue({
+        base: <></>,
+        xxl: <ProductCategories info={productCategoryData?.info} />
+    });
+
     return (
         <>
             {productCategoryData ? (
@@ -124,31 +152,33 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                     {productCategoryData?.info?.metaTags && (
                         <MetaTagsHandler metaTags={productCategoryData.info.metaTags} />
                     )}
+                    <Box>
+                        {header}
 
-                    {header}
+                        <Box background={'white'}>{productListSettings}</Box>
+
+                        <MenuSeparator />
+                    </Box>
+                    <Container>{productCategories}</Container>
+                    <Container>{numberOfProducts}</Container>
+
                     <Container>
-                        {productListSettings}
-                        <Box as="div" display="flex" flexDir="row" mb={'50px'}>
-                            <Box w={['0', '0', '0%', '30%', '30%']} paddingRight={['0', '0', '0', '25px', '25px']}>
-                                {accordion}
-                            </Box>
-                            <Box
-                                w={['100%', '100%', '100%', '70%', '70%']}
-                                opacity={isValidating ? 0.5 : 1}
-                                transition={'all 0.3s ease-in-out'}
-                            >
-                                {!isValidating && (
-                                    <ProductListItems
-                                        isValidating={isValidating}
-                                        data={productCategoryData?.data}
-                                        pager={productCategoryData?.pager}
-                                        loadingMore={loadingMore}
-                                        handleLoadMore={handleLoadMore}
-                                        selectedFilters={selectedFilters}
-                                        handleRemove={handleRemoveFilter}
-                                    />
-                                )}
-                            </Box>
+                        <Box
+                            w={['100%', '100%', '100%', '100%', '100%']}
+                            opacity={isValidating ? 0.5 : 1}
+                            transition={'all 0.3s ease-in-out'}
+                        >
+                            {!isValidating && (
+                                <ProductListItems
+                                    isValidating={isValidating}
+                                    data={productCategoryData?.data}
+                                    pager={productCategoryData?.pager}
+                                    loadingMore={loadingMore}
+                                    handleLoadMore={handleLoadMore}
+                                    selectedFilters={selectedFilters}
+                                    handleRemove={handleRemoveFilter}
+                                />
+                            )}
                         </Box>
                     </Container>
                 </>

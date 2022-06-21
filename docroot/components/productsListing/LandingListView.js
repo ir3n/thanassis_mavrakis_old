@@ -84,8 +84,8 @@ export default function LandingListView({ page, data, info, pager, facets, sort,
                     )}
 
                     {header}
+                    {productListSettings}
                     <Container>
-                        {productListSettings}
                         <Box as="div" display="flex" flexDir="row" mb={'50px'}>
                             <Box w={['0', '0', '0%', '30%', '30%']}>{accordion}</Box>
                             <Box

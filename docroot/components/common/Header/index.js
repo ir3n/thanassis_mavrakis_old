@@ -24,27 +24,34 @@ const Header = ({ iconMenuShow }) => {
 
     return (
         <>
-            <Box as={'header'} id="mainHeader" background={'white'}>
-                <Container>
+            <Box as={'header'} id="mainHeader" background={'white'} overflow={'hidden'}>
+                <Container py={'8px'}>
                     <Box d="flex" w="100%" justifyContent={'flex-end'}>
-                        <Text textStyle={'caption'} mr="10px" whiteSpace={'nowrap'} textTransform="capitalize">
+                        <Text textStyle={'caption'} mr="40px" whiteSpace={'nowrap'} textTransform="uppercase">
                             {t('member')}
                         </Text>
 
                         <LanguageForm />
                     </Box>
                 </Container>
-
-                <MenuSeparator />
-
-                <Container>
-                    <Box d="flex" w="100%" justifyContent={'space-between'} alignItems={'flex-end'}>
+                <Container className={'borderTopBottom'}>
+                    <Box
+                        py={iconMenuShow && offset === 0 ? '14px' : '4px'}
+                        transition={'.6s'}
+                        d="flex"
+                        w="100%"
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                    >
                         <GlobalSearch />
-                        <Box>{iconMenuShow && offset === 0 ? <Logo /> : <StretchedLogo />}</Box>
-                        <UserNav iconMenuShow={iconMenuShow} />
+                        <Box>
+                            {iconMenuShow && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.7)'} />}
+                        </Box>
+                        <Box marginBottom={iconMenuShow && offset === 0 ? '0' : '-10px'} transition={'.6s'}>
+                            <UserNav iconMenuShow={iconMenuShow} />
+                        </Box>
                     </Box>
                 </Container>
-                <MenuSeparator mb="8px" mt="16px" />
             </Box>
         </>
     );

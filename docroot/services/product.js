@@ -7,7 +7,7 @@ const url = apiURL;
  * Returns product listing, search facets and info for a product category
  * @returns {AxiosPromise}
  */
-export const getProductCategory = (locale, productCategoryId, page = 0, selectedSort, selectedFilters) => {
+export const getProductCategory = (locale, productCategoryId, page = 0, selectedSort, selectedFilters, pageSize) => {
     let formattedFilters = {};
 
     if (selectedFilters) {
@@ -24,6 +24,7 @@ export const getProductCategory = (locale, productCategoryId, page = 0, selected
         params: {
             page,
             sort: selectedSort?.value,
+            pageSize,
             ...formattedFilters
         },
         headers: {

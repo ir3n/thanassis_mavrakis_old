@@ -1,37 +1,12 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import { Box, Text, Link, Image, Button } from '@chakra-ui/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Box, Text, Link, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import MainContext from 'context';
-import useTranslation from 'next-translate/useTranslation';
-
-import useCart from 'hooks/useCart';
 
 import Tracking from 'utils/tracking';
 
 const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path, mastersku, discount_percentage }) => {
-    const { t } = useTranslation('common');
     const imageRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
-
-    const { cartData, create: addToCart } = useCart();
-    const [loadingAddToCart, setLoadingAddToCart] = useState(false);
-
-    const { openCart, closeCart, cartState } = useContext(MainContext);
-
-    const handleAddToCart = () => {
-        setLoadingAddToCart(true);
-        addToCart([
-            {
-                purchased_entity_type: 'commerce_product_variation',
-                purchased_entity_id: product_id,
-                quantity: '1',
-                combine: true
-            }
-        ]).finally(() => {
-            setLoadingAddToCart(false);
-            setTimeout(() => openCart(), 200);
-        });
-    };
 
     useEffect(() => {
         if (!loaded && imageRef.current?.complete) {
@@ -44,13 +19,20 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
             d="flex"
             flexDir={'column'}
             alignItems="center"
-            paddingX={'1rem'}
+            // paddingX={'1rem'}
             id="carousel-box"
             onClick={() => Tracking.selectItem(title, mastersku)}
         >
             <NextLink href={url || '#'} passHref prefetch={false}>
-                <Link pos="relative" as={'a'} data-productid={mastersku}>
-                    <Box d="flex" flexDir={'column'} alignItems="center" textAlign="center" position={'relative'}>
+                <Link _focus={'none'} pos="relative" as={'a'} data-productid={mastersku}>
+                    <Box
+                        _focus={'none'}
+                        d="flex"
+                        flexDir={'column'}
+                        alignItems="center"
+                        textAlign="center"
+                        position={'relative'}
+                    >
                         {loaded ? null : <Box className="spinner" />}
 
                         <Image
@@ -70,6 +52,7 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                             src={image}
                             display={loaded ? '' : 'none'}
                             onLoad={() => setLoaded(true)}
+                            _focus={'none'}
                         />
                     </Box>
                 </Link>
@@ -85,7 +68,7 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                             textStyle={'md'}
                             fontWeight="bold"
                             mb={'20px'}
-                            color={'text.primary'}
+                            color={'black'}
                             mr="12px"
                             mt="10px"
                         >
@@ -107,9 +90,9 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                     </Box>
                 </Box>
             </Box>
-            <Button isLoading={loadingAddToCart} onClick={() => handleAddToCart()}>
+            {/* <Button isLoading={loadingAddToCart} onClick={() => handleAddToCart()}>
                 Add to Cart
-            </Button>
+            </Button> */}
         </Box>
     );
 };

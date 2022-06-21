@@ -1,6 +1,5 @@
 import { useBreakpointValue, Box, Link, Image, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react';
 import Container from '../Container';
-
 import useMenu from 'hooks/useMenu';
 import NextLink from 'next/link';
 import Copyright from './Copyright';

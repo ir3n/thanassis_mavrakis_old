@@ -1,23 +1,15 @@
 import { useContext, useEffect, useState } from 'react';
-import {
-    Text,
-    Box,
-    Button,
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon
-} from '@chakra-ui/react';
-import { ChevronDownIcon, AddIcon } from '@chakra-ui/icons';
-import AMMContext from 'context';
-import useTranslation from 'next-translate/useTranslation';
-import useCart from 'hooks/useCart';
-import { useRouter } from 'next/router';
+import { Text, Box, Button, Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@chakra-ui/react';
+import MainContext from 'context';
+
 import ProductQuantityBox from './ProductQuantityBox';
 import CrossIcon from '../../public/assets/cross-light.svg';
 import CloseIcon from '../../public/assets/exitbutton-light.svg';
 import ProductSize from './ProductSize';
+
+import { useRouter } from 'next/router';
+import useTranslation from 'next-translate/useTranslation';
+import useCart from 'hooks/useCart';
 
 export default function ProductInfo({
     title,
@@ -35,6 +27,8 @@ export default function ProductInfo({
     const [detailsIsClicked, setDetailsIsClicked] = useState(false);
     const [sizeData, setSizeData] = useState(null);
 
+    const { create: addToCart } = useCart();
+
     const router = useRouter();
 
     const dataHandler = (productData) => {
@@ -46,8 +40,23 @@ export default function ProductInfo({
         defaultVariation?.id ? variations.find((i) => i.id === defaultVariation.id) : variations?.[0]
     );
 
-    const { mutate, cartData } = useCart();
-    const { openCart } = useContext(AMMContext);
+    const { openCart } = useContext(MainContext);
+
+    const handleAddToCart = (product_id) => {
+        setLoadingAddToCart(true);
+        addToCart([
+            {
+                purchased_entity_type: 'commerce_product_variation',
+                purchased_entity_id: product_id,
+                quantity: '1',
+                combine: true
+            }
+        ]).finally(() => {
+            setLoadingAddToCart(false);
+            setTimeout(() => openCart(), 200);
+        });
+    };
+
     const list = router.locale + router.asPath;
 
     useEffect(() => {
@@ -102,15 +111,6 @@ export default function ProductInfo({
             </Text>
 
             <Box mb={'20px'} d="flex" flexDir={'column'}>
-                {/* <Button
-                    w={'100%'}
-                    onClick={handleAddToCart}
-                    isLoading={loadingAddToCart}
-                    isDisabled={selectedVariation?.stock_level > 0 && selectedVariation?.status ? false : true}
-                >
-                    {selectedVariation?.stock_level > 0 && selectedVariation?.status ? t('addToCard') : t('outOfStock')}
-                </Button> */}
-
                 {
                     <ProductSize
                         sizes={productData.variations}
@@ -126,6 +126,9 @@ export default function ProductInfo({
                     textTransform={'uppercase'}
                     _focus={{ boxShadow: 'none' }}
                     alignSelf={{ base: 'center', lg: 'self-start' }}
+                    onClick={() => handleAddToCart(productData?.product_id)}
+                    isLoading={loadingAddToCart}
+                    isDisabled={selectedVariation?.stock_level > 0 && selectedVariation?.status ? false : true}
                 >
                     {t('purchase')}
                 </Button>

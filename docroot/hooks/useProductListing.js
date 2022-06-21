@@ -8,13 +8,15 @@ import Tracking from 'utils/tracking';
 
 export default function useProductListing(page, data, info, pager, facets, sort, dataHook, apiCallToFetchData) {
     const { t } = useTranslation('common');
-
     const router = useRouter();
     const toast = useToast();
     const { isLoggedIn } = useUser();
     const [selectedSort, setSelectedSort] = useState(null);
     const [selectedFilters, setSelectedFilters] = useState(null);
     const [loadingMore, setLoadingMore] = useState(false);
+    const [pageNumber, setPageNumber] = useState(0);
+    const [pageSize, setPageSize] = useState(pager?.numberOfElements || 24);
+    console.log(selectedSort, 'selectedSort');
 
     useEffect(() => {
         const selectedFiltersPath = createFiltersParamsUrl(selectedFilters);
@@ -25,7 +27,6 @@ export default function useProductListing(page, data, info, pager, facets, sort,
                 shallow: true
             });
         } else {
-            console.log('else', page.path);
             router.push(`${page.path}`, undefined, {
                 shallow: true
             });
@@ -35,10 +36,11 @@ export default function useProductListing(page, data, info, pager, facets, sort,
 
     const { productCategoryData, isValidating } = dataHook(
         page.id,
-        { data, info, pager, facets, sort },
-        0,
+        { data, info, pager, facets, selectedSort },
+        pageNumber,
         selectedSort,
-        selectedFilters
+        selectedFilters,
+        pageSize
     );
 
     useEffect(() => {
@@ -87,13 +89,34 @@ export default function useProductListing(page, data, info, pager, facets, sort,
         setSelectedFilters(newFilters);
     };
 
-    const handleLoadMore = () => {
+    const handleLoadMore = async (newPageNumber = productCategoryData.pager.currentpage + 1) => {
         setLoadingMore(true);
-        const newPageNumber = productCategoryData.pager.currentpage + 1;
 
         //localStorage.setItem(`page_${page.id}`, newPageNumber);
+
+        setPageNumber(newPageNumber);
         try {
             apiCallToFetchData(router.locale, page.id, newPageNumber, selectedSort, selectedFilters);
+        } catch (err) {
+            console.log(err);
+            toast({
+                title: t('error'),
+                description: t('errorLoadingMoreProducts'),
+                position: 'bottom-right',
+                status: 'error',
+                duration: 5000,
+                isClosable: true
+            });
+        } finally {
+            setLoadingMore(false);
+        }
+    };
+    const handlePageSize = async (newPageSize) => {
+        setLoadingMore(true);
+
+        setPageSize(newPageSize);
+        try {
+            apiCallToFetchData(router.locale, page.id, pageNumber, selectedSort, selectedFilters, newPageSize);
         } catch (err) {
             console.log(err);
             toast({
@@ -119,6 +142,7 @@ export default function useProductListing(page, data, info, pager, facets, sort,
         productCategoryData,
         isValidating,
         setSelectedSort,
-        setSelectedFilters
+        setSelectedFilters,
+        handlePageSize
     };
 }

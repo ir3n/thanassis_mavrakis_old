@@ -51,12 +51,12 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                 id="mainMenu"
                 className="overrideModal"
                 as={'nav'}
-                height={'26px'}
+                height={'auto'}
                 display={{ base: 'none', sm: 'none', md: 'none', lg: 'none', xl: 'flex', '2xl': 'flex' }}
                 justifyContent="space-evenly"
                 background={'white'}
                 position={'relative'}
-                pb="8px"
+                p="10px 0 5px 0;"
             >
                 <Container w={'100%'} margin={'0 auto'}>
                     <Box justifyContent={'space-between'} display={'flex'} className="menu_container" width={'100%'}>
@@ -78,6 +78,7 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                                             textDecoration="none !important"
                                             marginBottom="24px"
                                             zIndex={isOpen ? 9999 : 9}
+                                            _focus={{ boxShadow: 'none' }}
                                             onClick={() => {
                                                 setSelectedMenu(
                                                     selectedMenu
@@ -103,6 +104,7 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                                                 target={external ? '_blank' : '_self'}
                                                 onClick={handleOnClose}
                                                 _hover={{ color: 'brand' }}
+                                                _focus={{ boxShadow: 'none' }}
                                                 pos={'relative'}
                                                 zIndex={isOpen ? 9999 : 9}
                                                 color={'black'}
@@ -129,6 +131,7 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                         left={0}
                         right={0}
                         width={'100%'}
+                        boxShadow={'0px 15px 10px -15px rgb(0 0 0 / 63%)'}
                     >
                         <Box
                             borderWidth="0.5px"

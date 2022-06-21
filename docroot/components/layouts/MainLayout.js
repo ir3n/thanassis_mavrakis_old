@@ -49,7 +49,8 @@ const MainLayout = ({ children }) => {
     const header = useBreakpointValue({
         base: <HeaderMobile customHeight={mainContentMenuMobile} iconMenuShow={!iconMenuShow} size="md" />,
         lg: <HeaderMobile customHeight={mainContentMenuMobile} iconMenuShow={!iconMenuShow} size="md" />,
-        xl: <Header iconMenuShow={!iconMenuShow} />
+        xl: <HeaderMobile iconMenuShow={!iconMenuShow} />,
+        xxl: <Header iconMenuShow={!iconMenuShow} />
     });
 
     const footer = useBreakpointValue({

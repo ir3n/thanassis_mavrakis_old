@@ -8,53 +8,137 @@ import {
     Menu,
     MenuButton,
     MenuList,
-    MenuItem
+    MenuItem,
+    Checkbox,
+    CheckboxGroup
 } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import AddIcon from '../../public/assets/cross-strong-small.svg';
 import useTranslation from 'next-translate/useTranslation';
+import { useState, useRef } from 'react';
+import { useOutsideClick } from '@chakra-ui/react';
+import MenuSeparator from 'components/common/Header/MenuSeparator';
+import Container from 'components/common/Container';
 
-const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isValidating }) => {
-    const { t } = useTranslation('common');
+const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isValidating, facets }) => {
+    const { t } = useTranslation('product');
+    const [selectedFacet, setSelectedFacet] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const ref = useRef();
+
+    useOutsideClick({
+        ref: ref,
+        handler: () => setIsModalOpen(false)
+    });
+
+    const handleFacetTrigger = (facetId) => {
+        setSelectedFacet(facetId);
+    };
 
     return (
         <>
-            <Box
-                display={'flex'}
-                flexDir={pager?.totalResults === 0 ? 'column' : 'row'}
-                justifyContent={pager?.totalResults === 0 ? 'center' : 'space-between'}
-                paddingY="30px"
-                alignItems="center"
-                alignContent="center"
-            >
-                <Box>
-                    <Text as="p" fontSize="16px">
-                        <Text as="span" fontWeight="bold">
-                            {isValidating ? '' : pager?.totalResults}
-                        </Text>{' '}
-                        {t('products')}
-                    </Text>
-                </Box>
-                {pager?.totalResults === 0 ? (
-                    <Box as={'h3'} fontSize="22px">
-                        {t('noResults')}
+            <Container>
+                <Box
+                    display={'flex'}
+                    flexDir={pager?.totalResults === 0 ? 'column' : 'row'}
+                    justifyContent={pager?.totalResults === 0 ? 'center' : 'space-between'}
+                    alignContent="center"
+                    alignItems="center"
+                    ref={ref}
+                    className="product-list-settings"
+                    height={'64px'}
+                >
+                    <Box d="flex">
+                        {facets?.map((item) => {
+                            return (
+                                <>
+                                    <Box
+                                        d="flex"
+                                        w="168px"
+                                        height={'32px'}
+                                        // borderRight={'0.5px solid black'}
+                                        onClick={() => {
+                                            handleFacetTrigger(item.facet);
+                                            setIsModalOpen(true);
+                                        }}
+                                        paddingRight="18px"
+                                        cursor={'pointer'}
+                                        justifyContent={'space-between'}
+                                        paddingLeft={'1rem'}
+                                        position={'relative'}
+                                        textStyle="sm"
+                                        alignItems={'center'}
+                                    >
+                                        {item.name}
+                                        <Box d="flex" alignItems={'center'}>
+                                            <AddIcon />
+                                            <Box ml="18px" h="32px" w="0.2px" background={'black'} />
+                                        </Box>
+
+                                        {isModalOpen && (
+                                            <Box
+                                                position="absolute"
+                                                top="45px"
+                                                zIndex={10}
+                                                background="white"
+                                                mt="10px"
+                                                overflowY={'auto'}
+                                                maxH="324px"
+                                                boxShadow=" 0.5px 0.5px 0.5px grey"
+                                                width="210px"
+                                            >
+                                                {selectedFacet === item.facet &&
+                                                    item?.filters?.map((filter) => {
+                                                        return (
+                                                            <Box
+                                                                key={item.filter_transliterated}
+                                                                mb={'1rem'}
+                                                                mt="18px"
+                                                                width="fit-content"
+                                                            >
+                                                                <Checkbox ml="1rem">
+                                                                    <Text
+                                                                        textAlign={'start'}
+                                                                        textStyle={'sm'}
+                                                                        ml="12px"
+                                                                    >
+                                                                        {filter.filter}
+                                                                    </Text>
+                                                                </Checkbox>
+                                                            </Box>
+                                                        );
+                                                    })}
+                                            </Box>
+                                        )}
+                                    </Box>
+                                </>
+                            );
+                        })}
                     </Box>
-                ) : (
                     <Box display="flex" flexDir="row" alignContent="center" alignItems="center">
+                        <Box h="32px" mr="24px" w="0.2px" background={'black'} />
                         <Box className={'choose_btn'}>
-                            {sort ? (
+                            {
                                 <Menu>
                                     <MenuButton
-                                        height="40px"
-                                        border="1px solid #D6006D"
+                                        h="32px"
+                                        w="145px"
+                                        pl={0}
+                                        pr={0}
+                                        py={0}
                                         background="white"
+                                        _focus={'none'}
+                                        _active={'none'}
                                         color="black"
                                         fontWeight="normal"
-                                        border-radius="5px"
+                                        // borderLeft={'0.2px solid black'}
                                         as={Button}
                                         rightIcon={<ChevronDownIcon />}
                                         _hover={{ bg: 'transparent' }}
                                     >
-                                        {selectedSort ? selectedSort.label : t('choose')}
+                                        <Text mr="16px" textStyle={'sm'} textTransform="uppercase">
+                                            {selectedSort ? selectedSort.label : t('sort')}
+                                        </Text>
                                     </MenuButton>
                                     <MenuList>
                                         {sort?.options?.map((i) => {
@@ -63,6 +147,7 @@ const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isVal
                                                     key={i.value}
                                                     onClick={() => {
                                                         setSelectedSort(i);
+                                                        console.log(selectedSort, 'selectedSort');
                                                     }}
                                                 >
                                                     {i.label}
@@ -71,11 +156,11 @@ const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isVal
                                         })}
                                     </MenuList>
                                 </Menu>
-                            ) : null}
+                            }
                         </Box>
                     </Box>
-                )}
-            </Box>{' '}
+                </Box>
+            </Container>
         </>
     );
 };

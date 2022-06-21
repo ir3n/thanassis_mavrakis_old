@@ -22,7 +22,7 @@ const MenuItem = (
                 height="100%"
                 position="relative"
                 className="menu-item"
-               _focus ={{ boxShadow: 'none' }}
+                _focus={{ boxShadow: 'none' }}
                 _hover={{ textDecoration: 'none' }}
                 fontSize={fontSize}
                 fontWeight={fontWeight}
@@ -42,12 +42,12 @@ const MenuItem = (
 
                 {mainMenu &&
                     (!isClicked ? (
-                        <Box mr="24px">
+                        <Box pos={'absolute'} right={'25px'} transition={'.5s'}>
                             <CrossIcon />
                         </Box>
                     ) : (
-                        <Box mr="24px">
-                            <CloseIcon />
+                        <Box pos={'absolute'} right={'25px'} transition={'.5s'} transform={'rotate(45deg)'}>
+                            <CrossIcon />
                         </Box>
                     ))}
             </Link>

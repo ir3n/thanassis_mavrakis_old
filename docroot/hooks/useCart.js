@@ -25,7 +25,7 @@ export default function useCart() {
         },
         {
             onError: handleFormError,
-            revalidateOnMount: true,
+            refetchOnMount: true,
             enabled: !!cartToken
         }
     );

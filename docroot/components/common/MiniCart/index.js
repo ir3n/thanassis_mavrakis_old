@@ -1,4 +1,4 @@
-import { useContext, memo, useEffect, useRef } from 'react';
+import { useContext, memo, useEffect, useState, useRef } from 'react';
 import MainContext from 'context';
 import NextLink from 'next/link';
 import {
@@ -88,8 +88,15 @@ export const MiniCart = ({ boxSize }) => {
                 className={'ammMiniCart__trigger'}
                 onClick={toggleCart}
             >
-                <Box pos={'absolute'} top={'-15px'} left={'10px'} w={'25px'} textStyle={'captionSm'}>
-                    {cartData?.order_items.length}
+                <Box
+                    pos={'absolute'}
+                    top={'-12px'}
+                    left={'10px'}
+                    w={'25px'}
+                    textStyle={'captionSm'}
+                    lineHeight={'12px'}
+                >
+                    {cartData?.order_items?.length}
                 </Box>
                 {cartState ? <CartSvgBlack /> : <CartSvg />}
 
@@ -117,7 +124,7 @@ export const MiniCart = ({ boxSize }) => {
             <Drawer isOpen={cartState} placement="right" onClose={closeCart} finalFocusRef={btnRef} size={drawerSize}>
                 <DrawerContent
                     h={{ sm: '100vh', md: 'calc(100vh - 85px)' }}
-                    w={{ sm: '100vw !important', md: '50vw !important', xxl: '30vw !important' }}
+                    w={{ sm: '100vw !important', md: '50vw !important', xxxl: '30vw !important' }}
                     bottom={'0'}
                     top={'unset !important'}
                     p={{ sm: '0 30px 0 40px', md: '0 40px 0 40px' }}

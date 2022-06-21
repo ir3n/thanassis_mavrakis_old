@@ -27,7 +27,7 @@ export default function ProductView({
     ringSizeGuide,
     pageData
 }) {
-    const { productData } = useProduct(1, { ...pageData });
+    const { productData } = useProduct(product_id, { ...pageData });
     const { t } = useTranslation('product');
     const [isOpen, setIsOpen] = useState(false);
     const [options, setOptions] = useState({ index: 0 });

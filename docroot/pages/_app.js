@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ChakraProvider } from '@chakra-ui/react';
 import { MainProvider } from 'context';
-import uuid from 'react-uuid';
 import CookieHelper from 'utils/cookie';
 import MainLayout from 'components/layouts/MainLayout';
 import { ToastContainer } from 'react-toastify';

@@ -46,31 +46,19 @@ export default function ProductPhotosMobile({ productMedia, productTitle, handle
             <Slider {...settings}>
                 {(productMedia || [])?.map(({ url, type }, index) =>
                     type === 'image' ? (
-                        <>
-                            <Image
-                                width={'100%'}
-                                height={{ base: '250px', lg: 'auto' }}
-                                objectFit="contain"
-                                alt={productTitle}
-                                src={url}
-                                key={`productMedia-${index}`}
-                                onClick={() => {
-                                    handleZoom(index);
-                                }}
-                                id={index}
-                            />
-                            {/* <Box onClick={() => slider?.current?.slickPrev()}>
-                                <LeftArrow />
-                            </Box>
-                            <Box onClick={() => slider?.current?.slickNext()}>
-                                <RightArrow />
-                            </Box> */}
-                        </>
-                    ) : (
-                        {
-                            /* <ReactPlayer width="100%" height="auto" url={url} controls /> */
-                        }
-                    )
+                        <Image
+                            width={'100%'}
+                            height={{ base: '250px', lg: 'auto' }}
+                            objectFit="contain"
+                            alt={productTitle}
+                            src={url}
+                            key={`productMedia-${index}`}
+                            onClick={() => {
+                                handleZoom(index);
+                            }}
+                            id={index}
+                        />
+                    ) : null
                 )}
             </Slider>
         </Box>

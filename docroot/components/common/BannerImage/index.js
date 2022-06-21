@@ -1,8 +1,5 @@
 import Container from 'components/common/Container';
-import { Box } from '@chakra-ui/layout';
-import { Image } from '@chakra-ui/react';
-import { Button } from '@chakra-ui/button';
-import { Heading } from '@chakra-ui/layout';
+import { Box, Image, Heading, Button } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const BannerImage = ({ section, fullWidth }) => {

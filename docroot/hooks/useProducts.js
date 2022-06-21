@@ -4,12 +4,11 @@ import { getProductCategory as apiGetProductCategory } from 'services/product';
 import { getRealLocale } from 'utils/helpers';
 import { formatFacets } from 'utils/helpers';
 
-export const useProducts = (productCategoryId, initialData, page, selectedSort, selectedFilters) => {
+export const useProducts = (productCategoryId, initialData, page, selectedSort, selectedFilters, pageSize) => {
     const router = useRouter();
     const locale = router.locale;
 
-    const url = `{${locale}/api/v1/taxonomy/${productCategoryId}`;
-    const queryKey = [url, locale, productCategoryId, page];
+    const queryKey = [locale, productCategoryId, page, selectedSort, selectedFilters];
 
     const queryFn = async () => {
         const response = await apiGetProductCategory(
@@ -17,7 +16,8 @@ export const useProducts = (productCategoryId, initialData, page, selectedSort, 
             productCategoryId,
             page,
             selectedSort,
-            selectedFilters
+            selectedFilters,
+            pageSize
         );
 
         return response.data;
@@ -30,7 +30,7 @@ export const useProducts = (productCategoryId, initialData, page, selectedSort, 
         isValidating
     } = useQuery(queryKey, queryFn, {
         initialData,
-        revalidateOnMount: true
+        refetchOnMount: true
     });
 
     return {

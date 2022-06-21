@@ -5,6 +5,8 @@ import useTranslation from 'next-translate/useTranslation';
 // import Filter from 'components/common/Filter';
 import SelectedFilters from 'components/productsListing/SelectedFilters';
 
+import Pagination from 'components/common/Pagination';
+
 const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFilters, handleRemove }) => {
     const { t } = useTranslation('common');
 
@@ -18,59 +20,36 @@ const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFi
 
     return (
         <Box>
-            {filterSelected}
-            <Box as="div">
-                <Grid templateRows="repeat(2, 1fr)" templateColumns="repeat(6, 1fr)" gap={4}>
+            <Box as="div" mt="16px">
+                <Grid
+                    templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4,1fr)' }}
+                    gap={'24px'}
+                >
                     {data?.map(
                         (
-                            {
-                                tags,
-                                onlineExclusive,
-                                title,
-                                image,
-                                category,
-                                price_formatted,
-                                list_price_formatted,
-                                url,
-                                mastersku,
-                                product_id,
-                                discount_percentage,
-                                price
-                            },
+                            { image, path, cleanUrl, title, price, product_id, mastersku, discount_percentage },
                             index
                         ) => (
-                            <GridItem rowSpan={1} colSpan={[3, 3, 3, 2, 2]} key={`Products-${index}`}>
+                            <GridItem rowSpan={1} key={`Products-${index}`}>
                                 <FeaturedProduct
-                                    product_id={product_id}
-                                    tags={tags}
-                                    onlineExclusive={onlineExclusive}
+                                    key={product_id}
                                     title={title}
+                                    product_id={product_id}
                                     image={image}
-                                    category={category}
-                                    normalPrice={price}
-                                    url={url}
+                                    price={price}
+                                    url={path}
                                     mastersku={mastersku}
                                     discount_percentage={discount_percentage}
-                                    price={price_formatted}
-                                    list_price_formatted={list_price_formatted}
+                                    // list_price_formatted={list_price_formatted}
                                 />
                             </GridItem>
                         )
                     )}
                 </Grid>
-                {pager?.hasNext ? (
-                    <Box as="div" textAlign={'center'} my={'50px'}>
-                        <Button
-                            variant={'secondary'}
-                            isLoading={loadingMore}
-                            minW={{ base: '100%', sm: '350px' }}
-                            maxW={'100%'}
-                            onClick={handleLoadMore}
-                        >
-                            {t('loadMore')}
-                        </Button>
-                    </Box>
-                ) : null}
+
+                <Box as="div" textAlign={'center'} my={'50px'}>
+                    <Pagination {...pager} onChange={handleLoadMore} />
+                </Box>
             </Box>
         </Box>
     );

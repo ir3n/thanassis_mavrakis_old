@@ -20,7 +20,7 @@ const TabFilterMenu = ({ selectedMenu, thisPath }) => {
     return (
         <>
             <Box display={'flex'}>
-                <Box px="80px" pb="32px" d="flex" w="100%" justifyContent={'space-between'}>
+                <Box pb="8px" d="flex" w="100%" justifyContent={'space-between'}>
                     <Box
                         display={'flex'}
                         flexDirection={'column'}
@@ -44,7 +44,12 @@ const TabFilterMenu = ({ selectedMenu, thisPath }) => {
                             )
                         )}
                     </Box>
-                    <img src={'/assets/dummyimage.png'} alt="dummy image" />
+                    <Box>
+                        <img src={'/assets/dummyimage.png'} alt="dummy image" />
+                        <Text textStyle={'sm'} mt="8px">
+                            Ασημένια Αντίγραφα
+                        </Text>
+                    </Box>
                 </Box>
             </Box>
 

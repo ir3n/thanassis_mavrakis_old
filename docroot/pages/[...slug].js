@@ -7,7 +7,7 @@ import { getAllPaths, getPathProps } from 'services/paths';
 import { getLandingPageData } from 'services/landingPages';
 import ProductListView from 'components/productsListing/ProductListView';
 // import SearchProductListView from 'components/productsListing/SearchProductListView';
-// import ProductView from 'components/product/ProductView';
+import ProductView from 'components/product/ProductView';
 // import Blog from 'components/blog';
 // import BasicPages from 'components/common/BasicPages';
 import { getRealLocale } from 'utils/helpers';
@@ -204,8 +204,8 @@ export default function Pages(props) {
     const [clientProps, setClientProps] = useState({ ...props });
 
     useEffect(() => {
-        // console.log('refresh page data', props.page);
         setClientProps({ ...props });
+
         refreshPageDataByType(props.page);
     }, [props.page]);
 
@@ -255,8 +255,8 @@ export default function Pages(props) {
 
     const renderPageBasedOnType = (props) => {
         switch (props?.page?.type) {
-            // case 'commerce_product':
-            //     return <ProductView {...props.pageData} page={{ ...props.page }} pageData={props.pageData} />;
+            case 'commerce_product':
+                return <ProductView {...props.pageData} page={{ ...props.page }} pageData={props.pageData} />;
             case 'taxonomy_term':
                 switch (props?.page?.bundle) {
                     // case 'blog_category':

@@ -30,7 +30,7 @@ export const useUser = (authRoute) => {
                   return response;
               }
             : null,
-        { revalidateOnMount: true }
+        { refetchOnMount: true }
     );
 
     useEffect(() => {

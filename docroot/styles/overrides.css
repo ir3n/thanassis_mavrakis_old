@@ -1,6 +1,13 @@
 #chakra-modal-drawerMenu {
     top: 92.5px !important;
 }
+.chakra-modal-drawerMenuFilter {
+    top: 96px !important;
+}
+
+.chakra-modal__overlay {
+    position: relative !important;
+}
 
 #language {
     padding: 0px;
@@ -82,3 +89,4 @@
         right: 20px;
     }
 }
+
