@@ -12,6 +12,7 @@ import 'styles/overrides.css';
 
 import '@fontsource/open-sans';
 import '@fontsource/roboto';
+import uuid from 'react-uuid';
 
 import { theme } from 'theme';
 
