@@ -1,9 +1,6 @@
-import { Box, Text } from '@chakra-ui/react';
-import MenuSeparator from 'components/common/Header/MenuSeparator';
+import { Box, Flex, Container, HStack } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
-import Container from '../Container';
 import Logo from '../Logo';
-import StretchedLogo from '../StretchedLogo';
 import UserNav from './UserNav';
 import GlobalSearch from '../GlobalSearch';
 import LanguageForm from './LanguageForm';
@@ -24,33 +21,18 @@ const Header = ({ iconMenuShow }) => {
 
     return (
         <>
-            <Box as={'header'} id="mainHeader" background={'white'} overflow={'hidden'}>
-                <Container py={'8px'}>
-                    <Box d="flex" w="100%" justifyContent={'flex-end'}>
-                        <Text textStyle={'caption'} mr="40px" whiteSpace={'nowrap'} textTransform="uppercase">
-                            {t('member')}
-                        </Text>
-
-                        <LanguageForm />
-                    </Box>
-                </Container>
-                <Container className={'borderTopBottom'}>
-                    <Box
-                        py={iconMenuShow && offset === 0 ? '14px' : '4px'}
-                        transition={'.6s'}
-                        d="flex"
-                        w="100%"
-                        justifyContent={'space-between'}
-                        alignItems={'center'}
-                    >
-                        <GlobalSearch />
-                        <Box>
-                            {iconMenuShow && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.7)'} />}
+            <Box as={'header'} id="mainHeader" background={'brand'}>
+                <Container maxW={1300} p={4} pos="relative">
+                    <Flex justify="end" w="full">
+                        <Box pos="absolute" top="0" left="0" zIndex={'sticky'}>
+                            <Logo />
                         </Box>
-                        <Box marginBottom={iconMenuShow && offset === 0 ? '0' : '-10px'} transition={'.6s'}>
+                        <HStack spacing="15px">
+                            <GlobalSearch />
                             <UserNav iconMenuShow={iconMenuShow} />
-                        </Box>
-                    </Box>
+                            <LanguageForm />
+                        </HStack>
+                    </Flex>
                 </Container>
             </Box>
         </>

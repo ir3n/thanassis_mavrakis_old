@@ -14,7 +14,7 @@ const UserNav = ({ iconMenuShow }) => {
             justifyContent={'flex-end'}
             minW={['50px', '50px', '200px']}
         >
-            {iconMenuShow && <IconMenu theColor={'black'} />}
+            <IconMenu />
         </Box>
     );
 };

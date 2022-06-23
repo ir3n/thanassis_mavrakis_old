@@ -9,7 +9,7 @@ const IconMenu = () => {
     const { t } = useTranslation('header');
 
     return (
-        <Box d="flex" className="icons cart-box-parent" pos="relative" alignItems={'center'}>
+        <Box d="flex" className="icons cart-box-parent" pos="relative" alignItems={'center'} z>
             <NextLink href={'/account/information'} prefetch={false} passHref>
                 <Link ml="16px" cursor={'pointer'}>
                     <User />

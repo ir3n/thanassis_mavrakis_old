@@ -11,7 +11,6 @@ import useProducts from 'hooks/useProducts';
 import { getProductCategory } from 'services/product';
 import useProductListing from 'hooks/useProductListing';
 import ProductCategories from './ProductCategories';
-import MenuSeparator from 'components/common/Header/MenuSeparator';
 import NumberOfProducts from './NumberOfProducts';
 
 export default function ProductListView({ page, data, info, pager, facets, sort, breadcrumbs }) {
@@ -156,8 +155,6 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                         {header}
 
                         <Box background={'white'}>{productListSettings}</Box>
-
-                        <MenuSeparator />
                     </Box>
                     <Container>{productCategories}</Container>
                     <Container>{numberOfProducts}</Container>

@@ -12,20 +12,20 @@ export default function SearchInput({ loading, handleSearch, closeAndClearResult
         <InputGroup>
             <InputLeftElement pointerEvents="none">
                 {loading ? (
-                    <Spinner color={'brand.900'} size="md" />
+                    <Spinner color={'white'} size="md" />
                 ) : (
-                    <Search color={'brand.900'} mt={'5px'} boxSize={'24px '} />
+                    <Search color={'white'} mt={'5px'} boxSize={'24px '} />
                 )}
             </InputLeftElement>
             <Input
-                placeholder={t('search')}
+                placeholder={t('Search')}
                 size="lg"
                 variant="ghost"
                 // focusBorderColor="pink.400"
                 onChange={(e) => handleSearch(e.target.value)}
             />
             <InputRightElement pointerEvents="cursor" onClick={() => closeAndClearResults()}>
-                <CloseIcon color={'brand.900'} mt={'10px'} />
+                <CloseIcon color={'brand'} mt={'10px'} />
             </InputRightElement>
         </InputGroup>
     );

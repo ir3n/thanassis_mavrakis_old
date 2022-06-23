@@ -5,7 +5,6 @@ import HeaderMobile from 'components/common/HeaderMobile';
 import FooterMobile from 'components/common/FooterMobile';
 import Menu from 'components/common/Menu';
 import Footer from 'components/common/Footer';
-import MenuSeparator from 'components/common/Header/MenuSeparator';
 
 const MainLayout = ({ children }) => {
     const [mainContentMenuMobile, setMainContentMenuMobile] = useState(90);
@@ -47,37 +46,23 @@ const MainLayout = ({ children }) => {
     }, []);
 
     const header = useBreakpointValue({
-        base: <HeaderMobile customHeight={mainContentMenuMobile} iconMenuShow={!iconMenuShow} size="md" />,
-        lg: <HeaderMobile customHeight={mainContentMenuMobile} iconMenuShow={!iconMenuShow} size="md" />,
-        xl: <HeaderMobile iconMenuShow={!iconMenuShow} />,
-        xxl: <Header iconMenuShow={!iconMenuShow} />
+        base: <HeaderMobile iconMenuShow={!iconMenuShow} />,
+        xl: <Header iconMenuShow={!iconMenuShow} />
     });
 
     const footer = useBreakpointValue({
-        sm: <FooterMobile />,
-        md: <Footer />,
-        lg: <Footer />,
+        base: <FooterMobile />,
         xl: <Footer />
     });
 
     return (
         <>
-            <Box
-                // background={'linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%)'}
-                position={'sticky'}
-                color="black"
-                zIndex={'99'}
-                top={'0'}
-                bg="white"
-            >
+            <Box position={'sticky'} color="white" zIndex={'99'} top={'0'} bg="white">
                 {header}
                 <Menu iconMenuShow={iconMenuShow} menuAndFooterData={menuAndFooterData} />
-                <MenuSeparator mb="0px" mt="0px" />
             </Box>
             {/* <Hero />*/}
-            <Box as={'main'} minHeight={'calc(100vh - 100px - 385px)'}>
-                {children}
-            </Box>
+            <Box as={'main'}>{children}</Box>
 
             {footer}
         </>

@@ -2,7 +2,6 @@ import { Box, Text, Link } from '@chakra-ui/react';
 import Container from '../Container';
 import Home from 'components/icons/Home';
 import NextLink from 'next/link';
-import MenuSeparator from '../Header/MenuSeparator';
 
 const BreadCrumb = ({ breadcrumbs, white }) => {
     return (

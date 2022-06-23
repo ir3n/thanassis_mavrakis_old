@@ -6,7 +6,6 @@ import { useState } from 'react';
 import LevelTwoMobileMenu from './LevelTwoMobileMenu';
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon } from '@chakra-ui/react';
 import CloseIcon from '../../../public/assets/exitbutton-light.svg';
-import MenuSeparator from '../Header/MenuSeparator';
 
 const LevelOneMobileMenu = ({ onClose }) => {
     const { t } = useTranslation('common');

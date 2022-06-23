@@ -6,7 +6,8 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
-    Text
+    Flex,
+    HStack
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
@@ -16,9 +17,9 @@ import MobileUserNav from './MobileUserNav';
 import GlobalSearch from '../GlobalSearch';
 import LevelOneMobileMenu from './LevelOneMobileMenu';
 import { useDisclosure, useOutsideClick } from '@chakra-ui/react';
+import MiniCart from '../MiniCart';
 import SubMenuFooter from './SubMenuFooter';
 import LanguageForm from '../Header/LanguageForm';
-import MenuSeparator from '../Header/MenuSeparator';
 
 const HeaderMobile = ({ customHeight, size }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -39,51 +40,34 @@ const HeaderMobile = ({ customHeight, size }) => {
 
     return (
         <>
-            <Box as={'header'} background={'white'} h="95px">
-                <Box d="flex" w="100%" justifyContent={'flex-end'}>
-                    <Box d="flex" alignItems={'center'} px="12px">
-                        <Text textStyle={'caption'} mr="10px" whiteSpace={'nowrap'}>
-                            Be a member
-                        </Text>
-                        <LanguageForm />
-                    </Box>
-                </Box>
-                <MenuSeparator />
-                <Box
-                    alignItems={'center'}
-                    justifyContent="center"
-                    display={'flex'}
-                    flexDir="row"
-                    height={'48px'}
-                    px="12px"
-                >
-                    <Box
-                        textAlign={'left'}
-                        flex={1}
-                        display={'flex'}
-                        justifyContent={'flex-start'}
-                        alignItems={'center'}
-                    >
+            <Box as={'header'} background={'brand'} h="65px">
+                <Flex alignItems="center" px="15px">
+                    <Box as="div" w="50%">
                         {!selectedMenu && (
                             <Box
                                 as={'button'}
                                 ref={btnRef}
                                 onClick={onOpen}
-                                color={'black'}
+                                color={'white'}
                                 background={'none'}
                                 border={'none'}
-                                mr={'20px'}
                                 _focus={'none'}
                             >
-                                <HamburgerIcon />
+                                <HamburgerIcon w="25px" h="30px" />
                             </Box>
                         )}
-
-                        <GlobalSearch />
                     </Box>
-                    <Logo />
-                    <MobileUserNav />
-                </Box>
+
+                    <HStack w="50%" spacing="10px">
+                        <Box w="30px">
+                            <Logo />
+                        </Box>
+
+                        <MobileUserNav />
+                        <GlobalSearch />
+                        <MiniCart boxSize={{ base: '1.2rem', sm: '1.2rem' }} />
+                    </HStack>
+                </Flex>
             </Box>
 
             <Drawer

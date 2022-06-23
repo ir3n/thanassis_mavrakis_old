@@ -1,5 +1,5 @@
 import { Box, Link, Text } from '@chakra-ui/react';
-import MiniCart from '../MiniCart';
+
 import WishListIndicator from '../WishListIndicator';
 import NextLink from 'next/link';
 import { InfoIcon } from '@chakra-ui/icons';
@@ -16,15 +16,11 @@ const MobileUserNav = () => {
                 display={'flex'}
                 justifyContent={'flex-end'}
                 alignItems={'center'}
-                mt={'8px'}
                 pos="relative"
             >
                 <NextLink href={'/user'} passHref prefetch={false}>
-                    <Box ml="16px">
-                        <User />
-                    </Box>
+                    <User />
                 </NextLink>
-                <MiniCart boxSize={{ base: '1.2rem', sm: '1.2rem' }} />
             </Box>
         </>
     );

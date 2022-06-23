@@ -17,7 +17,6 @@ import AddIcon from '../../public/assets/cross-strong-small.svg';
 import useTranslation from 'next-translate/useTranslation';
 import { useState, useRef } from 'react';
 import { useOutsideClick } from '@chakra-ui/react';
-import MenuSeparator from 'components/common/Header/MenuSeparator';
 import Container from 'components/common/Container';
 
 const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isValidating, facets }) => {

@@ -2,7 +2,6 @@ import { Box, Text, Image } from '@chakra-ui/react';
 import BreadCrumb from 'components/common/BreadCrumb';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import MenuSeparator from 'components/common/Header/MenuSeparator';
 import Container from 'components/common/Container';
 
 const ProductListHeaderMobile = ({ info, breadcrumbs, isSearchResults, term }) => {

@@ -15,12 +15,11 @@ const styles = {
 };
 
 const breakpoints = {
-    sm: '320px',
+    sm: '600px',
     md: '768px',
-    lg: '960px',
+    lg: '900px',
     xl: '1024px',
-    xxl: '1350px',
-    xxxl: '1536px'
+    '2xl': '1440px'
 };
 
 const colors = {
@@ -59,14 +58,13 @@ const textStyles = {
     h1: {
         fontSize: ['40px', '48px'],
         fontWeight: '700',
-        lineHeight: ['48px', '56px'],
-        
+        lineHeight: ['48px', '56px']
     },
     h2: {
         fontSize: ['30px', '38px'],
         fontWeight: '800',
         lineHeight: ['32px', '40px'],
-        textTransform: "uppercase"
+        textTransform: 'uppercase'
     },
     h3: {
         fontSize: ['26px', '34px'],
@@ -105,6 +103,17 @@ const textStyles = {
     }
 };
 
+const sizes = {
+    sizes: {
+        container: {
+            sm: '480px',
+            md: '1180px',
+            lg: '1440px',
+            xl: '1920px'
+        }
+    }
+};
+
 const components = {
     Button: {
         baseStyle: {
@@ -118,7 +127,7 @@ const components = {
             height: '40px',
             padding: '16px',
             borderRadius: '2px',
-            textTransform: "uppercase",
+            textTransform: 'uppercase'
         },
         variants: {
             primary: {
@@ -155,7 +164,7 @@ const components = {
                 _hover: {
                     bg: 'white',
                     color: 'brand',
-                    border: '1px solid white',
+                    border: '1px solid white'
                 }
             },
             green: {
@@ -163,7 +172,7 @@ const components = {
                 color: 'secondary',
                 _hover: {
                     bg: '#ED1C24',
-                    color: 'secondary',
+                    color: 'secondary'
                 }
             },
             mobileDrawer: {
@@ -207,4 +216,4 @@ const components = {
     }
 };
 
-export const theme = extendTheme({ styles, colors, components, textStyles, breakpoints });
+export const theme = extendTheme({ styles, colors, components, textStyles, sizes, breakpoints });
