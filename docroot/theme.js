@@ -6,11 +6,6 @@ const styles = {
             fontFamily: 'Inter',
             fontSize: '14px'
         }
-    },
-
-    fonts: {
-        heading: 'Inter, sans-serif',
-        body: 'Inter, sans-serif'
     }
 };
 
@@ -25,33 +20,16 @@ const breakpoints = {
 const colors = {
     brand: '#000000',
     white: '#FFFFFF',
+    lightBg: '#F6F6F6',
     darkGrey: '#181818',
     grey: '#555555',
-    mediumGrey: 'A2A2A2',
+    mediumGrey: '#A2A2A2',
     lightGrey: '#C6C6C6',
     blue: '#3093EE',
     green: '#1CA25A',
     red: '#ED1C24',
-    primary: '#000000',
-    secondary: '#FFFFFF',
-    border: '#878787',
-    borderForm: '#1E1E1E',
-    borderMobile: '#C4C4C4',
-    newsletter: '#F1F1F1',
-
-    buttons: {
-        primary: '#000000',
-        primaryHover: '#ED1C24',
-        secondary: '#FFFFFF',
-        secondaryHover: '#000000',
-        disabled: '#878787'
-    },
-    footer: {
-        black: 'brand',
-        red: '#ED1C24',
-        white: 'secondary',
-        border: '#373737'
-    }
+    border: '#C4C4C4',
+    newsletter: '#E4E4E4'
 };
 
 const textStyles = {
@@ -117,50 +95,43 @@ const sizes = {
 const components = {
     Button: {
         baseStyle: {
-            fontFamily: 'Inter',
             fontStyle: 'normal',
             fontWeight: '500',
             fontSize: '12px',
             lineHeight: '15px',
             letterSpacing: '0.115em',
-            width: '240px',
-            height: '40px',
-            padding: '16px',
-            borderRadius: '2px',
+            padding: { base: '12px', lg: '15px' },
+            borderRadius: '0',
             textTransform: 'uppercase'
         },
         variants: {
             primary: {
                 bg: 'brand',
-                border: 'none',
                 color: 'white',
                 _hover: {
-                    bg: '#ED1C24',
+                    bg: 'red',
                     color: 'white'
                 },
                 _disabled: {
-                    bg: 'secondaryHover',
-                    color: 'disabled',
-                    border: '0'
+                    bg: 'grey'
                 }
             },
-            outline: {
-                border: '1px solid #000000 !important',
+            outlineBlack: {
+                border: '1px',
+                borderColor: 'brand',
                 color: 'brand',
                 _hover: {
                     bg: 'brand',
-                    color: 'white',
-                    borderRadius: '2px'
+                    color: 'white'
                 },
                 _disabled: {
-                    bg: 'secondaryHover',
-                    color: 'disabled',
-                    border: '0'
+                    bg: 'grey'
                 }
             },
-            secondary: {
-                color: 'secondary',
-                border: '1px solid white',
+            outlineWhite: {
+                color: 'white',
+                border: '1px',
+                borderColor: 'white',
                 _hover: {
                     bg: 'white',
                     color: 'brand',
@@ -169,38 +140,29 @@ const components = {
             },
             green: {
                 bg: 'green',
-                color: 'secondary',
+                color: 'white',
                 _hover: {
-                    bg: '#ED1C24',
-                    color: 'secondary'
+                    bg: 'red'
                 }
-            },
-            mobileDrawer: {
-                bg: 'white',
-                color: 'brand',
-                border: '0.5px solid #FF8234'
             }
         },
         sizes: {
-            xl: {
-                fontSize: '12px',
-                w: '560px',
-                h: '40.9px'
-            },
             lg: {
                 fontSize: '12px',
-                w: '276px',
-                h: '40px'
+                w: '100%',
+                h: 'auto'
             },
             md: {
                 fontSize: '12px',
-                w: '248px',
-                h: '40px'
+                w: 'auto',
+                h: 'auto',
+                minW: '196px'
             },
             sm: {
                 fontSize: '12px',
-                w: '196px',
-                h: '40px'
+                w: 'auto',
+                h: 'auto',
+                minW: '110px'
             }
         }
     },
