@@ -15,6 +15,7 @@ import Logo from '../Logo';
 import { useState, useRef, useEffect } from 'react';
 import MobileUserNav from './MobileUserNav';
 import GlobalSearch from '../GlobalSearch';
+import WishListIndicator from '../WishListIndicator';
 import LevelOneMobileMenu from './LevelOneMobileMenu';
 import { useDisclosure, useOutsideClick } from '@chakra-ui/react';
 import MiniCart from '../MiniCart';
@@ -64,6 +65,7 @@ const HeaderMobile = ({ customHeight, size }) => {
                         </Box>
 
                         <MobileUserNav />
+                        <WishListIndicator />
                         <GlobalSearch />
                         <MiniCart boxSize={{ base: '1.2rem', sm: '1.2rem' }} />
                     </HStack>

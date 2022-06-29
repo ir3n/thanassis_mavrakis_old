@@ -17,13 +17,7 @@ export default function SearchInput({ loading, handleSearch, closeAndClearResult
                     <Search color={'white'} mt={'5px'} boxSize={'24px '} />
                 )}
             </InputLeftElement>
-            <Input
-                placeholder={t('Search')}
-                size="lg"
-                variant="ghost"
-                // focusBorderColor="pink.400"
-                onChange={(e) => handleSearch(e.target.value)}
-            />
+            <Input placeholder={t('Search')} size="lg" onChange={(e) => handleSearch(e.target.value)} />
             <InputRightElement pointerEvents="cursor" onClick={() => closeAndClearResults()}>
                 <CloseIcon color={'brand'} mt={'10px'} />
             </InputRightElement>

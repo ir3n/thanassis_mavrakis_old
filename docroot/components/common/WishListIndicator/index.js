@@ -61,7 +61,7 @@ export const WishListIndicator = ({ boxSize }) => {
                         </>
                     ) : (
                         <>
-                            <Heart onClick={openFavorite} boxSize={boxSize ? boxSize : null} color={'black'} />{' '}
+                            <Heart onClick={openFavorite} boxSize={boxSize ? boxSize : null} color={'white'} />{' '}
                             {wishListData && wishListData.length > 0 ? (
                                 <Box
                                     className={'ammMiniCart__indicator'}

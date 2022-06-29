@@ -5,7 +5,7 @@ import Search from 'components/icons/Search';
 import useTranslation from 'next-translate/useTranslation';
 import Tracking from 'utils/tracking';
 import { getRealLocale } from 'utils/helpers';
-import { Box, Modal, Text, ModalContent, useDisclosure, ModalOverlay } from '@chakra-ui/react';
+import { Box, Modal, Flex, ModalContent, useDisclosure, ModalOverlay } from '@chakra-ui/react';
 
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
@@ -54,22 +54,12 @@ export default function GlobalSearch() {
 
     return (
         <>
-            <Box
-                cursor={'pointer'}
-                onClick={onOpen}
-                minW={['auto', 'auto', '50px', '200px']}
-                d={'flex'}
-                alignItems={'baseline'}
-            >
-                <Search color={'black'} boxSize={{ base: '1.2rem', sm: '1.2rem', lg: '1rem' }} />
-                <Text textStyle={'sm'} color={'grey'} ml={'12px'}>
-                    {t('search')}
-                </Text>
-            </Box>
-
-            <Modal isOpen={isOpen} onClose={() => closeAndClearResults()} width={'300px'}>
-                <ModalOverlay />
-                <ModalContent w={'95%'} maxW={'600px'}>
+            <Flex cursor={'pointer'} onClick={onOpen} alignItems={'baseline'}>
+                <Search color={'white'} />
+            </Flex>
+            {/* TODO: Fix according to design */}
+            <Modal isOpen={isOpen} onClose={() => closeAndClearResults()} justify="flex-end">
+                <ModalContent maxW={'300px'} m="0" mr="315">
                     <SearchInput
                         handleSearch={handleSearch}
                         loading={loading}

@@ -5,6 +5,11 @@ const styles = {
         'html, body': {
             fontFamily: 'Inter',
             fontSize: '14px'
+        },
+        body: {
+            p: '0',
+            m: '0',
+            overflowX: 'hidden'
         }
     }
 };
@@ -163,16 +168,6 @@ const components = {
                 w: 'auto',
                 h: 'auto',
                 minW: '110px'
-            }
-        }
-    },
-    Switch: {
-        variants: {
-            solid: {
-                colorScheme: 'cyan'
-            },
-            outline: {
-                colorScheme: 'whiteAlpha'
             }
         }
     }

@@ -56,27 +56,26 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                 justifyContent="space-evenly"
                 background={'white'}
                 position={'relative'}
-                p="10px 0 5px 0;"
+                p="23px 0"
             >
-                <Container w={'100%'} margin={'0 auto'}>
+                <Container maxW={1400} w="full">
                     <Box justifyContent={'space-between'} display={'flex'} className="menu_container" width={'100%'}>
                         {menuData?.map(
                             ({ title, submenu, entity_id, relative, external, cleanUrl, ...menuItemProps }, index) => (
                                 <Text
                                     _hover={{ color: 'brand' }}
-                                    color="black"
+                                    color="brand"
                                     as="div"
                                     className="menu_items"
                                     key={`menuItem-${index}`}
                                     whiteSpace="nowrap"
-                                    textStyle={'sm'}
                                     textTransform={'uppercase'}
                                 >
                                     {submenu ? (
                                         <Link
                                             pos={'relative'}
+                                            textStyle="caption"
                                             textDecoration="none !important"
-                                            marginBottom="24px"
                                             zIndex={isOpen ? 9999 : 9}
                                             _focus={{ boxShadow: 'none' }}
                                             onClick={() => {
@@ -94,7 +93,7 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                                                 );
                                             }}
                                         >
-                                            <Text textStyle={'md'} textTransform={'uppercase'}>
+                                            <Text textStyle={'caption'} textTransform={'uppercase'}>
                                                 {title}
                                             </Text>
                                         </Link>
@@ -108,9 +107,9 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                                                 pos={'relative'}
                                                 zIndex={isOpen ? 9999 : 9}
                                                 color={'black'}
-                                                fontFamily={'Open sans'}
+                                                textStyle="caption"
                                             >
-                                                <Text textStyle={'md'} textTransform={'uppercase'}>
+                                                <Text textStyle={'caption'} textTransform={'uppercase'}>
                                                     {title}
                                                 </Text>
                                             </Link>

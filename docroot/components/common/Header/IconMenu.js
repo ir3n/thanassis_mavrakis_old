@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import NextLink from 'next/link';
-import { Box, Text, Link } from '@chakra-ui/react';
+import { Box, Flex, Link } from '@chakra-ui/react';
 import MiniCart from '../MiniCart';
 import User from '../../../public/assets/user-outline.svg';
 import useTranslation from 'next-translate/useTranslation';
@@ -9,16 +9,16 @@ const IconMenu = () => {
     const { t } = useTranslation('header');
 
     return (
-        <Box d="flex" className="icons cart-box-parent" pos="relative" alignItems={'center'} z>
+        <Flex className="icons cart-box-parent" pos="relative" alignItems={'center'}>
             <NextLink href={'/account/information'} prefetch={false} passHref>
-                <Link ml="16px" cursor={'pointer'}>
+                <Link cursor={'pointer'}>
                     <User />
                 </Link>
             </NextLink>
             <Box>
                 <MiniCart />
             </Box>
-        </Box>
+        </Flex>
     );
 };
 
