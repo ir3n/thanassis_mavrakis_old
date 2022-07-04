@@ -8,11 +8,11 @@ export default function ItemPerPage() {
 
     return (
         <>
-            <Box d={'flex'} py={'12px'}>
+            <Box display={'flex'} py={'12px'}>
                 <Text pr={'18px'} textStyle={'caption'}>
                     {t('per')}
                 </Text>
-                <UnorderedList listStyleType={'none'} ml={'0'} d={'flex'} textStyle={'caption'}>
+                <UnorderedList listStyleType={'none'} ml={'0'} display={'flex'} textStyle={'caption'}>
                     <ListItem pr={'18px'}>
                         <Link>{'24'}</Link>
                     </ListItem>

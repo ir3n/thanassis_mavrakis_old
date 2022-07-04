@@ -8,7 +8,7 @@ export default function FilterItem() {
 
     return (
         <>
-            <Box d={'flex'} alignItems={'center'} borderRight={'1px solid #919191'}>
+            <Box display={'flex'} alignItems={'center'} borderRight={'1px solid #919191'}>
                 <Text textStyle={'sm'} p={'0 28px 0 12px'}>
                     {'ΤΕΧΝΙΚΗ'}
                 </Text>

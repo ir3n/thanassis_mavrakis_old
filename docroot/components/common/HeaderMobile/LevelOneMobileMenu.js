@@ -29,7 +29,7 @@ const LevelOneMobileMenu = ({ onClose }) => {
                         as={'div'}
                         className={'level-generic one'}
                         backgroundColor={'white'}
-                        d={'flex'}
+                        display={'flex'}
                         flexDir={'column'}
                     >
                         {menuData?.map(

@@ -26,7 +26,7 @@ export default function FormCheckBox({
         isReadOnly={isReadOnly}
         {...inputProps}
         isChecked={isChecked}
-        d="flex"
+        display="flex"
         alignItems="baseline"
         isRequired={isRequired}
       >

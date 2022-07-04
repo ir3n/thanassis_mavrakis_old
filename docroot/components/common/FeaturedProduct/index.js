@@ -16,7 +16,7 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
 
     return (
         <Box
-            d="flex"
+            display="flex"
             flexDir={'column'}
             alignItems="center"
             // paddingX={'1rem'}
@@ -27,7 +27,7 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                 <Link _focus={'none'} pos="relative" as={'a'} data-productid={mastersku}>
                     <Box
                         _focus={'none'}
-                        d="flex"
+                        display="flex"
                         flexDir={'column'}
                         alignItems="center"
                         textAlign="center"
@@ -58,8 +58,8 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                 </Link>
             </NextLink>
             <Box ml="10px" textAlign="center" width={'100%'}>
-                <Box d={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
-                    <Box d="flex" flexDir={'column'} alignItems="flex-start">
+                <Box display={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
+                    <Box display="flex" flexDir={'column'} alignItems="flex-start">
                         <Text textStyle={'md'} maxW="220px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
                             {title}
                         </Text>

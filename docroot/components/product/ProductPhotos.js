@@ -10,11 +10,11 @@ export default function ProductPhotos({ productMedia, productTitle, handleZoom }
     };
 
     return (
-        <Box mt={'1rem'} id={'main-box'} d={'flex'} className={'main'} width={'552px'} justifyContent="space-between">
+        <Box mt={'1rem'} id={'main-box'} display={'flex'} className={'main'} width={'552px'} justifyContent="space-between">
             {productMedia && productMedia.length > 0 ? (
                 <>
                     <Box
-                        d="flex"
+                        display="flex"
                         flexDir={'column'}
                         mb={'2rem'}
                         className="second-box"

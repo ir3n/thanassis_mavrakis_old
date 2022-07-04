@@ -22,7 +22,7 @@ const ProductQuantityBox = () => {
                 borderRadius={'2px'}
                 width="110px"
                 height={'48px'}
-                d="flex"
+                display="flex"
                 justifyContent={'space-around'}
                 alignItems="center"
                 mb="24px"

@@ -33,7 +33,7 @@ const ProductListHeader = ({ info, breadcrumbs, isSearchResults, term }) => {
                 </Box>
                 <Box
                     backgroundColor={color}
-                    d="flex"
+                    display="flex"
                     flexDir={'column'}
                     alignItems="center"
                     justifyContent={'center'}

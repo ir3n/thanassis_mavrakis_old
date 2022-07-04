@@ -46,7 +46,7 @@ const ProductSize = ({ sizes, handleSizeSelection, defaultSize }) => {
                 borderColor={'darkgrey'}
                 borderRadius="2px"
                 position={'relative'}
-                d="flex"
+                display="flex"
                 justifyContent={'space-between'}
                 alignItems="center"
                 paddingX="16px"
@@ -77,7 +77,7 @@ const ProductSize = ({ sizes, handleSizeSelection, defaultSize }) => {
                             borderRadius="2px"
                             borderTop={'none'}
                             paddingLeft="16px"
-                            d="flex"
+                            display="flex"
                             alignItems={'center'}
                             _hover={{ bg: 'black', color: 'white' }}
                             cursor={'pointer'}

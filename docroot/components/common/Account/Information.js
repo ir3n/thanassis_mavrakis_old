@@ -10,7 +10,7 @@ const Information = () => {
         <Box>
             <TitleSection title={'information'} />
             <Box mb={'60px'} mt={'18px'}>
-                <Box d={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'} justifyContent={'space-between'}>
                     <Box w={'48%'} mb={'18px'}>
                         <FormInput backgroundColor={'white'} color={'black'} value={'John'} />
                     </Box>
@@ -50,7 +50,7 @@ const Information = () => {
                     />
                 </Box>
             </Box>
-            <Box d={'flex'} justifyContent={'end'} mt={'50px'}>
+            <Box display={'flex'} justifyContent={'end'} mt={'50px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('confirmation')}
                 </Button>

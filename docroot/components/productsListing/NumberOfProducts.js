@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/react';
 
 const NumberOfProducts = ({ productCategoryData, handlePageSize }) => {
     return (
-        <Box d="flex" mt="48px" w="144px" justifyContent={'space-between'}>
+        <Box display="flex" mt="48px" w="144px" justifyContent={'space-between'}>
             <Box>ANA</Box>
             <Box as="button" onClick={() => handlePageSize(24)}>
                 24

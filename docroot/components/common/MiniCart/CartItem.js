@@ -18,12 +18,12 @@ export default function CartItem({
 
     return (
         <>
-            <Box d={'flex'} py={'15px'} mr={'20px'} borderBottom={'1px solid #C4C4C4'}>
+            <Box display={'flex'} py={'15px'} mr={'20px'} borderBottom={'1px solid #C4C4C4'}>
                 <Box w={'20%'}>
                     <Image src={image} w={'100%'} h={'auto'} alt={''} />
                 </Box>
                 <Box w={'55%'} paddingLeft={'12px'}>
-                    <Box textStyle={'caption'} d="flex" flexDirection={'column'}>
+                    <Box textStyle={'caption'} display="flex" flexDirection={'column'}>
                         <Text pb={'8px'}>{title}</Text>
                         <Text pb={'8px'} color={'darkGrey'}>
                             {sku}
@@ -32,9 +32,9 @@ export default function CartItem({
                     </Box>
                 </Box>
                 <Box w={'25%'}>
-                    <Box textStyle={'caption'} d="flex" flexDirection={'column'} h={'100%'} justifyContent={'center'}>
+                    <Box textStyle={'caption'} display="flex" flexDirection={'column'} h={'100%'} justifyContent={'center'}>
                         <Box
-                            d={'flex'}
+                            display={'flex'}
                             alignItems={'center'}
                             justifyContent={'space-around'}
                             border={'1px solid #000000'}

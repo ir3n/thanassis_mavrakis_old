@@ -20,7 +20,7 @@ const TabFilterMenu = ({ selectedMenu, thisPath }) => {
     return (
         <>
             <Box display={'flex'}>
-                <Box pb="8px" d="flex" w="100%" justifyContent={'space-between'}>
+                <Box pb="8px" display="flex" w="100%" justifyContent={'space-between'}>
                     <Box
                         display={'flex'}
                         flexDirection={'column'}

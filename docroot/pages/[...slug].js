@@ -279,6 +279,8 @@ export default function Pages(props) {
                         return <LandingListView {...props.pageData} page={{ ...props.page }} />;
                     // case 'page':
                     //     return <BasicPages {...props.pageData} page={{ ...props.page }} />;
+                    // case 'designer':
+                    //     return <BasicPages {...props.pageData} page={{ ...props.page }} />;
                     // case 'article':
                     //     return <Blog {...props.pageData} page={{ ...props.page }} />;
                 }

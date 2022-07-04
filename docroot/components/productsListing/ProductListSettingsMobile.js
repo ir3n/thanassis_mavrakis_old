@@ -48,7 +48,7 @@ const ProductListSettingsMobile = ({
 
     return (
         <>
-            <Box d={'flex'} justifyContent="space-between" mx="18px">
+            <Box display={'flex'} justifyContent="space-between" mx="18px">
                 <CustomDrawer
                     drawerButtonText={t('filter')}
                     drawerHeader={'FILTER BY'}

@@ -8,7 +8,7 @@ const BreadCrumb = ({ breadcrumbs, white }) => {
         <Container className="Container">
             {breadcrumbs?.map(({ name, path }, index) => {
                 return (
-                    <Box my="8px" key={`breadcrumb-${index}`} d={'inline-block'}>
+                    <Box my="8px" key={`breadcrumb-${index}`} display={'inline-block'}>
                         {name === 'Home' || name === 'Αρχική' ? (
                             <NextLink href={'/'} passHref prefetch={false}>
                                 <Link pos="relative" _hover={{ textDecoration: 'none' }}>

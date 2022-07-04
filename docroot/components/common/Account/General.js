@@ -7,7 +7,7 @@ const General = () => {
     return (
         <Box>
             <Box
-                d={'flex'}
+                display={'flex'}
                 alignItems={'baseline'}
                 justifyContent={'space-between'}
                 flexDirection={{ sm: 'column', lg: 'row' }}
@@ -21,7 +21,7 @@ const General = () => {
                 </Link>
             </Box>
 
-            <Box d={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
+            <Box display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
                 <Box w={{ sm: '100%', lg: '55%' }}>
                     <Text as={'h3'} textStyle={'h3'} pb={'8px'} mb={'16px'} borderBottom={'1px solid #919191'}>
                         {t('information')}
@@ -40,7 +40,7 @@ const General = () => {
                 </Box>
             </Box>
 
-            <Box d={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
+            <Box display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
                 <Box w={{ sm: '100%', lg: '55%' }}>
                     <Text as={'h3'} textStyle={'h3'} pb={'8px'} mb={'16px'} borderBottom={'1px solid #919191'}>
                         {t('payments')}
@@ -59,7 +59,7 @@ const General = () => {
                 </Box>
             </Box>
 
-            <Box d={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
+            <Box display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} pb={'30px'}>
                 <Box w={{ sm: '100%', lg: '55%' }}>
                     <Text as={'h3'} textStyle={'h3'} pb={'8px'} mb={'16px'} borderBottom={'1px solid #919191'}>
                         {t('newsletters')}

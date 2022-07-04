@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 const SectionButton = ({ cta, backgroundColor, text }) => {
     return (
         <Box
-            d={'flex'}
+            display={'flex'}
             w={{ base: '324px', lg: '360px' }}
             maxW={{ base: '100%', lg: '32%' }}
             h={{ base: '192px', lg: '256px' }}

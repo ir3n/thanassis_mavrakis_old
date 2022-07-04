@@ -149,7 +149,7 @@ export const MiniCart = ({ boxSize }) => {
                     </DrawerHeader>
                     <DrawerBody p={'15px 0'}>
                         {!cartData || !cartData.order_items || cartData.order_items.length === 0 ? (
-                            <Box w={'100%'} h={'100%'} d={'flex'} alignItems={'center'} justifyContent={'center'}>
+                            <Box w={'100%'} h={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
                                 <Text textStyle={'h4'}>{t('empty')}</Text>
                             </Box>
                         ) : null}
@@ -200,12 +200,12 @@ export const MiniCart = ({ boxSize }) => {
                             mr={'20px'}
                             borderTop={'2px solid #FF8234'}
                         >
-                            <Box d={'flex'} flexDirection={'column'} w={'100%'}>
-                                <Box d={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
+                            <Box display={'flex'} flexDirection={'column'} w={'100%'}>
+                                <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
                                     <Text textStyle={'h4'}>{t('total')}</Text>
                                     <Text textStyle={'h4'}>{cartData.total_price}</Text>
                                 </Box>
-                                <Box d={'flex'} flexDirection={'column'}>
+                                <Box display={'flex'} flexDirection={'column'}>
                                     <NextLink href={'/cart' || '#'} passHref prefetch={false}>
                                         <Link>
                                             <Button

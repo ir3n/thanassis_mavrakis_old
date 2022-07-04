@@ -8,12 +8,12 @@ const BecomeMember = () => {
 
     return (
         <>
-            <Box d="flex" justifyContent={'center'} background={'#D13A3A'}>
+            <Box display="flex" justifyContent={'center'} background={'#D13A3A'}>
                 <Text as={'h1'} py="48px" color={'white'} textStyle="h1">
                     {t('member')}
                 </Text>
             </Box>
-            <Box mt="56px" d="flex" justifyContent={'center'}>
+            <Box mt="56px" display="flex" justifyContent={'center'}>
                 <Text textAlign={'start'} width={'745px'} fontSize="14px" lineHeight={'24px'}>
                     Σας προσκαλούμε να γίνετε μέρος μιας συναρπαστικής αφήγησης 8.000 χρόνων ιστορίας που επεκτείνεται
                     σε 7 Μουσεία, 4 Αρχεία και 2 επισκέψιμους χώρους και εξελίσσεται σε περισσότερα από 120.000 έργα
@@ -54,15 +54,15 @@ const BecomeMember = () => {
                     image={'/assets/dummyBanner.png'}
                 />
             </Box>
-            <Box d="flex" justifyContent={'center'} mt="56px">
+            <Box display="flex" justifyContent={'center'} mt="56px">
                 <Image src="/assets/Frame.png" />
             </Box>
-            <Box d="flex" justifyContent={'center'} mt="1rem">
+            <Box display="flex" justifyContent={'center'} mt="1rem">
                 <Text textStyle={'h3'} color="black">
                     Benaki Contemporaries
                 </Text>
             </Box>
-            <Box d="flex" justifyContent={'center'} mt="1rem">
+            <Box display="flex" justifyContent={'center'} mt="1rem">
                 <Text textStyle={'md'} width="744px" color="black" textAlign={'center'}>
                     Το πρόγραμμα του Μουσείου, Benaki Contemporaries, έχει ως στόχο να βοηθήσει το εκθεσιακό πρόγραμμα
                     του Μουσείου στηρίζοντας τις εκθέσεις σύγχρονης τέχνης.

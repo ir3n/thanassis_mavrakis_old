@@ -9,9 +9,9 @@ const SearchedProduct = ({ title, image, price, url, onClose }) => {
         <Box onClick={onClose}>
             <NextLink href={url || '#'} passHref prefetch={false}>
                 <Link pos="relative" as={'a'}>
-                    <Box d="flex" borderBottom={'1px solid #eaeaea'} p={'10px'}>
+                    <Box display="flex" borderBottom={'1px solid #eaeaea'} p={'10px'}>
                         <Image width={'50px'} height={'50px'} src={image} placeholder="blur" alt="image" />
-                        <Box position="relative" d="flex" flexDir={'column'} width={'100%'}>
+                        <Box position="relative" display="flex" flexDir={'column'} width={'100%'}>
                             <Text ml="10px" fontSize={'17px'}>
                                 {title}
                             </Text>

@@ -22,7 +22,7 @@ const ResetPass = () => {
                 </Box>
             </Box>
 
-            <Box d={'flex'} alignItems={'flex-end'} mt={'50px'} flexDirection={'column'}>
+            <Box display={'flex'} alignItems={'flex-end'} mt={'50px'} flexDirection={'column'}>
                 <Box w={'50%'}>
                     <Button
                         variant="secondary"

@@ -28,12 +28,12 @@ const MenuItem = (
                 fontWeight={fontWeight}
                 fontFamily={'Open sans'}
                 lineHeight="16px"
-                d="flex"
+                display="flex"
                 alignItems={'center'}
                 justifyContent={'space-between'}
                 id={entity_id}
             >
-                <Box d="flex" alignItems={'center'}>
+                <Box display="flex" alignItems={'center'}>
                     {mainMenu && <MenuIcon />}
                     <Text textStyle={'md'} ml={ml}>
                         {title}
@@ -66,10 +66,10 @@ const MenuItem = (
                     fontWeight={fontWeight}
                     fontFamily={'Open sans'}
                     lineHeight="16px"
-                    d="flex"
+                    display="flex"
                     justifyContent={'space-between'}
                 >
-                    <Box d="flex" alignItems={'center'}>
+                    <Box display="flex" alignItems={'center'}>
                         {mainMenu && <MenuIcon />}
                         <Text textStyle={'md'} ml={ml}>
                             {title}

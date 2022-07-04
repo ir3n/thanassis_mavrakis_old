@@ -6,14 +6,14 @@ const BannerImage = ({ section, fullWidth }) => {
     return (
         <Container fullWidth={fullWidth} marginBottom={'48px'}>
             <Box
-                d={'flex'}
+                display={'flex'}
                 h={{ base: '560px', lg: '400px' }}
                 flexDir={{ base: 'column', lg: 'row' }}
                 justifyContent="center"
                 alignItems={'center'}
             >
                 <Box
-                    d={'flex'}
+                    display={'flex'}
                     backgroundColor={section?.background_color}
                     flexDirection={'column'}
                     justifyContent={'space-between'}

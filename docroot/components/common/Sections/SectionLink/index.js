@@ -19,7 +19,7 @@ const SectionLink = ({ link: { title, url }, image }) => {
 
     return (
         <Box
-            d="flex"
+            display="flex"
             flexDir={'column'}
             alignItems="center"
             paddingX={'1rem'}
@@ -55,8 +55,8 @@ const SectionLink = ({ link: { title, url }, image }) => {
             <NextLink href={url || '#'} passHref prefetch={false}>
                 <Link as={'a'}>
                     <Box ml="10px" textAlign="center" width={'100%'}>
-                        <Box d={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
-                            <Box d="flex" flexDir={'column'} alignItems="flex-start">
+                        <Box display={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
+                            <Box display="flex" flexDir={'column'} alignItems="flex-start">
                                 <Box fontSize={'1rem'} fontFamily="roboto" maxW="220px" textAlign={'left'}>
                                     {title}
                                 </Box>

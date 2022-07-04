@@ -13,7 +13,7 @@ const Newsletters = () => {
             <Box mt={'40px'}>
                 <FormCheckBox label={'Benaki Museum Newsletter'} />
             </Box>
-            <Box d={'flex'} mt={'20px'}>
+            <Box display={'flex'} mt={'20px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('save')}
                 </Button>

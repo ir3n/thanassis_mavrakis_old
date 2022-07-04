@@ -6,6 +6,7 @@ import { MainProvider } from 'context';
 import CookieHelper from 'utils/cookie';
 import MainLayout from 'components/layouts/MainLayout';
 import { ToastContainer } from 'react-toastify';
+import uuid from 'react-uuid';
 import 'react-toastify/dist/ReactToastify.css';
 import 'styles/globals.css';
 import 'styles/overrides.css';
@@ -31,7 +32,8 @@ function MyApp({ Component, pageProps }) {
     const closeCart = () => setCartState(false);
     const toggleCart = () => setCartState(!cartState);
 
-    const [queryClient] = useState(() => new QueryClient());
+    const [queryClient] = useState(() => new QueryClient({ defaultOptions: { queries: { refetchOnMount: false } } }));
+
     return (
         <QueryClientProvider client={queryClient}>
             <ChakraProvider theme={theme}>

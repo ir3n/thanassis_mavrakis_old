@@ -47,12 +47,12 @@ const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isVal
                     className="product-list-settings"
                     height={'64px'}
                 >
-                    <Box d="flex">
+                    <Box display="flex">
                         {facets?.map((item) => {
                             return (
                                 <>
                                     <Box
-                                        d="flex"
+                                        display="flex"
                                         w="168px"
                                         height={'32px'}
                                         // borderRight={'0.5px solid black'}
@@ -69,7 +69,7 @@ const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isVal
                                         alignItems={'center'}
                                     >
                                         {item.name}
-                                        <Box d="flex" alignItems={'center'}>
+                                        <Box display="flex" alignItems={'center'}>
                                             <AddIcon />
                                             <Box ml="18px" h="32px" w="0.2px" background={'black'} />
                                         </Box>

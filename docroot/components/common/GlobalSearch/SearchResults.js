@@ -31,7 +31,7 @@ export default function SearchResults({ results, term, total, closeAndClearResul
       {results && results.length > 0 ? (
         <Box p="10px" bgColor={'brand.900'} cursor={'pointer'}>
           <NextLink href={`/catalogsearch/result/${term}`} passHref  prefetch={false} >
-            <Link textAlign={'center'} fontSize={'18px'} color={'white'} width={'100%'} d={'block'} onClick={onClose}>
+            <Link textAlign={'center'} fontSize={'18px'} color={'white'} width={'100%'} display={'block'} onClick={onClose}>
               {t('allResults')} <Box as="span">({total})</Box>
             </Link>
           </NextLink>

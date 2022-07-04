@@ -22,8 +22,8 @@ export default function CartItem({
 
     return (
         <>
-            <Box d={'flex'} p={'18px 0'} borderBottom={'0.5px solid #919191'}>
-                <Box w={{ base: '40%', lg: '40%' }} d={'flex'} flexDirection={{ base: 'column', lg: 'row' }}>
+            <Box display={'flex'} p={'18px 0'} borderBottom={'0.5px solid #919191'}>
+                <Box w={{ base: '40%', lg: '40%' }} display={'flex'} flexDirection={{ base: 'column', lg: 'row' }}>
                     <Image w={'80px'} src={image} alt={''} />
                     <Box pl={{ base: '0px', lg: '12px' }} pt={{ base: '12px', lg: '0px' }} textStyle={'sm'}>
                         <Text pb={'8px'}>{title}</Text>
@@ -39,12 +39,12 @@ export default function CartItem({
                 <Box
                     w={{ base: '30%', lg: '20%' }}
                     textAlign={'center'}
-                    d={{ base: 'flex', lg: 'block' }}
+                    display={{ base: 'flex', lg: 'block' }}
                     justifyContent={'flex-end'}
                     alignItems={'baseline'}
                 >
                     <Box
-                        d={'inline-flex'}
+                        display={'inline-flex'}
                         alignItems={'center'}
                         border={'1px solid #000000'}
                         p={'0px 5px'}
@@ -71,7 +71,7 @@ export default function CartItem({
                         <Image m={'auto'} src={'/assets/remove-button.svg'} w={'12px'} h={'12px'} alt={'remove'} />
                     </Link>
                 </Box>
-                <Box d={{ base: 'none', lg: 'block' }} w="20%" textAlign={'right'}>
+                <Box display={{ base: 'none', lg: 'block' }} w="20%" textAlign={'right'}>
                     <Text textStyle={'sm'}>{price}</Text>
                 </Box>
             </Box>

@@ -93,7 +93,7 @@ export default function ProductView({
             <PhotoSwipe isOpen={isOpen} items={items} onClose={handleCLose} options={options} />
 
             <Box
-                d="flex"
+                display="flex"
                 flexDir={{ sm: 'column', base: 'column', md: 'column', lg: 'row', xl: 'row' }}
                 justifyContent={'space-between'}
                 padding="40px 0"

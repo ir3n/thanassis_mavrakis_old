@@ -13,7 +13,7 @@ export default function DesignersSingle() {
             <Box>
                 <PageTitleImg image={'/assets/designers-single-hero.jpg'} />
                 <Container>
-                    <Box d={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} py={'65px'}>
+                    <Box display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }} py={'65px'}>
                         <Box w={{ sm: '100%', lg: '40%' }} pb={{ sm: '18px', lg: '0' }}>
                             <Box as={'h2'} textStyle={'h2'}>
                                 {'157+173 designers'}

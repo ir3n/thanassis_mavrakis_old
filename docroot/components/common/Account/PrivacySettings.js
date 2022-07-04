@@ -20,7 +20,7 @@ const PrivacySettings = () => {
                     'Για την εξαγωγή όλων των προσωπικών δεδομένων που έχουμε καταχωρημένα για το λογαριασμό σας μπορείτε να χρησιμοποιήσετε τον παρακάτω σύνδεσμο.'
                 }
             </Text>
-            <Box d={'flex'} mt={'20px'} mb={'60px'}>
+            <Box display={'flex'} mt={'20px'} mb={'60px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('save')}
                 </Button>
@@ -32,7 +32,7 @@ const PrivacySettings = () => {
                     'Λάβετε ιδιαίτερη προσοχή κατά την αίτηση σας για διαγραφή του λογαριασμού καθώς αυτή η ενέργεια είναι μη αντιστρέψιμη.'
                 }
             </Text>
-            <Box d={'flex'} mt={'20px'}>
+            <Box display={'flex'} mt={'20px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('save')}
                 </Button>

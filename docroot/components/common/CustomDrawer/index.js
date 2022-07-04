@@ -37,7 +37,7 @@ const CustomDrawer = ({
                     borderRight={borderRight}
                     ref={btnRef}
                     onClick={onOpen}
-                    d="flex"
+                    display="flex"
                     alignItems={'center'}
                     width="149px"
                 >

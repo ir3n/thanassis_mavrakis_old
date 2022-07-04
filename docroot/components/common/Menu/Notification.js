@@ -8,7 +8,7 @@ const Notification = ({ data }) => {
     <>
       <Box
         as={'div'}
-        d="flex"
+        display="flex"
         justifyContent="center"
         alignItems="center"
         background={'black'}

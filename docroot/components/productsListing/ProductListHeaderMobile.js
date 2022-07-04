@@ -34,7 +34,7 @@ const ProductListHeaderMobile = ({ info, breadcrumbs, isSearchResults, term }) =
                 <Box
                     height={'152px'}
                     backgroundColor={color}
-                    d="flex"
+                    display="flex"
                     flexDir={'column'}
                     alignItems="center"
                     justifyContent={'center'}

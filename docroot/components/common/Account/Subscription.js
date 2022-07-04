@@ -11,7 +11,7 @@ const Subscription = () => {
             <Text mt={'20px'} textTransform={'uppercase'}>
                 {t('members')}
             </Text>
-            <Box d={'flex'} mt={'5px'} mb={'20px'}>
+            <Box display={'flex'} mt={'5px'} mb={'20px'}>
                 <Text mr={'20px'} textTransform={'uppercase'}>
                     {t('expirationDate')}
                     {':'}
@@ -19,7 +19,7 @@ const Subscription = () => {
                 <Text>{'1 Μαΐου 2023'}</Text>
             </Box>
 
-            <Box d={'flex'} mt={'20px'} mb={'60px'}>
+            <Box display={'flex'} mt={'20px'} mb={'60px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('subscriptionRenewal')}
                 </Button>

@@ -10,7 +10,7 @@ const ContactUs = () => {
     return (
         <>
             <Box flex={1}>
-                <Text as={'span'} d="flex" alignItems="center" color="white">
+                <Text as={'span'} display="flex" alignItems="center" color="white">
                     <NextLink href={'tel:210 6848300'} passHref prefetch={false}>
                         <Link>
                             <Image

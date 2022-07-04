@@ -7,7 +7,7 @@ const ProductCategories = ({ info }) => {
 
     return (
         <>
-            <Box d="flex" mt="88px">
+            <Box display="flex" mt="88px">
                 <Box mr="24px">
                     <Text textStyle={'md'} width="264px" fontWeight="bold" mb="1rem" as="h3">
                         {t('categories')}
@@ -32,7 +32,7 @@ const ProductCategories = ({ info }) => {
                                     <GridItem
                                         width={'360px'}
                                         height={'296px'}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={item.image}
@@ -55,7 +55,7 @@ const ProductCategories = ({ info }) => {
                                         width={'360px'}
                                         colSpan={4}
                                         height={'296px'}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={info?.sections[0]?.image}
@@ -76,7 +76,7 @@ const ProductCategories = ({ info }) => {
                                         width={'456px'}
                                         height={'296px'}
                                         colSpan={5}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={info?.sections[1]?.image}
@@ -97,7 +97,7 @@ const ProductCategories = ({ info }) => {
                                         width={'458px'}
                                         height={'296px'}
                                         colSpan={5}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={info?.sections[2]?.image}
@@ -118,7 +118,7 @@ const ProductCategories = ({ info }) => {
                                         width={'360px'}
                                         height={'296px'}
                                         colSpan={4}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={info?.sections[3]?.image}
@@ -139,7 +139,7 @@ const ProductCategories = ({ info }) => {
                                         width={'360px'}
                                         height={'296px'}
                                         colSpan={4}
-                                        d="flex"
+                                        display="flex"
                                         justifyContent={'center'}
                                         alignItems="center"
                                         backgroundImage={info?.sections[4]?.image}

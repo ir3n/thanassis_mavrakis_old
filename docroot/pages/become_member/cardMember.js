@@ -5,9 +5,9 @@ const CardMember = ({ color, image, text, link, price }) => {
     return (
         <>
             <Container>
-                <Box d="flex" h="424px">
+                <Box display="flex" h="424px">
                     <Box
-                        d="flex"
+                        display="flex"
                         flexDir={'column'}
                         justifyContent="space-between"
                         backgroundColor={color}
@@ -16,7 +16,7 @@ const CardMember = ({ color, image, text, link, price }) => {
                         pt="72px"
                         pb="60px"
                     >
-                        <Box d="flex" justifyContent={'space-between'}>
+                        <Box display="flex" justifyContent={'space-between'}>
                             <Box>
                                 <Text width={'316px'} mr="55px" mb="1rem" textStyle={'h2'} color="white">
                                     {text}

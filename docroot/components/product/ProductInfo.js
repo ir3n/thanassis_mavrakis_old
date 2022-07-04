@@ -66,9 +66,9 @@ export default function ProductInfo({
     }, [defaultVariation.id]);
 
     return (
-        <Box d="flex" id="info-box" overflowX={'hidden'} flexDir={'column'} mt="15px" width={'456px'} maxWidth="100%">
+        <Box display="flex" id="info-box" overflowX={'hidden'} flexDir={'column'} mt="15px" width={'456px'} maxWidth="100%">
             <Box
-                d="flex"
+                display="flex"
                 flexDir={'row'}
                 width="406px"
                 height={'32px'}
@@ -81,7 +81,7 @@ export default function ProductInfo({
                     {title}
                 </Text>
             </Box>
-            <Box d="flex">
+            <Box display="flex">
                 {defaultVariation.list_price ? (
                     <Box as={'p'} fontSize={'26px'} mb={'20px'} mr="12px" color={'lightGrey'}>
                         <del>{defaultVariation.list_price}</del>
@@ -110,7 +110,7 @@ export default function ProductInfo({
                 {metalColor?.name}
             </Text>
 
-            <Box mb={'20px'} d="flex" flexDir={'column'}>
+            <Box mb={'20px'} display="flex" flexDir={'column'}>
                 {
                     <ProductSize
                         sizes={productData.variations}

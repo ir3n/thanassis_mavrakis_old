@@ -43,8 +43,8 @@ export default function Cart() {
                     {t('mycartTitle')}
                 </Box>
                 <Container my={'40px'}>
-                    <Box d={'flex'} borderBottom={'2px solid #FF8234'}>
-                        <Box w={'40%'} d={'flex'}>
+                    <Box display={'flex'} borderBottom={'2px solid #FF8234'}>
+                        <Box w={'40%'} display={'flex'}>
                             <Text textStyle={'md'} pb={'8px'}>
                                 {t('item')}
                             </Text>
@@ -60,7 +60,7 @@ export default function Cart() {
                             </Text>
                         </Box>
                         <Box
-                            d={{ base: 'none', lg: 'block' }}
+                            display={{ base: 'none', lg: 'block' }}
                             w={{ base: '25%', lg: '20%' }}
                             textAlign={{ lg: 'right' }}
                         >
@@ -92,10 +92,10 @@ export default function Cart() {
                         </Box>
                     ) : null}
 
-                    <Box d={'flex'} justifyContent={'end'}>
+                    <Box display={'flex'} justifyContent={'end'}>
                         <Box w={{ base: '100%', lg: '35%' }}>
                             {!cartData || !cartData.order_items || cartData.order_items.length === 0 ? null : (
-                                <Box d={'flex'} justifyContent={'end'} textAlign={'right'} p={'18px 0px 30px 0px'}>
+                                <Box display={'flex'} justifyContent={'end'} textAlign={'right'} p={'18px 0px 30px 0px'}>
                                     <Text textStyle={'md'} pb={'8px'} pr={'20%'}>
                                         {t('total')}
                                     </Text>

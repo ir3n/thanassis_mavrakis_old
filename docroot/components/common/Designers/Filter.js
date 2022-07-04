@@ -12,12 +12,12 @@ export default function Filter() {
         <>
             <Box py={'30px'} borderBottom={'0.5px solid #CDCDCD'}>
                 <Container>
-                    <Box d={'flex'} justifyContent={'space-between'} flexDirection={{ sm: 'column', lg: 'row' }}>
-                        <Box d={'flex'} mb={{ sm: '18px', lg: '0' }}>
+                    <Box display={'flex'} justifyContent={'space-between'} flexDirection={{ sm: 'column', lg: 'row' }}>
+                        <Box display={'flex'} mb={{ sm: '18px', lg: '0' }}>
                             {/* <FilterItem />
                         <FilterItem />
                         <FilterItem /> */}
-                            <Box d={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
+                            <Box display={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
                                 <Text textStyle={'sm'} pr={'28px'} textTransform={'uppercase'}>
                                     {t('letters')}
                                 </Text>
@@ -26,7 +26,7 @@ export default function Filter() {
                                 </Link>
                             </Box>
 
-                            <Box d={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
+                            <Box display={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
                                 <Text textStyle={'sm'} pr={'28px'} textTransform={'uppercase'}>
                                     {t('technic')}
                                 </Text>
@@ -35,7 +35,7 @@ export default function Filter() {
                                 </Link>
                             </Box>
 
-                            <Box d={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
+                            <Box display={'flex'} alignItems={'center'} borderRight={'1px solid #919191'} mr={'12px'}>
                                 <Text textStyle={'sm'} pr={'28px'} textTransform={'uppercase'}>
                                     {t('material')}
                                 </Text>
@@ -45,7 +45,7 @@ export default function Filter() {
                             </Box>
                         </Box>
 
-                        {/* <Box d={'flex'} alignItems={'center'} borderLeft={'1px solid #919191'}>
+                        {/* <Box display={'flex'} alignItems={'center'} borderLeft={'1px solid #919191'}>
                             <Text textStyle={'sm'} p={'0 28px 0 12px'} textTransform={'uppercase'}>
                                 {t('classification')}
                             </Text>

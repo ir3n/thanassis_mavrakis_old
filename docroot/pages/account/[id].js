@@ -143,7 +143,7 @@ export default function Account() {
         <>
             <Container>
                 {renderSectionTitle()}
-                <Box d={'flex'} py={'70px'}>
+                <Box display={'flex'} py={'70px'}>
                     {pageID === 'sign_out' ? (
                         ''
                     ) : (

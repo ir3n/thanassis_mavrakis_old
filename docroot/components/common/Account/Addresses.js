@@ -10,7 +10,7 @@ const Addresses = () => {
         <Box>
             <TitleSection title={'contactInfo'} />
             <Box mb={'60px'} mt={'18px'}>
-                <Box d={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'} justifyContent={'space-between'}>
                     <Box w={'48%'} mb={'18px'}>
                         <FormInput backgroundColor={'white'} color={'black'} value={'Όνομα'} />
                     </Box>
@@ -18,7 +18,7 @@ const Addresses = () => {
                         <FormInput backgroundColor={'white'} color={'black'} value={'Επώνυμο'} />
                     </Box>
                 </Box>
-                <Box d={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'} justifyContent={'space-between'}>
                     <Box w={'48%'} mb={'18px'}>
                         <FormInput backgroundColor={'white'} color={'black'} value={'Εταιρία'} />
                     </Box>
@@ -33,7 +33,7 @@ const Addresses = () => {
                 <Box mb={'18px'}>
                     <FormInput backgroundColor={'white'} color={'black'} value={'Διεύθυνση'} />
                 </Box>
-                <Box d={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'} justifyContent={'space-between'}>
                     <Box w={'48%'} mb={'18px'}>
                         <FormInput backgroundColor={'white'} color={'black'} value={'Πόλη'} />
                     </Box>
@@ -41,7 +41,7 @@ const Addresses = () => {
                         <FormInput backgroundColor={'white'} color={'black'} value={'Νομός/Επαρχία'} />
                     </Box>
                 </Box>
-                <Box d={'flex'} justifyContent={'space-between'}>
+                <Box display={'flex'} justifyContent={'space-between'}>
                     <Box w={'48%'} mb={'18px'}>
                         <FormInput backgroundColor={'white'} color={'black'} value={'ΤΚ'} />
                     </Box>
@@ -61,7 +61,7 @@ const Addresses = () => {
                 </Box>
             </Box>
 
-            <Box d={'flex'} justifyContent={'end'} mt={'50px'}>
+            <Box display={'flex'} justifyContent={'end'} mt={'50px'}>
                 <Button variant="secondary" size="sm" backgroundColor={'black'} textTransform={'uppercase'}>
                     {t('save')}
                 </Button>

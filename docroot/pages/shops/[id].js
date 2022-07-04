@@ -37,11 +37,11 @@ export default function Shops() {
             <Box>
                 <PageTitleImg title={title} bgColor={'#4F815A'} />
                 <Container>
-                    <Box d={'flex'} py={'70px'}>
+                    <Box display={'flex'} py={'70px'}>
                         <Box w={'35%'} pr={'7%'}>
                             <MenuItemSidebar data={shopsData} shops />
                         </Box>
-                        <Box w={'65%'} d={'flex'} flexDirection={'column'}>
+                        <Box w={'65%'} display={'flex'} flexDirection={'column'}>
                             <Box as={'h3'} textStyle={'h3'} borderBottom={'1px solid #919191'} pb={'8px'} mb={'30px'}>
                                 {shopData?.title}
                             </Box>
@@ -58,7 +58,7 @@ export default function Shops() {
                                 ''
                             )}
 
-                            <Box pt={'20px'} d={'flex'} flexDirection={{ sm: 'column', lg: 'row' }}>
+                            <Box pt={'20px'} display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }}>
                                 {shopData?.shop_hours ? (
                                     <Box w={{ sm: '100%', lg: '50%' }}>
                                         <Text textStyle={'md'} dangerouslySetInnerHTML={createShopsHours()} />
