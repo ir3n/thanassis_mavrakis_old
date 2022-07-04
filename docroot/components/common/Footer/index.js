@@ -1,69 +1,89 @@
-import { useBreakpointValue, Box, Link, Image, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react';
+import { useBreakpointValue, Box, Link, Flex, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react';
 import Container from '../Container';
+import Logo from '../Logo';
 import useMenu from 'hooks/useMenu';
 import NextLink from 'next/link';
 import Copyright from './Copyright';
-import SocialGridMenu from './SocialGridMenu';
-import SocialGridMenuTablet from './SocialGridMenuTablet';
+import SocialBlock from './SocialBlock';
+import FooterInfo from './FooterInfo';
+import FooterIcons from './FooterIcons';
 
-export default function Footer({}) {
+const Footer = () => {
     const { menuData: footerData } = useMenu('footer');
 
-    const social = useBreakpointValue({
-        md: <SocialGridMenuTablet />,
-        lg: <SocialGridMenu />
-    });
-
     return (
-        <Box
-            as={'footer'}
-            w="100%"
-            d="inline-block"
-            color={'white'}
-            backgroundColor={'footer.grey'}
-            id="footer"
-            overflow={'hidden'}
-        >
-            <Container>
-                <Box paddingTop={'55px'} paddingBottom={'15px'}>
-                    <NextLink href={'/'} passHref prefetch={false}>
-                        <Link mr={'18px'} pos="relative" _hover={{ textDecoration: 'none' }}>
-                            <Image src={'/assets/footer_logo.svg'} width={'auto'} height={'auto'} alt={'Benaki Shop'} />
-                        </Link>
-                    </NextLink>
-                </Box>
-                <Box paddingBottom={'25px'} position={'relative'} className={'border-full-container'}>
-                    <Grid templateColumns={{ base: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }} gap={6} color={'black'}>
-                        {footerData?.map(({ title, submenu }, index) => (
-                            <GridItem key={`footerData-${index}`}>
-                                <Box as="h4" paddingBottom="15px" textStyle={'caption'} key={`footer-${index}`}>
-                                    {title}
-                                </Box>
-                                <UnorderedList marginLeft={'0'}>
-                                    {submenu?.map(({ title }, index) => (
-                                        <ListItem listStyleType={'none'} key={`${title}${index}`}>
-                                            <NextLink href={'/'} passHref prefetch={false}>
-                                                <Link
-                                                    pos="relative"
-                                                    textStyle={'caption'}
-                                                    _hover={{ textDecoration: 'none' }}
-                                                >
-                                                    {title}
-                                                </Link>
-                                            </NextLink>
-                                        </ListItem>
-                                    ))}
-                                </UnorderedList>
-                            </GridItem>
-                        ))}
-                        <GridItem d={{ md: 'none', lg: 'grid' }}>{social}</GridItem>
+        <Box as="footer" w="full" id="footer">
+            <Box as="div" bg="brand">
+                <Container>
+                    <Grid
+                        p="50px 0 35px 0"
+                        borderBottom="1px"
+                        borderBottomColor="grey"
+                        templateColumns="10% 90%"
+                        w="full"
+                    >
+                        <GridItem>
+                            <Logo />
+                        </GridItem>
+                        <GridItem>
+                            <Grid
+                                templateColumns={{ base: 'repeat(3, 1fr)', lg: 'repeat(4, 1fr)' }}
+                                gap={6}
+                                color={'black'}
+                            >
+                                {footerData?.map(({ title, submenu }, index) => (
+                                    <GridItem key={`footerData-${index}`}>
+                                        <Box
+                                            as="h4"
+                                            paddingBottom="15px"
+                                            textStyle={'sm'}
+                                            key={`footer-${index}`}
+                                            color="grey"
+                                        >
+                                            {title}
+                                        </Box>
+                                        <UnorderedList marginLeft={'0'}>
+                                            {submenu?.map(({ title }, index) => (
+                                                <ListItem listStyleType={'none'} key={`${title}${index}`}>
+                                                    <NextLink href={'/'} passHref prefetch={false}>
+                                                        <Link
+                                                            pos="relative"
+                                                            textStyle="sm"
+                                                            color="lightGrey"
+                                                            marginBottom="10px"
+                                                            display="inline-block"
+                                                            _hover={{ textDecoration: 'none' }}
+                                                        >
+                                                            {title}
+                                                        </Link>
+                                                    </NextLink>
+                                                </ListItem>
+                                            ))}
+                                        </UnorderedList>
+                                    </GridItem>
+                                ))}
+                                <GridItem display={{ base: 'none', lg: 'grid' }}>
+                                    <SocialBlock />
+                                    <FooterInfo />
+                                </GridItem>
+                            </Grid>
+                        </GridItem>
                     </Grid>
-                    <Box d={{ md: 'block', lg: 'none' }} paddingTop={'35px'}>
-                        {social}
+                    <Flex justifyContent="space-between" paddingY="30px">
+                        <Copyright />
+                        <Box>Render legal menu here</Box>
+                    </Flex>
+                </Container>
+            </Box>
+            <Box as="div">
+                <Container>
+                    <Box padding="20px 0 50px 0">
+                        <FooterIcons />
                     </Box>
-                </Box>
-                <Copyright />
-            </Container>
+                </Container>
+            </Box>
         </Box>
     );
-}
+};
+
+export default Footer;

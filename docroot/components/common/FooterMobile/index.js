@@ -7,8 +7,7 @@ import NextLink from 'next/link';
 import Copyright from '../Footer/Copyright';
 import useTranslation from 'next-translate/useTranslation';
 import AccordionItemCustom from './AccordionItemCustom';
-import SocialIconsSection from '../Footer/SocialIconsSection';
-import SocialGridLinks from '../Footer/SocialGridLinks';
+import SocialBlock from '../Footer/SocialBlock';
 
 const FooterMobile = () => {
     const { menuData: footerData } = useMenu('footer');
@@ -38,9 +37,8 @@ const FooterMobile = () => {
 
             <Box className="border-full-container" pos={'relative'} margin={'25px 15px 0 15px'}>
                 <Box className="gridDesktoo">
-                    <SocialIconsSection />
+                    <SocialBlock />
                 </Box>
-                <SocialGridLinks />
             </Box>
 
             <Box margin={'0 15px'}>

@@ -1,4 +1,5 @@
-import { Box, Flex, Container, HStack } from '@chakra-ui/react';
+import { Box, Flex, HStack } from '@chakra-ui/react';
+import Container from '../Container';
 import { useState, useEffect } from 'react';
 import Logo from '../Logo';
 import UserNav from './UserNav';
@@ -7,7 +8,7 @@ import WishListIndicator from '../WishListIndicator';
 import LanguageForm from './LanguageForm';
 import useTranslation from 'next-translate/useTranslation';
 
-const Header = ({ iconMenuShow }) => {
+const Header = ({ iconMenuShow, fullWidth }) => {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
@@ -24,7 +25,8 @@ const Header = ({ iconMenuShow }) => {
         <>
             <Box as={'header'} id="mainHeader" background={'brand'}>
                 <Container
-                    maxW={1300}
+                    fullWidth
+                    maxW="1300px"
                     p={iconMenuShow && offset === 0 ? '17px 10px' : '10px'}
                     transition={'.4s'}
                     pos="relative"

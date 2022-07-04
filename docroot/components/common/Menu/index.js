@@ -1,6 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Text, Link, useDisclosure } from '@chakra-ui/react';
+import { Box, Text, Link, useDisclosure, Flex } from '@chakra-ui/react';
 import Container from '../Container';
 import TabFilterMenu from '../TabFilterMenu';
 import NextLink from 'next/link';
@@ -8,7 +8,7 @@ import useMenu from 'hooks/useMenu';
 import { useOutsideClick } from '@chakra-ui/react';
 import { useRef } from 'react';
 
-const Menu = ({ iconMenuShow, menuAndFooterData }) => {
+const Menu = ({ iconMenuShow, menuAndFooterData, fullWidth }) => {
     const router = useRouter();
     const ref = useRef();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -52,14 +52,12 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                 className="overrideModal"
                 as={'nav'}
                 height={'auto'}
-                display={{ base: 'none', sm: 'none', md: 'none', lg: 'none', xl: 'flex', '2xl': 'flex' }}
-                justifyContent="space-evenly"
                 background={'white'}
                 position={'relative'}
                 p="23px 0"
             >
-                <Container maxW={1400} w="full">
-                    <Box justifyContent={'space-between'} display={'flex'} className="menu_container" width={'100%'}>
+                <Container fullWidth maxW="1300px">
+                    <Flex justifyContent={'space-between'} width={'100%'} p={{ base: '0', xl: '0 0 0 60px' }}>
                         {menuData?.map(
                             ({ title, submenu, entity_id, relative, external, cleanUrl, ...menuItemProps }, index) => (
                                 <Text
@@ -118,7 +116,7 @@ const Menu = ({ iconMenuShow, menuAndFooterData }) => {
                                 </Text>
                             )
                         )}
-                    </Box>
+                    </Flex>
                 </Container>
 
                 {selectedMenu?.submenu ? (

@@ -5,12 +5,9 @@ export default function Copyright({}) {
     const { t } = useTranslation('footer');
 
     return (
-        <Box color={'black'} padding={'25px 0'}>
-            <Box as="p" textStyle={'md'} paddingBottom={'8px'}>
-                {t('purchase')}
-            </Box>
+        <Box color={'grey'}>
             <Box as="p" textStyle={'captionSm'}>
-                © 2022 Benaki Museum Shop All Rights Reserved
+                © {new Date().getFullYear()}
             </Box>
         </Box>
     );
