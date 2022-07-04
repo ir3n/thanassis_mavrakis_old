@@ -2,7 +2,6 @@ import { HStack, Flex } from '@chakra-ui/react';
 import FooterIcon from './FooterIcon';
 
 const FooterIcons = ({}) => {
-    // const imagePath = `/assets/footer/card-${name}.svg`;
     const footerIconsLeft = [
         {
             name: 'card-1.png',
@@ -45,17 +44,23 @@ const FooterIcons = ({}) => {
     ];
 
     return (
-        <Flex justifyContent="space-between">
-            <HStack spacing="25px">
+        <Flex align="center" justifyContent="space-between" direction={{ base: 'column-reverse', md: 'row' }}>
+            <Flex wrap="wrap" gap={{ base: '15px', md: '25px' }}>
                 {footerIconsLeft?.map((item) => (
-                    <FooterIcon src={item.name} alt={item.alt} />
+                    <FooterIcon key={item.name} src={item.name} alt={item.alt} />
                 ))}
-            </HStack>
-            <HStack spacing="25px" align="end">
+            </Flex>
+            <Flex
+                wrap="wrap"
+                gap={{ base: '15px', md: '25px' }}
+                align={{ base: 'center', md: 'end' }}
+                mb={{ base: '20px', md: '0' }}
+                justifyContent={{ base: 'center', md: 'end' }}
+            >
                 {footerIconsRight?.map((item) => (
-                    <FooterIcon src={item.name} alt={item.alt} />
+                    <FooterIcon key={item.name} src={item.name} alt={item.alt} />
                 ))}
-            </HStack>
+            </Flex>
         </Flex>
     );
 };

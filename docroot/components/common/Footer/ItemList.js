@@ -3,9 +3,9 @@ import NextLink from 'next/link';
 
 const ItemList = ({ title, relative }) => {
     return title ? (
-        <ListItem paddingBottom="0px">
+        <ListItem pb="0px">
             <NextLink passHref href={relative} prefetch={false}>
-                <Link textStyle={'md'}>{title}</Link>
+                <Link textStyle="md">{title}</Link>
             </NextLink>
         </ListItem>
     ) : null;

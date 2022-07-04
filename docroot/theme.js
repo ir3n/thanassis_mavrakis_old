@@ -70,7 +70,7 @@ const textStyles = {
         lineHeight: '18px'
     },
     sm: {
-        fontSize: '14px',
+        fontSize: ['12px', '12px', '14px'],
         fontWeight: '300',
         lineHeight: '16px'
     },

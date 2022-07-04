@@ -18,7 +18,7 @@ const Footer = () => {
                     <Grid
                         p="50px 0 35px 0"
                         borderBottom="1px"
-                        borderBottomColor="grey"
+                        borderBottomColor="darkGrey"
                         templateColumns="10% 90%"
                         w="full"
                     >
@@ -33,26 +33,19 @@ const Footer = () => {
                             >
                                 {footerData?.map(({ title, submenu }, index) => (
                                     <GridItem key={`footerData-${index}`}>
-                                        <Box
-                                            as="h4"
-                                            paddingBottom="15px"
-                                            textStyle={'sm'}
-                                            key={`footer-${index}`}
-                                            color="grey"
-                                        >
+                                        <Box as="h4" pb="15px" textStyle="sm" key={`footer-${index}`} color="grey">
                                             {title}
                                         </Box>
-                                        <UnorderedList marginLeft={'0'}>
+                                        <UnorderedList ml="0">
                                             {submenu?.map(({ title }, index) => (
-                                                <ListItem listStyleType={'none'} key={`${title}${index}`}>
+                                                <ListItem listStyleType="none" key={`${title}${index}`}>
                                                     <NextLink href={'/'} passHref prefetch={false}>
                                                         <Link
                                                             pos="relative"
                                                             textStyle="sm"
                                                             color="lightGrey"
-                                                            marginBottom="10px"
+                                                            mb="10px"
                                                             display="inline-block"
-                                                            _hover={{ textDecoration: 'none' }}
                                                         >
                                                             {title}
                                                         </Link>
@@ -69,7 +62,7 @@ const Footer = () => {
                             </Grid>
                         </GridItem>
                     </Grid>
-                    <Flex justifyContent="space-between" paddingY="30px">
+                    <Flex justifyContent="space-between" py="30px">
                         <Copyright />
                         <Box>Render legal menu here</Box>
                     </Flex>
@@ -77,7 +70,7 @@ const Footer = () => {
             </Box>
             <Box as="div">
                 <Container>
-                    <Box padding="20px 0 50px 0">
+                    <Box p="20px 0 50px 0">
                         <FooterIcons />
                     </Box>
                 </Container>

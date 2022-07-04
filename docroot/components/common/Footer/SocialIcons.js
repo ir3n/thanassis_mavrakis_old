@@ -8,7 +8,7 @@ const SocialIcons = ({ arr }) => {
     return (
         <HStack spacing="20px" justify="end">
             {arr?.map((item) => (
-                <SocialIcon name={item.name} url={item.url} />
+                <SocialIcon key={item.name} name={item.name} url={item.url} />
             ))}
         </HStack>
     );
