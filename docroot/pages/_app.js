@@ -12,7 +12,6 @@ import 'styles/globals.css';
 import 'styles/overrides.css';
 
 import '@fontsource/inter';
-import uuid from 'react-uuid';
 
 import { theme } from 'theme';
 
