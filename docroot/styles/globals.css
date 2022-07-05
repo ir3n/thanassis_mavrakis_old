@@ -1,8 +1,3 @@
 a:hover {
     text-decoration: none !important;
 }
-
-button {
-    box-shadow: none !important;
-    outline: none !important;
-}

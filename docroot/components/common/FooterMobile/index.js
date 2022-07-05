@@ -1,6 +1,5 @@
 import { Accordion, Box, Link, Flex } from '@chakra-ui/react';
 import useMenu from 'hooks/useMenu';
-import NextLink from 'next/link';
 import Container from '../Container';
 import Logo from '../Logo';
 import Copyright from '../Footer/Copyright';

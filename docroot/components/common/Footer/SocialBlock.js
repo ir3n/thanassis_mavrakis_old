@@ -1,32 +1,10 @@
 import { Box, Text } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
 import SocialIcons from './SocialIcons';
+import social from 'constants/social';
 
 const SocialBlock = () => {
     const { t } = useTranslation('footer');
-
-    const social = [
-        {
-            name: 'Facebook',
-            url: 'https://www.facebook.com/DustandCream.Cyprus'
-        },
-        {
-            name: 'Instagram',
-            url: 'https://www.instagram.com/dustandcream.cyprus'
-        },
-        {
-            name: 'Tiktok',
-            url: 'https://www.tiktok.com/dustandcream.cyprus'
-        },
-        {
-            name: 'Youtube',
-            url: 'https://www.youtube.com/dustandcream.cyprus'
-        },
-        {
-            name: 'Linkedin',
-            url: 'https://www.linkedin.com/dustandcream.cyprus'
-        }
-    ];
 
     return (
         <Box align="right">
