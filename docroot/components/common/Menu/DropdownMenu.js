@@ -10,7 +10,7 @@ const DropdownMenu = ({ selectedMenu }) => {
 
     useEffect(() => {
         setDropdownMenuPosition(document.getElementById('mainMenu').clientHeight);
-    });
+    }, []);
 
     return (
         <Box

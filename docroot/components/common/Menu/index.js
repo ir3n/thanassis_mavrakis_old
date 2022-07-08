@@ -1,7 +1,6 @@
 import { useState, useEffect, memo } from 'react';
 import { useRouter } from 'next/router';
 import { Box, Link, useDisclosure, Flex, useOutsideClick } from '@chakra-ui/react';
-
 import DropdownMenu from './DropdownMenu';
 import Underline from './Underline';
 import Overlay from '../Overlay';
@@ -14,7 +13,6 @@ const Menu = () => {
     const router = useRouter();
     const ref = useRef();
     const { isOpen, onClose } = useDisclosure();
-
     const [selectedMenu, setSelectedMenu] = useState(null);
     const { menuData, isLoading } = useMenu('main');
 
@@ -32,7 +30,7 @@ const Menu = () => {
         setSelectedMenu(null);
     }, [router.asPath]);
 
-    const thisPath = router.asPath.slice(router.asPath.lastIndexOf('/') + 1);
+    const thisPath = router.asPath.substr(router.asPath.lastIndexOf('/') + 1);
 
     return (
         <>
