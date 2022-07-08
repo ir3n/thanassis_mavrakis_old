@@ -83,6 +83,12 @@ const textStyles = {
         fontSize: '10px',
         fontWeight: '400',
         lineHeight: '12px'
+    },
+    menuParent: {
+        fontSize: '12px',
+        lineHeight: '14px',
+        fontWeight: '600',
+        textTransform: 'uppercase'
     }
 };
 

@@ -8,5 +8,3 @@ export const LANGUAGES = [
         label: 'EN'
     }
 ];
-
-export const DESKTOP_SUBMENU_HEIGHT = '264px';

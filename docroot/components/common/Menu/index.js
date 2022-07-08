@@ -1,18 +1,20 @@
 import { useState, useEffect, memo } from 'react';
 import { useRouter } from 'next/router';
-import { Box, Text, Link, useDisclosure, Flex } from '@chakra-ui/react';
-import Container from '../Container';
-import TabFilterMenu from '../TabFilterMenu';
+import { Box, Link, useDisclosure, Flex, useOutsideClick } from '@chakra-ui/react';
+
+import DropdownMenu from './DropdownMenu';
+import Underline from './Underline';
+import Overlay from '../Overlay';
 import NextLink from 'next/link';
 import useMenu from 'hooks/useMenu';
-import { useOutsideClick } from '@chakra-ui/react';
 import { useRef } from 'react';
+import FadeIn from 'components/transitions/FadeIn';
 
-const Menu = ({ iconMenuShow, menuAndFooterData, fullWidth }) => {
+const Menu = () => {
     const router = useRouter();
     const ref = useRef();
-    const { isOpen, onOpen, onClose } = useDisclosure();
-    const [customTopMargin, setCustomTopMargin] = useState(0);
+    const { isOpen, onClose } = useDisclosure();
+
     const [selectedMenu, setSelectedMenu] = useState(null);
     const { menuData, isLoading } = useMenu('main');
 
@@ -27,128 +29,94 @@ const Menu = ({ iconMenuShow, menuAndFooterData, fullWidth }) => {
     });
 
     useEffect(() => {
-        if (isOpen) {
-            const headerTopMenu = document.getElementById('mainMenu');
-            const headerBottomOnScroll = headerTopMenu?.getBoundingClientRect().bottom;
-
-            if (headerBottomOnScroll < 0) {
-                setCustomTopMargin(0);
-            } else {
-                setCustomTopMargin(headerBottomOnScroll);
-            }
-        }
-    }, [isOpen]);
-
-    useEffect(() => {
         setSelectedMenu(null);
     }, [router.asPath]);
 
-    const thisPath = router.asPath.substr(router.asPath.lastIndexOf('/') + 1);
+    const thisPath = router.asPath.slice(router.asPath.lastIndexOf('/') + 1);
 
     return (
         <>
+            <Overlay display={selectedMenu ? 'block' : 'none'} />
+
             <Box
                 id="mainMenu"
-                className="overrideModal"
-                as={'nav'}
-                height={'auto'}
-                background={'white'}
-                position={'relative'}
-                p="23px 0"
+                as="nav"
+                height="auto"
+                background="white"
+                position="relative"
+                p="13px 0"
+                zIndex="toast"
+                ref={ref}
             >
-                <Container fullWidth maxW="1300px">
-                    <Flex justifyContent={'space-between'} width={'100%'} p={{ base: '0', xl: '0 0 0 60px' }}>
-                        {menuData?.map(
-                            ({ title, submenu, entity_id, relative, external, cleanUrl, ...menuItemProps }, index) => (
-                                <Text
-                                    _hover={{ color: 'brand' }}
-                                    color="brand"
-                                    as="div"
-                                    className="menu_items"
-                                    key={`menuItem-${index}`}
-                                    whiteSpace="nowrap"
-                                    textTransform={'uppercase'}
-                                >
-                                    {submenu ? (
+                <Flex maxW="1250px" pl="60px" margin="auto" justifyContent="space-between" width="full">
+                    {menuData?.map(
+                        ({ title, submenu, entity_id, relative, external, cleanUrl, ...menuItemProps }, index) => (
+                            <Box
+                                color="brand"
+                                as="div"
+                                className="menu_items"
+                                key={`menuItem-${index}`}
+                                textTransform="uppercase"
+                                pos="relative"
+                                align="center"
+                            >
+                                {submenu ? (
+                                    <Link
+                                        pos="relative"
+                                        textStyle="caption"
+                                        p="10px 0"
+                                        m="0 7px"
+                                        display="block"
+                                        textTransform="uppercase"
+                                        className={selectedMenu?.cleanUrl === cleanUrl ? 'active' : ''}
+                                        onClick={() => {
+                                            setSelectedMenu(
+                                                selectedMenu?.title === title
+                                                    ? null
+                                                    : {
+                                                          title,
+                                                          submenu,
+                                                          relative,
+                                                          external,
+                                                          cleanUrl,
+                                                          ...menuItemProps
+                                                      }
+                                            );
+                                        }}
+                                    >
+                                        {title}
+                                        <Underline />
+                                    </Link>
+                                ) : (
+                                    <NextLink href={cleanUrl} passHref prefetch={false}>
                                         <Link
-                                            pos={'relative'}
-                                            textStyle="caption"
-                                            textDecoration="none !important"
+                                            m="0 7px"
+                                            target={external ? '_blank' : '_self'}
+                                            onClick={handleOnClose}
+                                            pos="relative"
                                             zIndex={isOpen ? 9999 : 9}
-                                            _focus={{ boxShadow: 'none' }}
-                                            onClick={() => {
-                                                setSelectedMenu(
-                                                    selectedMenu
-                                                        ? null
-                                                        : {
-                                                              title,
-                                                              submenu,
-                                                              relative,
-                                                              external,
-                                                              cleanUrl,
-                                                              ...menuItemProps
-                                                          }
-                                                );
-                                            }}
+                                            color="brand"
+                                            textStyle="caption"
+                                            p="10px 0"
+                                            display="block"
+                                            textTransform="uppercase"
+                                            className={selectedMenu?.cleanUrl === cleanUrl ? 'active' : ''}
                                         >
-                                            <Text textStyle={'caption'} textTransform={'uppercase'}>
-                                                {title}
-                                            </Text>
+                                            {title}
+
+                                            <Underline />
                                         </Link>
-                                    ) : (
-                                        <NextLink href={cleanUrl} passHref prefetch={false}>
-                                            <Link
-                                                target={external ? '_blank' : '_self'}
-                                                onClick={handleOnClose}
-                                                _hover={{ color: 'brand' }}
-                                                _focus={{ boxShadow: 'none' }}
-                                                pos={'relative'}
-                                                zIndex={isOpen ? 9999 : 9}
-                                                color={'black'}
-                                                textStyle="caption"
-                                            >
-                                                <Text textStyle={'caption'} textTransform={'uppercase'}>
-                                                    {title}
-                                                </Text>
-                                            </Link>
-                                        </NextLink>
-                                    )}
-                                </Text>
-                            )
-                        )}
-                    </Flex>
-                </Container>
+                                    </NextLink>
+                                )}
+                            </Box>
+                        )
+                    )}
+                </Flex>
 
                 {selectedMenu?.submenu ? (
-                    <Box
-                        position={'absolute'}
-                        background={'white'}
-                        zIndex={'9'}
-                        top={'20px'}
-                        left={0}
-                        right={0}
-                        width={'100%'}
-                        boxShadow={'0px 15px 10px -15px rgb(0 0 0 / 63%)'}
-                    >
-                        <Box
-                            borderWidth="0.5px"
-                            borderStyle={'solid'}
-                            borderColor={'grey'}
-                            width="100vw"
-                            mb="16px"
-                            mt="4px"
-                            overflowX={'hidden'}
-                        />
-                        <Container>
-                            <Box>
-                                <TabFilterMenu
-                                    selectedMenu={selectedMenu}
-                                    onClose={handleOnClose}
-                                    thisPath={thisPath}
-                                />
-                            </Box>
-                        </Container>
-                    </Box>
+                    <FadeIn>
+                        <DropdownMenu selectedMenu={selectedMenu} onClose={handleOnClose} thisPath={thisPath} />
+                    </FadeIn>
                 ) : null}
             </Box>
         </>

@@ -32,7 +32,7 @@ const Header = ({ iconMenuShow, fullWidth }) => {
                     pos="relative"
                 >
                     <Flex justify="end" w="full">
-                        <Box pos="absolute" top="0" left="0" zIndex={'sticky'}>
+                        <Box pos="absolute" top="0" left="0" zIndex="tooltip">
                             {iconMenuShow && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.75)'} />}
                         </Box>
                         <HStack spacing="15px">
