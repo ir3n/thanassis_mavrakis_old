@@ -8,7 +8,7 @@ import WishListIndicator from '../WishListIndicator';
 import LanguageForm from './LanguageForm';
 import useTranslation from 'next-translate/useTranslation';
 
-const Header = ({ iconMenuShow, fullWidth }) => {
+const Header = ({ scrolled }) => {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
@@ -27,19 +27,19 @@ const Header = ({ iconMenuShow, fullWidth }) => {
                 <Container
                     fullWidth
                     maxW="1300px"
-                    p={iconMenuShow && offset === 0 ? '17px 10px' : '10px'}
+                    p={scrolled && offset === 0 ? '17px 10px' : '10px'}
                     transition={'.4s'}
                     pos="relative"
                 >
                     <Flex justify="end" w="full">
                         <Box pos="absolute" top="0" left="0" zIndex="tooltip">
-                            {iconMenuShow && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.75)'} />}
+                            {scrolled && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.75)'} />}
                         </Box>
                         <HStack spacing="15px">
                             <GlobalSearch />
-                            <UserNav iconMenuShow={iconMenuShow} />
+                            <UserNav scrolled={scrolled} />
                             <WishListIndicator />
-                            <LanguageForm />
+                            <LanguageForm color="white" />
                         </HStack>
                     </Flex>
                 </Container>

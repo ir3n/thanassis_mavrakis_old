@@ -5,7 +5,7 @@ import { LANGUAGES } from 'utils/constants';
 import { useRouter } from 'next/router';
 import { getPathProps } from 'services/paths';
 
-const LanguageForm = () => {
+const LanguageForm = ({ color }) => {
     const ref = useRef();
     const router = useRouter();
     const selectedLanguage = router.locale;
@@ -40,7 +40,7 @@ const LanguageForm = () => {
     };
 
     return (
-        <HStack>
+        <HStack color={color}>
             <Text fontSize="10" fontWeight="bold" cursor="default">
                 {displayedLanguage}
             </Text>

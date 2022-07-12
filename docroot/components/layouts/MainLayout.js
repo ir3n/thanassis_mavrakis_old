@@ -7,24 +7,7 @@ import Menu from 'components/common/Menu';
 import Footer from 'components/common/Footer';
 
 const MainLayout = ({ children }) => {
-    const [mainContentMenuMobile, setMainContentMenuMobile] = useState(90);
-    const [screenHeight, setScreenHeight] = useState(0);
-    const [menuAndFooterData, setMenuAndFooterData] = useState(null);
-    useEffect(() => {
-        setScreenHeight(screenHeight - window.innerHeight);
-        setScreenHeight(window.innerHeight);
-    }, []);
-
-    useEffect(() => {
-        // magic number?
-        setMainContentMenuMobile(screenHeight - 306);
-    }, [screenHeight]);
-
-    useEffect(() => {
-        setScreenHeight(window.innerHeight);
-    }, []);
-
-    const [iconMenuShow, setIconMenuShow] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     const handleScroll = () => {
         const headerTopMenu = document.getElementById('mainHeader');
@@ -32,9 +15,9 @@ const MainLayout = ({ children }) => {
         const headerBottomOnScroll = headerTopMenu?.getBoundingClientRect();
 
         if (headerBottomOnScroll === 0) {
-            setIconMenuShow(true);
+            setScrolled(true);
         } else {
-            setIconMenuShow(false);
+            setScrolled(false);
         }
     };
 
@@ -46,8 +29,13 @@ const MainLayout = ({ children }) => {
     }, []);
 
     const header = useBreakpointValue({
-        base: <HeaderMobile iconMenuShow={!iconMenuShow} />,
-        xl: <Header iconMenuShow={!iconMenuShow} />
+        base: <HeaderMobile scrolled={!scrolled} />,
+        xl: <Header scrolled={!scrolled} />
+    });
+
+    const menu = useBreakpointValue({
+        base: '',
+        xl: <Menu scrolled={!scrolled} />
     });
 
     const footer = useBreakpointValue({
@@ -59,9 +47,8 @@ const MainLayout = ({ children }) => {
         <>
             <Box position={'sticky'} color="white" zIndex={'99'} top={'0'} bg="white">
                 {header}
-                <Menu iconMenuShow={iconMenuShow} menuAndFooterData={menuAndFooterData} />
+                {menu}
             </Box>
-            {/* <Hero />*/}
             <Box as={'main'}>{children}</Box>
 
             {footer}

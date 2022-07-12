@@ -1,21 +1,12 @@
-import { useState } from 'react';
-import { Link, Box, Image, Text, Flex } from '@chakra-ui/react';
+import { Link, Box, Flex, Image, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import LevelThreeMobileMenu from './LevelThreeMobileMenu';
-import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/router';
 
-const LevelTwoMobileMenu = ({ menuData, backToLevelOne }) => {
-    const router = useRouter();
-    const [thirdMenu, setThirdMenu] = useState(null);
-
-    return thirdMenu ? (
-        <LevelThreeMobileMenu menuData={thirdMenu} resetMenu={() => setThirdMenu(null)} />
-    ) : (
+const LevelThreeMobileMenu = ({ menuData, resetMenu }) => {
+    return (
         <>
             <Box as={'div'}>
                 <Flex align="center" pb="30px">
-                    <Link onClick={backToLevelOne} mr="10px" w="20px">
+                    <Link onClick={resetMenu} mr="10px" w="20px">
                         <Image src="/assets/slider-arrow-left.svg" w="10px" alt="Previous" />
                     </Link>
                     <Box align="center" flex="1">
@@ -38,7 +29,7 @@ const LevelTwoMobileMenu = ({ menuData, backToLevelOne }) => {
                             onClick={() => setThirdMenu({ submenu: submenu, title: title, relative: relative })}
                             position="relative"
                             className="menu-item"
-                            key={`lvl2-exp-${index}`}
+                            key={`lvl3-exp-${index}`}
                             marginBottom={'25px'}
                             textStyle="caption"
                             color="brand"
@@ -51,7 +42,7 @@ const LevelTwoMobileMenu = ({ menuData, backToLevelOne }) => {
                             <Image src="/assets/mobile-menu-arrow.svg" w="5px" alt="Previous" />
                         </Link>
                     ) : (
-                        <NextLink href={cleanUrl || '#'} key={`lvl2-simple-${index}`}>
+                        <NextLink href={cleanUrl || '#'} key={`lvl3-simple-${index}`}>
                             <Link
                                 display="block"
                                 position="relative"
@@ -69,4 +60,4 @@ const LevelTwoMobileMenu = ({ menuData, backToLevelOne }) => {
         </>
     );
 };
-export default LevelTwoMobileMenu;
+export default LevelThreeMobileMenu;
