@@ -57,53 +57,53 @@ export const RenderSections = ({ sections }) => {
             }
         }
     ];
-    const responsiveBanner = [
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 4,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 992,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 5,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 576,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 320,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: false
-            }
-        }
-    ];
+    // const responsiveBanner = [
+    //     {
+    //         breakpoint: 1200,
+    //         settings: {
+    //             slidesToShow: 3,
+    //             slidesToScroll: 4,
+    //             infinite: true,
+    //             dots: false
+    //         }
+    //     },
+    //     {
+    //         breakpoint: 992,
+    //         settings: {
+    //             slidesToShow: 3,
+    //             slidesToScroll: 5,
+    //             infinite: true,
+    //             dots: false
+    //         }
+    //     },
+    //     {
+    //         breakpoint: 768,
+    //         settings: {
+    //             slidesToShow: 2,
+    //             slidesToScroll: 3,
+    //             infinite: true,
+    //             dots: false
+    //         }
+    //     },
+    //     {
+    //         breakpoint: 576,
+    //         settings: {
+    //             slidesToShow: 2,
+    //             slidesToScroll: 2,
+    //             infinite: true,
+    //             dots: false
+    //         }
+    //     },
+    //     {
+    //         breakpoint: 320,
+    //         settings: {
+    //             slidesToShow: 1,
+    //             slidesToScroll: 1,
+    //             infinite: true,
+    //             dots: false
+    //         }
+    //     }
+    // ];
 
     function SampleNextArrow(props) {
         const { className, onClick } = props;
@@ -122,43 +122,13 @@ export const RenderSections = ({ sections }) => {
             </Box>
         );
     }
-    // useEffect(() => {
-    //     const impressions = sections
-    //         .filter(({ type, data }) => {
-    //             if (type === 'hero_banner' || type === 'banner_text' || type === 'content_grid') {
-    //                 return data;
-    //             }
-    //         })
-    //         .map((section) => {
-    //             if (section.type === 'content_grid') {
-    //                 return {
-    //                     data: section.data.content.map((nested) => {
-    //                         return { data: nested.data };
-    //                     }),
-    //                     creative: 'content_grid'
-    //                 };
-    //             }
-
-    //             return { data: section.data, creative: section.type };
-    //         });
-
-    //     Tracking.viewPromotion(impressions);
-    // }, [sections]);
 
     return (
         <div>
             {sections?.map((section, index) => {
                 switch (section?.type) {
                     case 'slider':
-                        return (
-                            <HomeSlider
-                                key={section?.type + index}
-                                fullWidth={section?.full_width}
-                                slides={section.items}
-                                height={['560', '648', '768']}
-                                width={['360', '1024', '1367']}
-                            />
-                        );
+                        return <HomeSlider slides={section.items} />;
                     case 'banner_image_left':
                         return (
                             <BannerImage key={section?.type + index} section={section} fullWidth={section?.fullWidth} />
