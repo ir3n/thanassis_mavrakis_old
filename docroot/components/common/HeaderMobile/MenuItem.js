@@ -1,7 +1,10 @@
 import { Link, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
-const MenuItem = ({ title, external, entity_id, url, submenu, renderSubmenu }, index) => {
+const MenuItem = ({ title, external, url, submenu, renderSubmenu }, index) => {
+    const router = useRouter();
+
     return submenu ? (
         <Link
             onClick={renderSubmenu}
@@ -20,7 +23,7 @@ const MenuItem = ({ title, external, entity_id, url, submenu, renderSubmenu }, i
             <Image src="/assets/mobile-menu-arrow.svg" w="5px" alt="Previous" />
         </Link>
     ) : (
-        <NextLink href={url || '#'} key={index}>
+        <NextLink href={url || '#'} passHref prefetch={false}>
             <Link
                 target={external ? '_blank' : '_self'}
                 position="relative"
@@ -30,6 +33,7 @@ const MenuItem = ({ title, external, entity_id, url, submenu, renderSubmenu }, i
                 textTransform="uppercase"
                 display="block"
                 color="brand"
+                className={url === router.pathname ? 'mobile-link-active' : ''}
             >
                 {title}
             </Link>

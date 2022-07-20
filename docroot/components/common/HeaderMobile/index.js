@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Logo from '../Logo';
 import Burger from '../Burger';
 import LanguageForm from '../Header/LanguageForm';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MobileUserNav from './MobileUserNav';
 import GlobalSearch from '../GlobalSearch';
 import WishListIndicator from '../WishListIndicator';

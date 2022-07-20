@@ -1,10 +1,9 @@
 import { Box } from '@chakra-ui/react';
 
-const Underline = () => {
+const Underline = ({ active }) => {
     return (
         <Box
             as="div"
-            className="underline"
             pos="absolute"
             bg="brand"
             bottom="0"
@@ -12,8 +11,8 @@ const Underline = () => {
             right="0"
             m="auto"
             h="2px"
-            w="0"
-            opacity="0"
+            w={active ? 'full' : '0'}
+            opacity={active ? '1' : '0'}
             transition="0.4s ease"
         ></Box>
     );

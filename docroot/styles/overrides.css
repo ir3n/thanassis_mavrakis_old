@@ -1,0 +1,43 @@
+/* Slick */
+
+.slick-dots li {
+    width: 10px !important;
+}
+.slick-dots li button:before {
+    font-size: 10px !important;
+    color: #c4c4c4 !important;
+    opacity: 1 !important;
+}
+.slick-dots li.slick-active button:before {
+    color: #ed1c24 !important;
+}
+.slick-prev,
+.slick-next {
+    z-index: 1;
+    background-image: url(../public/assets/arrowCarousel.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: center !important;
+}
+.slick-prev:before,
+.slick-next:before {
+    display: none;
+}
+.slick-prev {
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+/* Hero Banner Slider */
+.hero-banner-slider .slick-prev {
+    left: 10px;
+    filter: invert(1);
+}
+
+.hero-banner-slider .slick-next {
+    right: 10px;
+    filter: invert(1);
+}
+.hero-banner-slider .slick-dots {
+    bottom: 10px;
+    z-index: 1;
+}

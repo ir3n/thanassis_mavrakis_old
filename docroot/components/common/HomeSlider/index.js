@@ -11,7 +11,7 @@ const HomeSlider = ({ slides }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        // autoplay: true,
+        autoplay: true,
         fade: true,
         responsive: [
             {
