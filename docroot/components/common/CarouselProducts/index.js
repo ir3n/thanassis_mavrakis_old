@@ -4,6 +4,7 @@ import Container from '../Container';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import FeaturedProduct from '../FeaturedProduct';
 
 const CarouselProducts = ({ title, items, cta }) => {
     const settings = {
@@ -43,8 +44,8 @@ const CarouselProducts = ({ title, items, cta }) => {
                 <Slider {...settings} className="products-slider">
                     {items?.map((item, index) => {
                         return (
-                            <Box p="0 5px" key={`carousel-product-${index}`} border="1px solid">
-                                <div>Product teaser</div>
+                            <Box p="0 5px" key={`carousel-product-${index}`}>
+                                <FeaturedProduct />
                             </Box>
                         );
                     })}

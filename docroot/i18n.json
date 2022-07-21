@@ -3,7 +3,6 @@
     "locales": ["my", "el", "en"],
     "defaultLocale": "my",
     "pages": {
-        "*": ["common", "header", "footer", "cart", "product", "designers", "account", "shops"],
-        "/product_temp": ["product"]
+        "*": ["common", "header", "footer", "cart", "product", "designers", "account", "shops"]
     }
 }
