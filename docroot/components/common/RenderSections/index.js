@@ -128,31 +128,21 @@ export const RenderSections = ({ sections }) => {
             {sections?.map((section, index) => {
                 switch (section?.type) {
                     case 'slider':
-                        return <HomeSlider slides={section.items} />;
-                    case 'banner_image_left':
-                        return (
-                            <BannerImage key={section?.type + index} section={section} fullWidth={section?.fullWidth} />
-                        );
+                        return <HomeSlider key={section?.type + index} slides={section.items} />;
                     case 'carousel_product':
                         return (
                             <CarouselProducts
                                 key={section?.type + index}
-                                fullWidth={section?.fullWidth}
-                                data={section.items}
-                                title={section.carousel_title}
-                                type={section.type}
-                                settings={{
-                                    dots: false,
-                                    infinite: true,
-                                    speed: 500,
-                                    slidesToShow: 4,
-                                    slidesToScroll: 1,
-                                    nextArrow: <SampleNextArrow />,
-                                    prevArrow: <SamplePrevArrow />,
-                                    responsive: responsiveProduct
-                                }}
+                                title={section.title}
+                                items={section.items}
+                                cta={section.cta}
                             />
                         );
+                    case 'banner_image_left':
+                        return (
+                            <BannerImage key={section?.type + index} section={section} fullWidth={section?.fullWidth} />
+                        );
+
                     case 'carousel_banner':
                         return (
                             <CarouselProducts

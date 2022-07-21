@@ -1,50 +1,69 @@
 import { Text, Box } from '@chakra-ui/react';
-import FeaturedProduct from 'components/common/FeaturedProduct';
-import SectionLink from 'components/common/Sections/SectionLink';
+import Link from 'next/link';
+import Container from '../Container';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import Container from '../Container';
+import FeaturedProduct from '../FeaturedProduct';
 
-const CarouselProducts = ({ data, title, type, settings = {}, fullWidth = false }) => {
+const CarouselProducts = ({ title, items, cta }) => {
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 800,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        arrows: true,
+        // autoplay: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    dots: true,
+                    arrows: false,
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 350,
+                settings: {
+                    dots: true,
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            }
+        ]
+    };
+
     return (
-        <Container fullWidth={fullWidth}>
-            <Box mb="50px">
-                <Text textStyle={'h3'} noOfLines={1} maxW={`calc(100% - 40px)`} mb={'20px'}>
+        <Box p="30px 0" bg="lightBg">
+            <Container>
+                <Text as="h3" textStyle="h3" color="brand" mb={'30px'}>
                     {title}
                 </Text>
-
-                <Slider {...settings}>{renderSectionByType(type, data)}</Slider>
-            </Box>
-        </Container>
+                <Slider {...settings} className="products-slider">
+                    {items.map((item, index) => {
+                        return (
+                            <Box p="0 5px" key={`carousel-product-${index}`}>
+                                <FeaturedProduct />
+                            </Box>
+                        );
+                    })}
+                </Slider>
+                <Box
+                    align="center"
+                    textStyle="caption"
+                    mt={{ base: '35px', xl: '25px' }}
+                    textDecoration="underline"
+                    fontWeight="500"
+                >
+                    <Link href={cta.url}>
+                        <a>{cta.title}</a>
+                    </Link>
+                </Box>
+            </Container>
+        </Box>
     );
 };
 
 export default CarouselProducts;
-
-const renderSectionByType = (type, data) => {
-    switch (type) {
-        case 'carousel_product':
-            return data?.map?.(
-                ({ image, path, cleanUrl, title, price, product_id, mastersku, discount_percentage }) => (
-                    <FeaturedProduct
-                        key={product_id}
-                        title={title}
-                        product_id={product_id}
-                        image={image}
-                        price={price}
-                        cleanUrl={cleanUrl}
-                        url={path}
-                        mastersku={mastersku}
-                        discount_percentage={discount_percentage}
-                    />
-                )
-            );
-        case 'carousel_banner':
-            return data?.map(({ type, image, link }) => (
-                <SectionLink key={image + link?.url} link={link} image={image} />
-            ));
-        default:
-            return null;
-    }
-};

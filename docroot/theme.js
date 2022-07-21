@@ -50,9 +50,10 @@ const textStyles = {
         textTransform: 'uppercase'
     },
     h3: {
-        fontSize: ['26px', '34px'],
+        fontSize: ['20px', '26px'],
         fontWeight: '700',
-        lineHeight: ['28px', '36px']
+        lineHeight: ['28px', '36px'],
+        textAlign: 'center'
     },
     h4: {
         fontSize: ['26px', '34px'],
