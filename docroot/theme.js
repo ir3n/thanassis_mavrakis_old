@@ -44,21 +44,17 @@ const textStyles = {
         lineHeight: ['48px', '56px']
     },
     h2: {
-        fontSize: ['30px', '38px'],
+        fontSize: ['30px', '30px', '30px', '30px', '38px'],
         fontWeight: '800',
-        lineHeight: ['32px', '40px'],
         textTransform: 'uppercase'
     },
     h3: {
-        fontSize: ['20px', '26px'],
-        fontWeight: '700',
-        lineHeight: ['28px', '36px'],
-        textAlign: 'center'
+        fontSize: ['26px', '26px', '26px', '26px', '34px'],
+        fontWeight: '700'
     },
     h4: {
-        fontSize: ['26px', '34px'],
-        fontWeight: '800',
-        lineHeight: ['31px', '39px']
+        fontSize: ['20px', '20px', '20px', '20px', '26px'],
+        fontWeight: '700'
     },
     lg: {
         fontSize: '16px',
@@ -66,14 +62,13 @@ const textStyles = {
         lineHeight: '19px'
     },
     md: {
-        fontSize: '15px',
-        fontWeight: '600',
-        lineHeight: '18px'
+        fontSize: '14px',
+        lineHeight: '16px',
+        fontWeight: '300'
     },
     sm: {
-        fontSize: ['12px', '12px', '14px'],
-        fontWeight: '300',
-        lineHeight: '16px'
+        fontSize: ['12px', '12px', '12px', '12px', '14px'],
+        fontWeight: '300'
     },
     caption: {
         fontSize: '12px',
