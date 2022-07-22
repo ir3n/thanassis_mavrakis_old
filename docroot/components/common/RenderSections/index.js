@@ -4,6 +4,7 @@ import CarouselProducts from 'components/common/CarouselProducts';
 import CarouselTiles from 'components/common/CarouselTiles';
 import CategoryTiles from '../CategoryTiles';
 import BannerImageRight from '../BannerImageRight';
+import Video from '../Video';
 import Newsletter from '../Newsletter';
 import LeftArrow from '/public/assets/leftarrow.svg';
 import RightArrow from '/public/assets/rightarrow.svg';
@@ -167,7 +168,8 @@ export const RenderSections = ({ sections }) => {
                                 type={section?.type}
                             />
                         );
-
+                    case 'video':
+                        return <Video key={section?.type + index} data={section} />;
                     case 'carousel_category_tile':
                         return <CategoryTiles key={section?.type + index} data={section?.items} type={section?.type} />;
                     case 'banner_image_right':

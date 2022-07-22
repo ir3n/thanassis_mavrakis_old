@@ -16,6 +16,7 @@ const Tile = ({ title, image, cta }) => {
                     <Flex
                         direction="column"
                         position="absolute"
+                        align="start"
                         top={{ base: '40px', md: 'auto' }}
                         bottom="40px"
                         left="40px"
