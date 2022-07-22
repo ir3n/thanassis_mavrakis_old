@@ -6,6 +6,7 @@ import CategoryTiles from '../CategoryTiles';
 import BannerImageRight from '../BannerImageRight';
 import Video from '../Video';
 import Videos from '../Videos';
+import LeftImgProductList from '../LeftImgProductList';
 import Newsletter from '../Newsletter';
 import LeftArrow from '/public/assets/leftarrow.svg';
 import RightArrow from '/public/assets/rightarrow.svg';
@@ -194,6 +195,17 @@ export const RenderSections = ({ sections }) => {
                                 title={section?.title}
                                 items={section?.items}
                                 cta={section?.cta}
+                            />
+                        );
+                    case 'left_image_product_list':
+                        return (
+                            <LeftImgProductList
+                                key={section?.type + index}
+                                title={section?.title}
+                                text={section?.description}
+                                link={section?.image_link}
+                                image={section?.image}
+                                items={section?.items}
                                 type={section?.type}
                             />
                         );

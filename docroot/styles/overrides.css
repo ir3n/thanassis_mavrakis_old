@@ -1,4 +1,8 @@
 /* Slick */
+.slick-dots {
+    left: 0;
+    right: 0;
+}
 .slick-dots li {
     width: 10px !important;
 }
@@ -58,4 +62,15 @@
 }
 .tiles-slider .slick-slide:not(.slick-active) {
     opacity: 0.5;
+}
+
+/* Front Page Image with Products Slider */
+.image-products-slider {
+    padding: 0 20px;
+}
+.image-products-slider .slick-prev {
+    left: 0;
+}
+.image-products-slider .slick-next {
+    right: 0;
 }

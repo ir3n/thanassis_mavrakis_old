@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Videos = ({ title, cta, items }) => {
     return (
-        <Box pb={{ base: '50px', xl: '80px' }}>
+        <Box py={{ base: '50px', xl: '80px' }}>
             <Container>
                 <Text as="h3" textStyle="h4" color="brand" mb={'30px'} align="center">
                     {title}
