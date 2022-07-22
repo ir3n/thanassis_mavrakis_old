@@ -1,4 +1,4 @@
-import { AspectRatio, Box, Text } from '@chakra-ui/react';
+import { AspectRatio, Text } from '@chakra-ui/react';
 import Container from '../Container';
 
 const Video = ({ data }) => {

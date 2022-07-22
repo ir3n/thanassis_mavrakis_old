@@ -177,10 +177,12 @@ export const RenderSections = ({ sections }) => {
                             <BannerImageRight
                                 key={section?.type + index}
                                 title={section?.title}
+                                imageTitle={section?.image_title}
                                 text={section?.description}
                                 cta={section?.cta}
                                 image={section?.image}
                                 dark={section?.dark_bg}
+                                centerAlign={section?.align_center}
                                 type={section?.type}
                             />
                         );

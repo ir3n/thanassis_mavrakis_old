@@ -2,7 +2,8 @@ import { Flex, Image, Text, Button, Box } from '@chakra-ui/react';
 import Container from '../Container';
 import NextLink from 'next/link';
 
-const BannerImageRight = ({ dark, text, image, title, cta }) => {
+const BannerImageRight = ({ dark, text, image, title, cta, imageTitle, centerAlign }) => {
+    const desktopAlign = centerAlign ? 'center' : 'normal';
     return (
         <Container mb={{ base: '45px', xl: '100px' }} mx={{ base: '-20px', md: 'auto' }}>
             <Flex
@@ -10,7 +11,7 @@ const BannerImageRight = ({ dark, text, image, title, cta }) => {
                 bg={dark ? 'brand' : 'transparent'}
                 color={dark ? 'white' : 'brand'}
                 justifyContent="space-between"
-                align="normal"
+                align={{ base: 'normal', md: desktopAlign }}
                 direction={{ base: 'column-reverse', md: 'row' }}
             >
                 <Flex
@@ -29,12 +30,13 @@ const BannerImageRight = ({ dark, text, image, title, cta }) => {
                     >
                         {title}
                     </Text>
+                    {imageTitle ? <Image src={imageTitle} mb="30px" maxW={{ base: '200px', xl: 'full' }} /> : ''}
                     <Text as="p" mb="30px" maxW={{ base: '220px', md: 'unset' }}>
                         {text}
                     </Text>
                     <Box mt="auto">
                         <NextLink href={cta?.url || ''}>
-                            <Button variant={'outlineWhite'} w={{ base: 'full', lg: 'auto' }}>
+                            <Button variant={dark ? 'outlineWhite' : 'outlineBlack'} w={{ base: 'full', lg: 'auto' }}>
                                 {cta?.title}
                             </Button>
                         </NextLink>
@@ -48,9 +50,8 @@ const BannerImageRight = ({ dark, text, image, title, cta }) => {
                             alt={title}
                             opacity="0.9"
                             m="0 auto"
-                            transform={{ base: 'none', xl: 'scale(1.02)' }}
                             transition="0.4s ease"
-                            _hover={{ transform: 'none', opacity: '1' }}
+                            _hover={{ opacity: '1' }}
                         />
                     </a>
                 </NextLink>
