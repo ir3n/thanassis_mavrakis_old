@@ -64,6 +64,16 @@
     opacity: 0.5;
 }
 
+/* Front Page Category Tiles Slider */
+.catetory-tiles-slider .slick-prev {
+    filter: invert(1);
+    left: -10px;
+}
+.catetory-tiles-slider .slick-next {
+    filter: invert(1);
+    right: -10px;
+}
+
 /* Front Page Image with Products Slider */
 .image-products-slider {
     padding: 0 20px;

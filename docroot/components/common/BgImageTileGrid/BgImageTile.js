@@ -1,17 +1,20 @@
-import { Image, Flex, Text, Button, Box } from '@chakra-ui/react';
+import { Image, Flex, Text, Button, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-const Tile = ({ title, image, cta }) => {
+const BgImageTile = ({ title, image, cta }) => {
     return (
         <Flex direction="column" position="relative" background="brand" overflow="hidden">
-            <NextLink href={cta?.url || ''}>
-                <a>
+            <NextLink href={cta?.url || ''} passHref>
+                <Link>
                     <Image
                         src={image}
                         alt="DUST+CREAM"
                         w="full"
+                        h="100%"
+                        display="block"
+                        opacity="0.8"
                         transition="0.4s ease"
-                        _hover={{ opacity: '0.7', transform: 'scale(1.05)' }}
+                        _hover={{ opacity: '0.6', transform: 'scale(1.05)' }}
                     />
                     <Flex
                         direction="column"
@@ -30,10 +33,10 @@ const Tile = ({ title, image, cta }) => {
                             {cta?.title}
                         </Button>
                     </Flex>
-                </a>
+                </Link>
             </NextLink>
         </Flex>
     );
 };
 
-export default Tile;
+export default BgImageTile;

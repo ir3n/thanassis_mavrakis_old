@@ -1,4 +1,4 @@
-import { Text, Box, Image } from '@chakra-ui/react';
+import { Text, Box, Image, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import Slider from 'react-slick';
@@ -14,7 +14,7 @@ const LeftImgProductListMob = ({ title, text, items, image, link }) => {
         slidesToScroll: 1,
         dots: true,
         arrows: false,
-        // autoplay: true,
+        autoplay: true,
         responsive: [
             {
                 breakpoint: 390,
@@ -27,10 +27,10 @@ const LeftImgProductListMob = ({ title, text, items, image, link }) => {
 
     return (
         <Box pb="30px" bg="lightBg">
-            <NextLink href={link}>
-                <a>
+            <NextLink href={link} passHref>
+                <Link>
                     <Image src={image} alt={title} display="block" m="0 auto 20px" />
-                </a>
+                </Link>
             </NextLink>
             <Container>
                 <Text as="h3" textStyle="h4" color="brand" mb={'10px'} align="center">

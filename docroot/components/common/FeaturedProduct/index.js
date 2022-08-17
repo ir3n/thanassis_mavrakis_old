@@ -24,9 +24,9 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
             onClick={() => Tracking.selectItem(title, mastersku)}
         >
             <NextLink href={url || '#'} passHref prefetch={false}>
-                <Link _focus={'none'} pos="relative" as={'a'} data-productid={mastersku}>
+                <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
                     <Box
-                        _focus={'none'}
+                        _focus={{}}
                         display="flex"
                         flexDir={'column'}
                         alignItems="center"
@@ -52,7 +52,7 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                             src={image}
                             display={loaded ? '' : 'none'}
                             onLoad={() => setLoaded(true)}
-                            _focus={'none'}
+                            _focus={{}}
                         />
                     </Box>
                 </Link>

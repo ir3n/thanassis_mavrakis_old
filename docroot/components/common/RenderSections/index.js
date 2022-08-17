@@ -2,12 +2,13 @@ import HomeSlider from 'components/common/HomeSlider';
 import { Box } from '@chakra-ui/react';
 import CarouselProducts from 'components/common/CarouselProducts';
 import CarouselTiles from 'components/common/CarouselTiles';
-import CategoryTiles from '../CategoryTiles';
+import CarouselCategoryTiles from 'components/common/CarouselCategoryTiles';
+import BgImageTileGrid from '../BgImageTileGrid';
 import BannerImageRight from '../BannerImageRight';
 import Video from '../Video';
 import Videos from '../Videos';
 import LeftImgProductList from '../LeftImgProductList';
-import Newsletter from '../Newsletter';
+import BgImageWithText from '../BgImageWithText';
 import LeftArrow from '/public/assets/leftarrow.svg';
 import RightArrow from '/public/assets/rightarrow.svg';
 
@@ -162,18 +163,13 @@ export const RenderSections = ({ sections }) => {
                             />
                         );
                     case 'carousel_tile':
-                        return (
-                            <CarouselTiles
-                                key={section?.type + index}
-                                fullWidth={section?.fullWidth}
-                                data={section?.items}
-                                type={section?.type}
-                            />
-                        );
+                        return <CarouselTiles key={section?.type + index} data={section?.items} type={section?.type} />;
                     case 'video':
                         return <Video key={section?.type + index} data={section} />;
-                    case 'carousel_category_tile':
-                        return <CategoryTiles key={section?.type + index} data={section?.items} type={section?.type} />;
+                    case 'bg_image_tiles_grid':
+                        return (
+                            <BgImageTileGrid key={section?.type + index} data={section?.items} type={section?.type} />
+                        );
                     case 'banner_image_right':
                         return (
                             <BannerImageRight
@@ -209,8 +205,29 @@ export const RenderSections = ({ sections }) => {
                                 type={section?.type}
                             />
                         );
-                    case 'static_custom_sections':
-                        return <Newsletter title={section?.static_section_type} />;
+                    case 'bg_image_with_text':
+                        return (
+                            <BgImageWithText
+                                key={section?.type + index}
+                                title={section?.title}
+                                text={section?.text}
+                                cta={section?.cta}
+                                image={section?.image}
+                                icon={section?.icon}
+                                type={section?.type}
+                            />
+                        );
+                    case 'image_with_title_carousel':
+                        return <CarouselTiles key={section?.type + index} data={section?.items} type={section?.type} />;
+                    case 'carousel_category_tile':
+                        return (
+                            <CarouselCategoryTiles
+                                key={section?.type + index}
+                                title={section?.title}
+                                data={section?.items}
+                                type={section?.type}
+                            />
+                        );
                 }
             })}
         </div>

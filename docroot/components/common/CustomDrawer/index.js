@@ -58,7 +58,7 @@ const CustomDrawer = ({
                 >
                     <DrawerOverlay />
                     <DrawerContent>
-                        <DrawerCloseButton _focus={'none'} />
+                        <DrawerCloseButton _focus={{}} />
                         <DrawerHeader>
                             <Text textStyle={'sm'} fontWeight="bold">
                                 {drawerHeader}
@@ -81,7 +81,7 @@ const CustomDrawer = ({
                                                         mt="18px"
                                                         width="fit-content"
                                                     >
-                                                        <Checkbox ml="1rem" _focus={'none'}>
+                                                        <Checkbox ml="1rem" _focus={{}}>
                                                             <Text textAlign={'start'} textStyle={'sm'} ml="12px">
                                                                 {filter.filter}
                                                             </Text>

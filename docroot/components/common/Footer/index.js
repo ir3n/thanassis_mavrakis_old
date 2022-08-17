@@ -1,4 +1,4 @@
-import { useBreakpointValue, Box, Link, Flex, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Link, Flex, ListItem, UnorderedList, Grid, GridItem } from '@chakra-ui/react';
 import Container from '../Container';
 import Logo from '../Logo';
 import useMenu from 'hooks/useMenu';
@@ -7,9 +7,11 @@ import Copyright from './Copyright';
 import SocialBlock from './SocialBlock';
 import FooterInfo from './FooterInfo';
 import FooterIcons from './FooterIcons';
+import Credits from './Credits';
 
 const Footer = () => {
     const { menuData: footerData } = useMenu('footer');
+    const { menuData: legalMenu } = useMenu('legal');
 
     return (
         <Box as="footer" w="full" id="footer">
@@ -37,11 +39,11 @@ const Footer = () => {
                                             {title}
                                         </Box>
                                         <UnorderedList ml="0">
-                                            {submenu?.map(({ title }, index) => (
+                                            {submenu?.map(({ title, cleanUrl }, index) => (
                                                 <ListItem listStyleType="none" key={`${title}${index}`}>
-                                                    <NextLink href={'/'} passHref prefetch={false}>
+                                                    <NextLink href={cleanUrl} passHref prefetch={false}>
                                                         <Link
-                                                            pos="relative"
+                                                            position="relative"
                                                             textStyle="sm"
                                                             color="lightGrey"
                                                             mb="10px"
@@ -62,10 +64,23 @@ const Footer = () => {
                             </Grid>
                         </GridItem>
                     </Grid>
-                    <Flex justifyContent="space-between" py="30px">
+                    <Flex justifyContent="space-between" pt="30px">
                         <Copyright />
-                        <Box>Render legal menu here</Box>
+                        <Flex>
+                            {legalMenu?.map(({ title, cleanUrl }, index) => (
+                                <Box ml="10px" key={`legal-menu-${index}`}>
+                                    <NextLink href={cleanUrl} prefetch={false}>
+                                        <Link pos="relative" textStyle="caption" color="white" fontWeight="300">
+                                            {title}
+                                        </Link>
+                                    </NextLink>
+                                </Box>
+                            ))}
+                        </Flex>
                     </Flex>
+                    <Box pb="30px">
+                        <Credits />
+                    </Box>
                 </Container>
             </Box>
             <Box as="div">

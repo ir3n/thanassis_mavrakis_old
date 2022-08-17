@@ -1,35 +1,49 @@
-import { Box, Button, Text, Input } from '@chakra-ui/react';
+import { Box, Button, Text, Input, Flex } from '@chakra-ui/react';
+import Container from '../Container';
 
-const Newsletter = ({ title }) => {
+const Newsletter = () => {
     return (
-        <Box mb="48px" display="flex" justifyContent={'center'} alignItems="center" bg="newsletter" h="352px">
-            <Box
-                ml={{ base: '18px', md: 0 }}
-                h={{ base: '248px', md: '144px' }}
-                w="672px"
-                display="flex"
-                flexDir={'column'}
-                justifyContent="space-between"
-            >
-                <Text textStyle={'h2'}>{title}</Text>
-                <Text textStyle={'md'}>Don’t miss a thing. Sign up to receive news and updates.</Text>
-                <Box display={'flex'} flexDir={{ base: 'column', md: 'row', lg: 'row' }} justifyContent="space-between">
-                    <Input
-                        bg="white"
-                        w={{ base: '324px', md: '408px' }}
-                        h="48px"
-                        placeholder="Email"
-                        borderStyle="solid"
-                        borderWidth={'1px'}
-                        borderColor="black"
-                        borderRadius={0}
-                        mb={{ base: '16px', md: 0 }}
-                    />
-                    <Button size="md" variant="primary">
-                        ΕΓΓΡΑΦΗ
-                    </Button>
-                </Box>
-            </Box>
+        <Box bg="newsletter" py={{ base: '25px', md: '50px' }}>
+            <Container>
+                <Flex
+                    align="center"
+                    justifyContent="space-between"
+                    direction={{ base: 'column', md: 'row' }}
+                    maxW={{ base: '340px', md: '100%' }}
+                    m="auto"
+                >
+                    <Box pr="20px" mb={{ base: '15px', md: '0' }}>
+                        <Text as="h3" fontSize="18px" weight="500" mb="15px">
+                            NEVER MISS AN UPDATE
+                        </Text>
+                        <Text as="p" textStyle={'md'}>
+                            Don’t miss a thing. Sign up to receive news and updates.
+                        </Text>
+                    </Box>
+
+                    <Box maxW="450px" w="full">
+                        <Flex justifyContent="end" mb="15px">
+                            <Input
+                                bg="white"
+                                placeholder="Your email"
+                                border="none"
+                                borderRadius="0"
+                                mr={{ base: '5px', md: '10px' }}
+                                w="100%"
+                                maxW="340px"
+                                h="40px"
+                            />
+                            <Button variant="outlineBlack" minW="107px" h="40px">
+                                SIGN UP
+                            </Button>
+                        </Flex>
+                        <Text as="p" textStyle="captionSm" maxW="340px">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Erat odio interdum neque, nulla
+                            lacinia commodo neque,
+                        </Text>
+                    </Box>
+                </Flex>
+            </Container>
         </Box>
     );
 };

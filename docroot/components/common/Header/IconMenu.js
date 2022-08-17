@@ -9,9 +9,9 @@ const IconMenu = () => {
     const { t } = useTranslation('header');
 
     return (
-        <Flex className="icons cart-box-parent" pos="relative" alignItems={'center'}>
-            <NextLink href={'/account/information'} prefetch={false} passHref>
-                <Link cursor={'pointer'}>
+        <Flex position="relative" alignItems="center">
+            <NextLink href="/account/information" prefetch={false} passHref>
+                <Link>
                     <User />
                 </Link>
             </NextLink>

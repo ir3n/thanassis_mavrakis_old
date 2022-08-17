@@ -129,7 +129,7 @@ export const MiniCart = ({ boxSize }) => {
                     top={'unset !important'}
                     p={{ sm: '0 30px 0 40px', md: '0 40px 0 40px' }}
                 >
-                    <DrawerCloseButton _focus={'none'} _hover={'none'} right={'30px'} />
+                    <DrawerCloseButton _focus={{}} _hover={'none'} right={'30px'} />
                     <DrawerHeader mr={'20px'} borderBottom={'2px solid #FF8234'}>
                         <Image
                             src={'/assets/shopping-cart-icon.png'}

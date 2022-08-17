@@ -45,7 +45,7 @@ const HeaderMobile = () => {
                     </Box>
 
                     <HStack w="50%" spacing="10px">
-                        <Box w="30px">
+                        <Box w="30px" mr="auto">
                             <Logo />
                         </Box>
 

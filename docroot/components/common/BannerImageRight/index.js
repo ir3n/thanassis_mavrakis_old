@@ -1,4 +1,4 @@
-import { Flex, Image, Text, Button, Box } from '@chakra-ui/react';
+import { Flex, Image, Text, Button, Box, Link } from '@chakra-ui/react';
 import Container from '../Container';
 import NextLink from 'next/link';
 
@@ -35,15 +35,15 @@ const BannerImageRight = ({ dark, text, image, title, cta, imageTitle, centerAli
                         {text}
                     </Text>
                     <Box mt="auto">
-                        <NextLink href={cta?.url || ''}>
+                        <NextLink href={cta?.url || ''} passHref>
                             <Button variant={dark ? 'outlineWhite' : 'outlineBlack'} w={{ base: 'full', lg: 'auto' }}>
                                 {cta?.title}
                             </Button>
                         </NextLink>
                     </Box>
                 </Flex>
-                <NextLink href={cta?.url || ''}>
-                    <a>
+                <NextLink href={cta?.url || ''} passHref>
+                    <Link>
                         <Image
                             display="block"
                             src={image}
@@ -53,7 +53,7 @@ const BannerImageRight = ({ dark, text, image, title, cta, imageTitle, centerAli
                             transition="0.4s ease"
                             _hover={{ opacity: '1' }}
                         />
-                    </a>
+                    </Link>
                 </NextLink>
             </Flex>
         </Container>

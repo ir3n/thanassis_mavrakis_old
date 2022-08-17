@@ -1,41 +1,29 @@
-import { useEffect, useState, memo } from 'react';
+import { memo } from 'react';
 import { useBreakpointValue, Box } from '@chakra-ui/react';
 import Header from 'components/common/Header';
 import HeaderMobile from 'components/common/HeaderMobile';
 import FooterMobile from 'components/common/FooterMobile';
 import Menu from 'components/common/Menu';
+import Stripe from 'components/common/Stripe';
+import Newsletter from 'components/common/Newsletter';
+import Usp from 'components/common/Usp';
 import Footer from 'components/common/Footer';
+import useGlobalSections from 'hooks/useGlobalSections';
+import { useRouter } from 'next/router';
 
 const MainLayout = ({ children }) => {
-    const [scrolled, setScrolled] = useState(false);
+    const router = useRouter();
 
-    const handleScroll = () => {
-        const headerTopMenu = document.getElementById('mainHeader');
-
-        const headerBottomOnScroll = headerTopMenu?.getBoundingClientRect();
-
-        if (headerBottomOnScroll === 0) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
-        }
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+    const { globalSections } = useGlobalSections(router.locale);
 
     const header = useBreakpointValue({
-        base: <HeaderMobile scrolled={!scrolled} />,
-        xl: <Header scrolled={!scrolled} />
+        base: <HeaderMobile />,
+        xl: <Header />
     });
 
     const menu = useBreakpointValue({
         base: '',
-        xl: <Menu scrolled={!scrolled} />
+        xl: <Menu />
     });
 
     const footer = useBreakpointValue({
@@ -49,7 +37,22 @@ const MainLayout = ({ children }) => {
                 {header}
                 {menu}
             </Box>
-            <Box as={'main'}>{children}</Box>
+            <Box as={'main'}>
+                {globalSections?.map(
+                    (section, index) =>
+                        section?.type == 'stripe_with_text' && (
+                            <Stripe color={section?.color} text={section?.text} key={`${section?.type}-${index}`} />
+                        )
+                )}
+                {children}
+            </Box>
+
+            <Newsletter />
+
+            {globalSections?.map(
+                (section, index) =>
+                    section?.type == 'usp' && <Usp items={section?.items} key={`${section?.type}-${index}`} />
+            )}
 
             {footer}
         </>

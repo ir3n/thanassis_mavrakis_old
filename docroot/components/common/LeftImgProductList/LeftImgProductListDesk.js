@@ -1,4 +1,4 @@
-import { Text, Box, Grid, GridItem, Image } from '@chakra-ui/react';
+import { Text, Box, Grid, GridItem, Image, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import Slider from 'react-slick';
@@ -13,8 +13,8 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
         speed: 800,
         slidesToShow: 2,
         slidesToScroll: 1,
-        arrows: true
-        // autoplay: true,
+        arrows: true,
+        autoplay: true
     };
 
     return (
@@ -28,15 +28,15 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                 </Text>
                 <Grid mt="25px" templateColumns="repeat(2, 1fr)" gap={{ base: '10px', xl: '20px' }} alignItems="center">
                     <GridItem>
-                        <NextLink href={link}>
-                            <a>
+                        <NextLink href={link} passHref>
+                            <Link>
                                 <Image
                                     src={image}
                                     alt={title}
                                     transition="0.4s ease"
                                     _hover={{ transform: 'scale(1.02)' }}
                                 />
-                            </a>
+                            </Link>
                         </NextLink>
                     </GridItem>
                     <GridItem overflow="hidden" position="relative">

@@ -8,9 +8,12 @@ import AccordionItemCustom from './AccordionItemCustom';
 import SocialBlock from '../Footer/SocialBlock';
 import FooterInfo from '../Footer/FooterInfo';
 import FooterIcons from '../Footer/FooterIcons';
+import Credits from '../Footer/Credits';
+import NextLink from 'next/link';
 
 const FooterMobile = () => {
     const { menuData: footerData } = useMenu('footer');
+    const { menuData: legalMenu } = useMenu('legal');
     const { t } = useTranslation('footer');
 
     return (
@@ -43,10 +46,22 @@ const FooterMobile = () => {
                         justifyContent="space-between"
                         borderTopWidth="1px"
                         borderTopColor="darkGrey"
+                        align="center"
                     >
                         <Copyright />
-                        <Box>Legal menu</Box>
+                        <Flex direction={{ base: 'column', xs: 'row' }}>
+                            {legalMenu?.map(({ title, cleanUrl }, index) => (
+                                <Box ml="7px" key={`legal-menu-${index}`}>
+                                    <NextLink href={cleanUrl} prefetch={false} passHref>
+                                        <Link pos="relative" textStyle="caption" color="white" fontWeight="300">
+                                            {title}
+                                        </Link>
+                                    </NextLink>
+                                </Box>
+                            ))}
+                        </Flex>
                     </Flex>
+                    <Credits />
                 </Container>
             </Box>
             <Box as="div" bg="white">

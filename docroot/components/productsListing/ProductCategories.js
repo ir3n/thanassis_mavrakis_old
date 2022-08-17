@@ -15,10 +15,12 @@ const ProductCategories = ({ info }) => {
                     {info?.termChildren?.map((item) => {
                         return (
                             <Box key={item.cleanUrl} as="div" mb="1rem">
-                                <NextLink href={item?.cleanUrl}>
-                                    <Text cursor={'pointer'} textStyle={'md'} width="262px">
-                                        {item.title}
-                                    </Text>
+                                <NextLink href={item?.cleanUrl} passHref>
+                                    <Link>
+                                        <Text cursor={'pointer'} textStyle={'md'} width="262px">
+                                            {item.title}
+                                        </Text>
+                                    </Link>
                                 </NextLink>
                             </Box>
                         );
@@ -49,7 +51,7 @@ const ProductCategories = ({ info }) => {
                 <Grid templateRows="repeat(2, 1fr)" templateColumns="repeat(9, 1fr)" gap={4} height="616px">
                     {info?.sections[0] && (
                         <GridItem colSpan={4}>
-                            <NextLink href={info?.sections[0]?.link.url}>
+                            <NextLink href={info?.sections[0]?.link.url} passHref>
                                 <Link width={'360px'} _hover={'none'}>
                                     <Box
                                         width={'360px'}
@@ -70,7 +72,7 @@ const ProductCategories = ({ info }) => {
                     )}
                     {info?.sections[1] && (
                         <GridItem colSpan={5}>
-                            <NextLink href={info?.sections[1]?.link.url}>
+                            <NextLink href={info?.sections[1]?.link.url} passHref>
                                 <Link _hover={'none'}>
                                     <Box
                                         width={'456px'}
@@ -91,7 +93,7 @@ const ProductCategories = ({ info }) => {
                     )}
                     {info?.sections[2] && (
                         <GridItem colSpan={5}>
-                            <NextLink href={info?.sections[2]?.link.url}>
+                            <NextLink href={info?.sections[2]?.link.url} passHref>
                                 <Link _hover={'none'}>
                                     <Box
                                         width={'458px'}
@@ -112,7 +114,7 @@ const ProductCategories = ({ info }) => {
                     )}
                     {info?.sections[3] && (
                         <GridItem colSpan={4}>
-                            <NextLink href={info?.sections[3]?.link.url}>
+                            <NextLink href={info?.sections[3]?.link.url} passHref>
                                 <Link _hover={'none'}>
                                     <Box
                                         width={'360px'}
@@ -133,7 +135,7 @@ const ProductCategories = ({ info }) => {
                     )}
                     {info?.sections[4] && (
                         <GridItem colSpan={9}>
-                            <NextLink href={info?.sections[4]?.link.url}>
+                            <NextLink href={info?.sections[4]?.link.url} passHref>
                                 <Link _hover={'none'}>
                                     <Box
                                         width={'360px'}

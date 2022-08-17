@@ -8,7 +8,7 @@ import WishListIndicator from '../WishListIndicator';
 import LanguageForm from './LanguageForm';
 import useTranslation from 'next-translate/useTranslation';
 
-const Header = ({ scrolled }) => {
+const Header = () => {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
@@ -23,21 +23,17 @@ const Header = ({ scrolled }) => {
 
     return (
         <>
-            <Box as={'header'} id="mainHeader" background={'brand'}>
-                <Container
-                    fullWidth
-                    maxW="1300px"
-                    p={scrolled && offset === 0 ? '17px 10px' : '10px'}
-                    transition={'.4s'}
-                    pos="relative"
-                >
+            <Box as="header" id="mainHeader" background="brand">
+                <Container maxW="1300px" p={offset === 0 ? '17px 10px' : '10px'} transition=".4s" pos="relative">
                     <Flex justify="end" w="full">
                         <Box pos="absolute" top="0" left="0" zIndex="tooltip">
-                            {scrolled && offset === 0 ? <Logo scale={'scale(1)'} /> : <Logo scale={'scale(.75)'} />}
+                            <Box transition=".4s" transform={offset === 0 ? 'scale(1)' : 'scale(0.75)'}>
+                                <Logo />
+                            </Box>
                         </Box>
                         <HStack spacing="15px">
                             <GlobalSearch />
-                            <UserNav scrolled={scrolled} />
+                            <UserNav />
                             <WishListIndicator />
                             <LanguageForm color="white" />
                         </HStack>

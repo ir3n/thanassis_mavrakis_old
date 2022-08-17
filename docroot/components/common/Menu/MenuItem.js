@@ -43,7 +43,7 @@ const MenuItem = (
                     <Underline active={selectedMenu?.cleanUrl === cleanUrl || hover} />
                 </Link>
             ) : (
-                <NextLink href={cleanUrl}>
+                <NextLink href={cleanUrl} passHref>
                     <Link
                         m="0 7px"
                         target={external ? '_blank' : '_self'}

@@ -2,15 +2,15 @@ import Container from 'components/common/Container';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Tile from './Tile';
-import { Box } from '@chakra-ui/react';
+import CategoryTile from './CategoryTile';
+import { Box, Text } from '@chakra-ui/react';
 
-const CarouselTiles = ({ data }) => {
+const CarouselTiles = ({ title, data }) => {
     const settings = {
         dots: false,
         infinite: true,
         speed: 800,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         arrows: true,
         autoplay: true,
@@ -18,7 +18,7 @@ const CarouselTiles = ({ data }) => {
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2
+                    slidesToShow: 3
                 }
             },
             {
@@ -30,18 +30,15 @@ const CarouselTiles = ({ data }) => {
         ]
     };
     return (
-        <Box bg="brand" color="white" pt="25px" pb="40px" overflow="hidden" mb="30px">
+        <Box bg="darkGrey" color="white" py="35px" overflow="hidden" mb="50px">
             <Container>
-                <Slider {...settings} className="tiles-slider">
-                    {data?.map(({ title, image, description, cta }, index) => (
-                        <Box p="0 15px" key={`tile-carousel-item-${index}`}>
-                            <Tile
-                                key={`carousel-tile-${index}`}
-                                title={title}
-                                image={image}
-                                description={description}
-                                cta={cta}
-                            />
+                <Text as="h2" textStyle="h4" align="center" mb="25px">
+                    {title}
+                </Text>
+                <Slider {...settings} className="catetory-tiles-slider">
+                    {data?.map(({ image, cta }, index) => (
+                        <Box p="0 10px" key={`category-tile-carousel-item-${index}`}>
+                            <CategoryTile image={image} cta={cta} />
                         </Box>
                     ))}
                 </Slider>

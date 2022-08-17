@@ -14,7 +14,7 @@ const CarouselProducts = ({ title, items, cta }) => {
         slidesToShow: 4,
         slidesToScroll: 1,
         arrows: true,
-        // autoplay: true,
+        autoplay: true,
         responsive: [
             {
                 breakpoint: 768,
