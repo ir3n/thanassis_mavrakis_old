@@ -9,6 +9,7 @@ import Video from '../Video';
 import Videos from '../Videos';
 import LeftImgProductList from '../LeftImgProductList';
 import BgImageWithText from '../BgImageWithText';
+import CarouselProductGrid from '../CarouselProductGrid';
 import LeftArrow from '/public/assets/leftarrow.svg';
 import RightArrow from '/public/assets/rightarrow.svg';
 
@@ -226,6 +227,15 @@ export const RenderSections = ({ sections }) => {
                                 title={section?.title}
                                 data={section?.items}
                                 type={section?.type}
+                            />
+                        );
+                    case 'product_grid':
+                        return (
+                            <CarouselProductGrid
+                                key={section?.type + index}
+                                title={section?.title}
+                                items={section?.items}
+                                cta={section?.cta}
                             />
                         );
                 }

@@ -1,5 +1,5 @@
-import { Text, Box } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Text, Box, Link } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import Container from '../Container';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -14,7 +14,7 @@ const CarouselProducts = ({ title, items, cta }) => {
         slidesToShow: 4,
         slidesToScroll: 1,
         arrows: true,
-        autoplay: true,
+        // autoplay: true,
         responsive: [
             {
                 breakpoint: 768,
@@ -25,7 +25,7 @@ const CarouselProducts = ({ title, items, cta }) => {
                 }
             },
             {
-                breakpoint: 350,
+                breakpoint: 370,
                 settings: {
                     dots: true,
                     arrows: false,
@@ -45,7 +45,9 @@ const CarouselProducts = ({ title, items, cta }) => {
                     {items?.map((item, index) => {
                         return (
                             <Box p="0 5px" key={`carousel-product-${index}`}>
-                                <FeaturedProduct />
+                                <Box bg="white">
+                                    <FeaturedProduct image={item?.hover_image} />
+                                </Box>
                             </Box>
                         );
                     })}
@@ -57,9 +59,9 @@ const CarouselProducts = ({ title, items, cta }) => {
                     textDecoration="underline"
                     fontWeight="500"
                 >
-                    <Link href={cta?.url}>
-                        <a>{cta?.title}</a>
-                    </Link>
+                    <NextLink href={cta?.url} passHref>
+                        <Link>{cta?.title}</Link>
+                    </NextLink>
                 </Box>
             </Container>
         </Box>
