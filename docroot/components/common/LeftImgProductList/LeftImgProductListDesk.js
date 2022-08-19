@@ -1,9 +1,7 @@
 import { Text, Box, Grid, GridItem, Image, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import CustomSlider from '../CustomSlider';
 import FeaturedProduct from '../FeaturedProduct';
 
 const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
@@ -40,7 +38,7 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                         </NextLink>
                     </GridItem>
                     <GridItem overflow="hidden" position="relative">
-                        <Slider {...settings} className="image-products-slider">
+                        <CustomSlider {...settings} className="image-products-slider">
                             {items?.map((item, index) => {
                                 return (
                                     <Box p="0 5px" key={`image-carousel-product-${index}`}>
@@ -48,7 +46,7 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                                     </Box>
                                 );
                             })}
-                        </Slider>
+                        </CustomSlider>
                     </GridItem>
                 </Grid>
             </Container>

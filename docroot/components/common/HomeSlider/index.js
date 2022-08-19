@@ -1,6 +1,4 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import CustomSlider from '../CustomSlider';
 import Slide from './Slide';
 
 const HomeSlider = ({ slides }) => {
@@ -25,7 +23,7 @@ const HomeSlider = ({ slides }) => {
     };
 
     return (
-        <Slider {...settings} className="hero-banner-slider">
+        <CustomSlider {...settings} className="hero-banner-slider">
             {slides.map((slide, index) => {
                 return (
                     <Slide
@@ -36,7 +34,7 @@ const HomeSlider = ({ slides }) => {
                     />
                 );
             })}
-        </Slider>
+        </CustomSlider>
     );
 };
 

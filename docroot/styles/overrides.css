@@ -84,3 +84,14 @@
 .image-products-slider .slick-next {
     right: 0;
 }
+
+/* Front Page Background Image with Gifts Slider */
+.gifts-slider .slick-prev {
+    filter: invert(1);
+    left: -10px;
+}
+
+.gifts-slider .slick-next {
+    filter: invert(1);
+    right: -10px;
+}

@@ -10,6 +10,7 @@ import Videos from '../Videos';
 import LeftImgProductList from '../LeftImgProductList';
 import BgImageWithText from '../BgImageWithText';
 import CarouselProductGrid from '../CarouselProductGrid';
+import BgImgProductList from '../BgImgProductList';
 import LeftArrow from '/public/assets/leftarrow.svg';
 import RightArrow from '/public/assets/rightarrow.svg';
 
@@ -236,6 +237,15 @@ export const RenderSections = ({ sections }) => {
                                 title={section?.title}
                                 items={section?.items}
                                 cta={section?.cta}
+                            />
+                        );
+                    case 'background_image_product_list':
+                        return (
+                            <BgImgProductList
+                                key={section?.type + index}
+                                cta={section?.cta}
+                                image={section?.image}
+                                items={section?.items}
                             />
                         );
                 }

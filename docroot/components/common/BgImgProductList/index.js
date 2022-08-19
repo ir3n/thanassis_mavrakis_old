@@ -1,15 +1,15 @@
-import { Text, Box, Link } from '@chakra-ui/react';
+import { Text, Box, Link, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import CustomSlider from '../CustomSlider';
 import FeaturedProduct from '../FeaturedProduct';
 
-const CarouselProducts = ({ title, items, cta }) => {
+const BgImgProductList = ({ image, items, cta }) => {
     const settings = {
         dots: false,
         infinite: true,
         speed: 800,
-        slidesToShow: 4,
+        slidesToShow: 2,
         slidesToScroll: 1,
         arrows: true,
         // autoplay: true,
@@ -17,16 +17,12 @@ const CarouselProducts = ({ title, items, cta }) => {
             {
                 breakpoint: 768,
                 settings: {
-                    dots: true,
-                    arrows: false,
                     slidesToShow: 2
                 }
             },
             {
-                breakpoint: 370,
+                breakpoint: 500,
                 settings: {
-                    dots: true,
-                    arrows: false,
                     slidesToShow: 1
                 }
             }
@@ -34,16 +30,31 @@ const CarouselProducts = ({ title, items, cta }) => {
     };
 
     return (
-        <Box p="30px 0" bg="lightBg">
-            <Container>
-                <Text as="h3" textStyle="h4" color="brand" mb={'30px'} align="center">
-                    {title}
-                </Text>
-                <CustomSlider {...settings} className="products-slider">
+        <Box position="relative" pb="30px">
+            <Box
+                bgImage={image}
+                bgAttachment="fixed"
+                bgPos="center"
+                bgSize="cover"
+                minH="380px"
+                position="relative"
+                bgRepeat="no-repeat"
+                mb={{ base: '50px', lg: '90px' }}
+            ></Box>
+            <Container marginTop="-390px">
+                <NextLink href={cta?.url} passHref>
+                    <Link>
+                        <Text as="h3" textStyle="h4" color="white" mb={{ base: '25px', lg: '40px' }} align="center">
+                            {cta?.title}
+                        </Text>
+                    </Link>
+                </NextLink>
+
+                <CustomSlider {...settings} className="gifts-slider">
                     {items?.map((item, index) => {
                         return (
-                            <Box p="0 5px" key={`carousel-product-${index}`}>
-                                <Box bg="white">
+                            <Box p="0 20px 20px" key={`carousel-gifts-${index}`}>
+                                <Box bg="white" boxShadow="lg">
                                     <FeaturedProduct image={item?.hover_image} />
                                 </Box>
                             </Box>
@@ -56,14 +67,10 @@ const CarouselProducts = ({ title, items, cta }) => {
                     mt={{ base: '35px', xl: '25px' }}
                     textDecoration="underline"
                     fontWeight="500"
-                >
-                    <NextLink href={cta?.url} passHref>
-                        <Link>{cta?.title}</Link>
-                    </NextLink>
-                </Box>
+                ></Box>
             </Container>
         </Box>
     );
 };
 
-export default CarouselProducts;
+export default BgImgProductList;

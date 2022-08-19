@@ -1,7 +1,5 @@
 import Container from 'components/common/Container';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import CustomSlider from '../CustomSlider';
 import Tile from './Tile';
 import { Box } from '@chakra-ui/react';
 
@@ -32,7 +30,7 @@ const CarouselTiles = ({ data }) => {
     return (
         <Box bg="brand" color="white" pt="25px" pb="40px" overflow="hidden" mb="30px">
             <Container>
-                <Slider {...settings} className="tiles-slider">
+                <CustomSlider {...settings} className="tiles-slider">
                     {data?.map(({ title, image, description, cta }, index) => (
                         <Box p="0 15px" key={`tile-carousel-item-${index}`}>
                             <Tile
@@ -44,7 +42,7 @@ const CarouselTiles = ({ data }) => {
                             />
                         </Box>
                     ))}
-                </Slider>
+                </CustomSlider>
             </Container>
         </Box>
     );

@@ -1,9 +1,6 @@
 import { Text, Box, useBreakpointValue } from '@chakra-ui/react';
-import NextLink from 'next/link';
 import Container from '../Container';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import CustomSlider from '../CustomSlider';
 import FeaturedProduct from '../FeaturedProduct';
 
 const CarouselProductGrid = ({ title, items, cta }) => {
@@ -41,7 +38,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
 
     const productsSlider = useBreakpointValue({
         base: (
-            <Slider {...settings} className="products-slider">
+            <CustomSlider {...settings} className="products-slider">
                 {items?.map((item, index) => {
                     return (
                         <Box p="0 5px" key={`grid-product-mobile-${index}`}>
@@ -51,10 +48,10 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                         </Box>
                     );
                 })}
-            </Slider>
+            </CustomSlider>
         ),
         md: (
-            <Slider {...settings} className="products-slider">
+            <CustomSlider {...settings} className="products-slider">
                 {groupedProductsByTwo?.map((products, index) => {
                     return (
                         <Box p="0 10px" key={`grid-products-${index}`}>
@@ -66,7 +63,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                         </Box>
                     );
                 })}
-            </Slider>
+            </CustomSlider>
         )
     });
 
