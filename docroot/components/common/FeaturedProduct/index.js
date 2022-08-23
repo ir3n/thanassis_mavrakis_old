@@ -60,12 +60,12 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
             <Box ml="10px" textAlign="center" width={'100%'}>
                 <Box display={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
                     <Box display="flex" flexDir={'column'} alignItems="flex-start">
-                        <Text textStyle={'md'} maxW="220px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
+                        <Text textStyle={'text'} maxW="220px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
                             {title}
                         </Text>
                         <Box
                             as={'p'}
-                            textStyle={'md'}
+                            textStyle={'text'}
                             fontWeight="bold"
                             mb={'20px'}
                             color={'black'}

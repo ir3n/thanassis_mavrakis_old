@@ -37,7 +37,7 @@ const Newsletter = () => {
                                 SIGN UP
                             </Button>
                         </Flex>
-                        <Text as="p" textStyle="captionSm" maxW="340px">
+                        <Text as="p" textStyle="note" maxW="340px">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Erat odio interdum neque, nulla
                             lacinia commodo neque,
                         </Text>

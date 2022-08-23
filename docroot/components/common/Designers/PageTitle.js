@@ -8,14 +8,7 @@ export default function PageTitle() {
 
     return (
         <>
-            <Box
-                as={'h1'}
-                textStyle={'h1'}
-                textAlign={'center'}
-                py={'40px'}
-                color={'white'}
-                backgroundColor={'designersGreen'}
-            >
+            <Box as="h1" textStyle="titleMd" textAlign="center" py="40px">
                 {'Έλληνες Σχεδιαστές'}
             </Box>
         </>

@@ -19,7 +19,7 @@ import LandingListView from '../components/productsListing/LandingListView';
 
 async function getPageDataByType(pageProps, query, correctLocale) {
     let apiGetPageData, pageData;
-    switch (pageProps.type) {
+    switch (pageProps?.type) {
         case 'commerce_product':
             apiGetPageData = getProduct;
             break;
@@ -212,7 +212,7 @@ export default function Pages(props) {
     async function refreshPageDataByType(pageProps) {
         let apiGetPageData;
         const locale = router.locale;
-        switch (pageProps.type) {
+        switch (pageProps?.type) {
             case 'commerce_product':
                 apiGetPageData = getProduct;
                 break;

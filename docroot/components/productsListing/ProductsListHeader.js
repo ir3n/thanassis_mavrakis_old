@@ -40,7 +40,7 @@ const ProductListHeader = ({ info, breadcrumbs, isSearchResults, term }) => {
                     pt="48px"
                     pb="16px"
                 >
-                    <Text textStyle={'h1'} color="white">
+                    <Text textStyle={'titleMd'} color="white">
                         {isSearchResults ? t('searchResults') : name}
                     </Text>
 
@@ -51,7 +51,7 @@ const ProductListHeader = ({ info, breadcrumbs, isSearchResults, term }) => {
                         width="562px"
                         textAlign={'center'}
                         color="white"
-                        textStyle="sm"
+                        textStyle="text"
                         dangerouslySetInnerHTML={createDescriptionMarkup()}
                     />
                 </Box>

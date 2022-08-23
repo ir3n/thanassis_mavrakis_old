@@ -5,7 +5,7 @@ const Credits = () => {
     return (
         <Flex direction={{ base: 'column', xs: 'row' }} align="center" justifyContent="center" mt="20px">
             <Flex mb={{ base: '10px', xs: '0' }} align="end">
-                <Text textStyle="captionSm" color="white">
+                <Text textStyle="note" color="white">
                     Designed by
                 </Text>
                 <Link href="https://relevancedigital.com/">
@@ -20,7 +20,7 @@ const Credits = () => {
                 </Link>
             </Flex>
             <Flex align="end" ml={{ base: '0', xs: '30px' }}>
-                <Text textStyle="captionSm" color="white">
+                <Text textStyle="note" color="white">
                     Developed by
                 </Text>
                 <Link href="https://rocket-path.com/">

@@ -20,14 +20,7 @@ const BannerImageRight = ({ dark, text, image, title, cta, imageTitle, centerAli
                     maxW={{ base: '580px', md: '400px' }}
                     p={{ base: '30px 20px 40px', lg: '50px' }}
                 >
-                    <Text
-                        as="h4"
-                        fontSize={{ base: '20px', xl: '30px' }}
-                        lineHeight="1.2"
-                        fontWeight="700"
-                        mb="30px"
-                        maxW={{ base: '220px', md: 'unset' }}
-                    >
+                    <Text as="h4" textStyle="titleLg" fontWeight="700" mb="30px" maxW={{ base: '220px', md: 'unset' }}>
                         {title}
                     </Text>
                     {imageTitle ? <Image src={imageTitle} mb="30px" maxW={{ base: '200px', xl: 'full' }} /> : ''}

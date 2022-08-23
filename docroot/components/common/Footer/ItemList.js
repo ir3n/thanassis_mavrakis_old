@@ -5,7 +5,7 @@ const ItemList = ({ title, relative }) => {
     return title ? (
         <ListItem pb="0px">
             <NextLink passHref href={relative} prefetch={false}>
-                <Link textStyle="md">{title}</Link>
+                <Link textStyle="text">{title}</Link>
             </NextLink>
         </ListItem>
     ) : null;

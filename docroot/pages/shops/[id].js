@@ -48,7 +48,7 @@ export default function Shops() {
                             {shopData?.image ? <Image src={shopData?.image} /> : ''}
                             {shopData?.body ? (
                                 <Text
-                                    textStyle={'md'}
+                                    textStyle={'text'}
                                     lineHeight={'24px'}
                                     borderBottom={'1px solid #919191'}
                                     py={'20px'}
@@ -61,14 +61,14 @@ export default function Shops() {
                             <Box pt={'20px'} display={'flex'} flexDirection={{ sm: 'column', lg: 'row' }}>
                                 {shopData?.shop_hours ? (
                                     <Box w={{ sm: '100%', lg: '50%' }}>
-                                        <Text textStyle={'md'} dangerouslySetInnerHTML={createShopsHours()} />
+                                        <Text textStyle={'text'} dangerouslySetInnerHTML={createShopsHours()} />
                                     </Box>
                                 ) : (
                                     ''
                                 )}
                                 {shopData?.shop_contact ? (
                                     <Box w={{ sm: '100%', lg: '50%' }}>
-                                        <Text textStyle={'md'} dangerouslySetInnerHTML={createShopsContact()} />
+                                        <Text textStyle={'text'} dangerouslySetInnerHTML={createShopsContact()} />
                                     </Box>
                                 ) : (
                                     ''

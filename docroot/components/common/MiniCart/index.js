@@ -76,7 +76,7 @@ export const MiniCart = ({ boxSize }) => {
     };
 
     const btnRef = useRef();
-    const drawerSize = useBreakpointValue({ base: 'full', sm: 'full', md: 'lg' });
+    const drawerSize = useBreakpointValue({ base: 'full', sm: 'full', md: 'textLg' });
 
     return (
         <>
@@ -150,7 +150,7 @@ export const MiniCart = ({ boxSize }) => {
                     <DrawerBody p={'15px 0'}>
                         {!cartData || !cartData.order_items || cartData.order_items.length === 0 ? (
                             <Box w={'100%'} h={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'}>
-                                <Text textStyle={'h4'}>{t('empty')}</Text>
+                                <Text textStyle={'titleMd'}>{t('empty')}</Text>
                             </Box>
                         ) : null}
                         {cartData?.order_items && cartData?.order_items.length > 0 ? (
@@ -183,7 +183,7 @@ export const MiniCart = ({ boxSize }) => {
                                 {cartData?.adjustments.map((i) => {
                                     return (
                                         <Discount
-                                            type={i.type}
+                                            type={i?.type}
                                             amount_formatted={i.amount_formatted}
                                             label={i.label}
                                             key={`discount-${i}`}
@@ -202,8 +202,8 @@ export const MiniCart = ({ boxSize }) => {
                         >
                             <Box display={'flex'} flexDirection={'column'} w={'100%'}>
                                 <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>
-                                    <Text textStyle={'h4'}>{t('total')}</Text>
-                                    <Text textStyle={'h4'}>{cartData.total_price}</Text>
+                                    <Text textStyle={'titleMd'}>{t('total')}</Text>
+                                    <Text textStyle={'titleMd'}>{cartData.total_price}</Text>
                                 </Box>
                                 <Box display={'flex'} flexDirection={'column'}>
                                     <NextLink href={'/cart' || '#'} passHref prefetch={false}>
@@ -212,7 +212,7 @@ export const MiniCart = ({ boxSize }) => {
                                                 variant="outline"
                                                 w={'100%'}
                                                 textTransform={'uppercase'}
-                                                textStyle={'md'}
+                                                textStyle={'text'}
                                                 my={'10px'}
                                             >
                                                 {t('mycart')}
@@ -220,7 +220,7 @@ export const MiniCart = ({ boxSize }) => {
                                         </Link>
                                     </NextLink>
 
-                                    <Button variant="primary" w={'100%'} textTransform={'uppercase'} textStyle={'md'}>
+                                    <Button variant="primary" w={'100%'} textTransform={'uppercase'} textStyle={'text'}>
                                         {t('checkout')}
                                     </Button>
                                 </Box>

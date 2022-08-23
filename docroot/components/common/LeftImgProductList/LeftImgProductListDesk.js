@@ -18,7 +18,7 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
     return (
         <Box p="25px 0 40px" bg="lightBg">
             <Container>
-                <Text as="h3" textStyle="h4" color="brand" mb={'10px'} align="center">
+                <Text as="h3" textStyle="titleMd" color="brand" mb={'10px'} align="center">
                     {title}
                 </Text>
                 <Text as="p" maxW="470px" align="center" m="0 auto">

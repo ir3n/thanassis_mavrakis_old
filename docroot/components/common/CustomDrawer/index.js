@@ -115,12 +115,12 @@ const CustomDrawer = ({
                         {!second ? (
                             <DrawerFooter position="sticky" left={0} right={0} bottom={0}>
                                 <Button width={'158px'} mr={3} variant="mobileDrawer" onClick={onClose}>
-                                    <Text textStyle="md" textTransform={'uppercase'}>
+                                    <Text textStyle="text" textTransform={'uppercase'}>
                                         {t('clean')}
                                     </Text>
                                 </Button>
                                 <Button width={'158px'} variant="mobileDrawer" mr={3} onClick={onClose}>
-                                    <Text textStyle="md" textTransform={'uppercase'}>
+                                    <Text textStyle="text" textTransform={'uppercase'}>
                                         {t('apply')}
                                     </Text>
                                 </Button>

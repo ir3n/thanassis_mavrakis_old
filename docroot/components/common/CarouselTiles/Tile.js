@@ -8,13 +8,13 @@ const Tile = ({ title, image, description, cta }) => {
 
     return (
         <VStack spacing={4}>
-            <Text as="h4" textStyle="h4" fontWeight="100" dangerouslySetInnerHTML={createMarkup()}></Text>
+            <Text as="h4" textStyle="titleMd" fontWeight="100" dangerouslySetInnerHTML={createMarkup()}></Text>
             <NextLink href={cta?.url || ''} passHref>
                 <Link>
                     <Image src={image} alt={title} transition="0.4s ease" _hover={{ transform: 'translateY(-4px)' }} />
                 </Link>
             </NextLink>
-            <Text as="p" textStyle="md" align="center" noOfLines={2}>
+            <Text as="p" textStyle="text" align="center" noOfLines={2}>
                 {description}
             </Text>
             <NextLink href={cta?.url || ''} passHref>

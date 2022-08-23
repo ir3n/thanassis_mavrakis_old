@@ -69,15 +69,14 @@ const buttonpage = () => {
                     </GridItem>
                 </Grid>
 
-                <Box textStyle="h1">Text h1</Box>
-                <Box textStyle="h2">Text h2</Box>
-                <Box textStyle="h3">Text h3</Box>
-                <Box textStyle="h4">Text h4</Box>
-                <Box textStyle="lg">Text lg</Box>
-                <Box textStyle="md">Text md</Box>
-                <Box textStyle="sm">Text sm</Box>
+                <Box textStyle="titleSm">Text titleSm</Box>
+                <Box textStyle="titleMd">Text titleMd</Box>
+                <Box textStyle="titleLg">Text titleLg</Box>
+                <Box textStyle="subtitle">Text subtitle</Box>
+                <Box textStyle="textLg">Text textLg</Box>
+                <Box textStyle="text">Text text</Box>
                 <Box textStyle="caption">Text caption</Box>
-                <Box textStyle="captionSm">Text captionSm</Box>
+                <Box textStyle="note">Text note</Box>
             </Box>
         </Box>
     );

@@ -33,7 +33,7 @@ const ResetPass = () => {
                     >
                         {t('save')}
                     </Button>
-                    <Box textStyle={'md'}>
+                    <Box textStyle={'text'}>
                         <FormCheckBox
                             label={"Με την εγγραφή σας αποδέχεστε την Πολιτική Απορρήτου και τους 'Ορους Χρήσης'"}
                         />

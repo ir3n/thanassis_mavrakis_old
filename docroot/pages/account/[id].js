@@ -49,55 +49,109 @@ export default function Account() {
         switch (router.asPath) {
             case '/account/general':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('myAccount')}
                     </Box>
                 );
             case '/account/information':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('myAccount')}
                     </Box>
                 );
             case '/account/addresses':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('addresses')}
                     </Box>
                 );
             case '/account/orders':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('myOrders')}
                     </Box>
                 );
             case '/account/newsletters':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('subscribeNewsletter')}
                     </Box>
                 );
             case '/account/privacy_settings':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('privacySettings')}
                     </Box>
                 );
             case '/account/subscription':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('memberInformation')}
                     </Box>
                 );
             case '/account/reset_pass':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('resetPass')}
                     </Box>
                 );
             case '/account/sign_out':
                 return (
-                    <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'45px'} borderBottom={'1px solid #919191'}>
+                    <Box
+                        as={'h1'}
+                        textStyle={'titleMd'}
+                        textAlign={'center'}
+                        py={'45px'}
+                        borderBottom={'1px solid #919191'}
+                    >
                         {t('successfullyLoggedOut')}
                     </Box>
                 );

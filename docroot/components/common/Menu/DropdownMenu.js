@@ -6,11 +6,13 @@ import useTranslation from 'next-translate/useTranslation';
 
 const DropdownMenu = ({ selectedMenu }) => {
     const { t } = useTranslation('common');
-    const [dropdownMenuPosition, setDropdownMenuPosition] = useState(0);
+    const [dropdownMenuPosition, setDropdownMenuPosition] = useState('');
 
     useEffect(() => {
-        setDropdownMenuPosition(document.getElementById('mainMenu').clientHeight);
+        setDropdownMenuPosition(document.getElementById('mainMenu').clientHeight + 'px');
     }, []);
+
+    console.log(dropdownMenuPosition);
 
     return (
         <Box
@@ -28,7 +30,12 @@ const DropdownMenu = ({ selectedMenu }) => {
                         {selectedMenu?.submenu?.map(({ title, submenu }, index) =>
                             submenu && submenu.length > 0 ? (
                                 <VStack spacing={5} align="left" pb="50px" pr="50px" key={`dropdownItem-${index}`}>
-                                    <Text color="brand" textStyle="menuParent" textTransform={'uppercase'}>
+                                    <Text
+                                        color="brand"
+                                        textStyle="caption"
+                                        textTransform={'uppercase'}
+                                        fontWeight="600"
+                                    >
                                         {title}
                                     </Text>
 
@@ -48,14 +55,14 @@ const DropdownMenu = ({ selectedMenu }) => {
                                     ))}
                                 </VStack>
                             ) : (
-                                <Link color="brand" textStyle="menuParent" mb="20px" mr="50px">
+                                <Link color="brand" textStyle="caption" mb="20px" mr="50px" fontWeight="600">
                                     {title}
                                 </Link>
                             )
                         )}
                     </Flex>
                     <Box>
-                        <Text textStyle="menuParent" mb="10px" color="brand">
+                        <Text textStyle="caption" mb="10px" color="brand" fontWeight="600">
                             Render menu marketing post here
                         </Text>
                         <img src={'/assets/dummyimage.png'} alt="dummy image" />

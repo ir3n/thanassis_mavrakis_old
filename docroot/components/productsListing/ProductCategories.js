@@ -9,7 +9,7 @@ const ProductCategories = ({ info }) => {
         <>
             <Box display="flex" mt="88px">
                 <Box mr="24px">
-                    <Text textStyle={'md'} width="264px" fontWeight="bold" mb="1rem" as="h3">
+                    <Text textStyle={'text'} width="264px" fontWeight="bold" mb="1rem" as="h3">
                         {t('categories')}
                     </Text>
                     {info?.termChildren?.map((item) => {
@@ -17,7 +17,7 @@ const ProductCategories = ({ info }) => {
                             <Box key={item.cleanUrl} as="div" mb="1rem">
                                 <NextLink href={item?.cleanUrl} passHref>
                                     <Link>
-                                        <Text cursor={'pointer'} textStyle={'md'} width="262px">
+                                        <Text cursor={'pointer'} textStyle={'text'} width="262px">
                                             {item.title}
                                         </Text>
                                     </Link>
@@ -39,7 +39,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={item.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {item.link.title}
                                         </Text>
                                     </GridItem>
@@ -62,7 +62,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={info?.sections[0]?.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {info?.sections[0]?.link.title}
                                         </Text>
                                     </Box>
@@ -83,7 +83,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={info?.sections[1]?.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {info?.sections[1]?.link.title}
                                         </Text>
                                     </Box>
@@ -104,7 +104,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={info?.sections[2]?.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {info?.sections[2]?.link.title}
                                         </Text>
                                     </Box>
@@ -125,7 +125,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={info?.sections[3]?.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {info?.sections[3]?.link.title}
                                         </Text>
                                     </Box>
@@ -146,7 +146,7 @@ const ProductCategories = ({ info }) => {
                                         alignItems="center"
                                         backgroundImage={info?.sections[4]?.image}
                                     >
-                                        <Text textStyle={'h3'} color="white">
+                                        <Text textStyle={'titleMd'} color="white">
                                             {info?.sections[4]?.link.title}
                                         </Text>
                                     </Box>

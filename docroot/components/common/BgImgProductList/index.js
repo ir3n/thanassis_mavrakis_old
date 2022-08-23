@@ -44,7 +44,13 @@ const BgImgProductList = ({ image, items, cta }) => {
             <Container marginTop="-390px">
                 <NextLink href={cta?.url} passHref>
                     <Link>
-                        <Text as="h3" textStyle="h4" color="white" mb={{ base: '25px', lg: '40px' }} align="center">
+                        <Text
+                            as="h3"
+                            textStyle="titleMd"
+                            color="white"
+                            mb={{ base: '25px', lg: '40px' }}
+                            align="center"
+                        >
                             {cta?.title}
                         </Text>
                     </Link>

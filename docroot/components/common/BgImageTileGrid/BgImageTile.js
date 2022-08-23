@@ -26,7 +26,7 @@ const BgImageTile = ({ title, image, cta }) => {
                         right="40px"
                         color="white"
                     >
-                        <Text as="h4" fontSize="30px" fontWeight="800" mb="25px">
+                        <Text as="h4" textStyle="titleLg" fontWeight="800" mb="25px">
                             {title}
                         </Text>
                         <Button variant={'outlineWhite'} w={{ base: 'full', md: 'auto' }} marginTop="auto">

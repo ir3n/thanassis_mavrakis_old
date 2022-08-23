@@ -6,7 +6,7 @@ export default function Copyright({}) {
 
     return (
         <Box color="grey">
-            <Box as="p" textStyle="captionSm">
+            <Box as="p" textStyle="note">
                 © {new Date().getFullYear()}
             </Box>
         </Box>

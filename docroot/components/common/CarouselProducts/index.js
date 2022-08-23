@@ -36,7 +36,7 @@ const CarouselProducts = ({ title, items, cta }) => {
     return (
         <Box p="30px 0" bg="lightBg">
             <Container>
-                <Text as="h3" textStyle="h4" color="brand" mb={'30px'} align="center">
+                <Text as="h3" textStyle="titleMd" color="brand" mb={'30px'} align="center">
                     {title}
                 </Text>
                 <CustomSlider {...settings} className="products-slider">

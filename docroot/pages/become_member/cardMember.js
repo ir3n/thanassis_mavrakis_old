@@ -18,16 +18,16 @@ const CardMember = ({ color, image, text, link, price }) => {
                     >
                         <Box display="flex" justifyContent={'space-between'}>
                             <Box>
-                                <Text width={'316px'} mr="55px" mb="1rem" textStyle={'h2'} color="white">
+                                <Text width={'316px'} mr="55px" mb="1rem" textStyle={'titleMd'} color="white">
                                     {text}
                                 </Text>
                                 <Link>
-                                    <Text textStyle={'md'} color="white">
+                                    <Text textStyle={'text'} color="white">
                                         {link}
                                     </Text>
                                 </Link>
                             </Box>
-                            <Text textStyle={'h2'} color="white">
+                            <Text textStyle={'titleMd'} color="white">
                                 {price}
                             </Text>
                         </Box>

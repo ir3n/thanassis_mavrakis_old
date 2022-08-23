@@ -9,7 +9,7 @@ export default function FooterInfo({}) {
             <Box display={{ base: 'flex', xl: 'block' }}>
                 <Text
                     as="h4"
-                    textStyle="sm"
+                    textStyle="text"
                     color="grey"
                     py={{ base: '0', xl: '15px' }}
                     w={{ base: '50%', xl: 'auto' }}
@@ -17,7 +17,7 @@ export default function FooterInfo({}) {
                 >
                     CONTACT INFO
                 </Text>
-                <VStack textStyle="sm" color="lightGrey" spacing="10px" align={{ base: 'start', xl: 'end' }}>
+                <VStack textStyle="text" color="lightGrey" spacing="10px" align={{ base: 'start', xl: 'end' }}>
                     <Text>
                         E-shop: <a href="tel:2311815800">2311 815800</a>
                     </Text>
@@ -33,7 +33,7 @@ export default function FooterInfo({}) {
             <Box display={{ base: 'flex', xl: 'block' }} mt={{ base: '25px', xl: '0' }} align={{ xl: 'right' }}>
                 <Text
                     as="h4"
-                    textStyle="sm"
+                    textStyle="text"
                     color="grey"
                     pb="10px"
                     pt={{ base: '0', xl: '15px' }}
@@ -42,7 +42,7 @@ export default function FooterInfo({}) {
                 >
                     OPENING HOURS
                 </Text>
-                <Text textStyle="sm" color="lightGrey" align={{ xl: 'right' }}>
+                <Text textStyle="text" color="lightGrey" align={{ xl: 'right' }}>
                     Monday-Friday: 09:00 - 17:00
                 </Text>
             </Box>

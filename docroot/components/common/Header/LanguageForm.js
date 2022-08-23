@@ -18,7 +18,7 @@ const LanguageForm = ({ color }) => {
 
             let path;
 
-            switch (pageProps.type) {
+            switch (pageProps?.type) {
                 case 'commerce_product':
                     path = `/product/${pageProps.id}`;
                     break;

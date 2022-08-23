@@ -39,23 +39,23 @@ export default function Cart() {
     return (
         <>
             <Box>
-                <Box as={'h1'} textStyle={'h1'} textAlign={'center'} py={'40px'} backgroundColor={'brand'}>
+                <Box as={'h1'} textStyle={'titleMd'} textAlign={'center'} py={'40px'} backgroundColor={'brand'}>
                     {t('mycartTitle')}
                 </Box>
                 <Container my={'40px'}>
                     <Box display={'flex'} borderBottom={'2px solid #FF8234'}>
                         <Box w={'40%'} display={'flex'}>
-                            <Text textStyle={'md'} pb={'8px'}>
+                            <Text textStyle={'text'} pb={'8px'}>
                                 {t('item')}
                             </Text>
                         </Box>
                         <Box w={{ base: '30%', lg: '20%' }}>
-                            <Text textStyle={'md'} pb={'8px'}>
+                            <Text textStyle={'text'} pb={'8px'}>
                                 {t('price')}
                             </Text>
                         </Box>
                         <Box w={{ base: '30%', lg: '20%' }} textAlign={{ base: 'right', lg: 'center' }}>
-                            <Text textStyle={'md'} pb={'8px'}>
+                            <Text textStyle={'text'} pb={'8px'}>
                                 {t('quantity')}
                             </Text>
                         </Box>
@@ -64,7 +64,7 @@ export default function Cart() {
                             w={{ base: '25%', lg: '20%' }}
                             textAlign={{ lg: 'right' }}
                         >
-                            <Text textStyle={'md'} pb={'8px'}>
+                            <Text textStyle={'text'} pb={'8px'}>
                                 {t('subtotal')}
                             </Text>
                         </Box>
@@ -95,8 +95,13 @@ export default function Cart() {
                     <Box display={'flex'} justifyContent={'end'}>
                         <Box w={{ base: '100%', lg: '35%' }}>
                             {!cartData || !cartData.order_items || cartData.order_items.length === 0 ? null : (
-                                <Box display={'flex'} justifyContent={'end'} textAlign={'right'} p={'18px 0px 30px 0px'}>
-                                    <Text textStyle={'md'} pb={'8px'} pr={'20%'}>
+                                <Box
+                                    display={'flex'}
+                                    justifyContent={'end'}
+                                    textAlign={'right'}
+                                    p={'18px 0px 30px 0px'}
+                                >
+                                    <Text textStyle={'text'} pb={'8px'} pr={'20%'}>
                                         {t('total')}
                                     </Text>
                                     <Text textStyle={'sm'}>{cartData.total_price}</Text>
@@ -113,7 +118,7 @@ export default function Cart() {
                                 variant="primary"
                                 w={'75%'}
                                 textTransform={'uppercase'}
-                                textStyle={'md'}
+                                textStyle={'text'}
                                 mt={'12px'}
                             >
                                 {'checkout'}

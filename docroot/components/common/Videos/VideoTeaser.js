@@ -28,7 +28,7 @@ const VideoTeaser = ({ image, link, text }) => {
                 </Link>
             </Box>
 
-            <Text fontWeight="600" fontSize={{ base: '14px', lg: '18px' }} lineHeight="1.1">
+            <Text fontWeight="600" textStyle="subtitle">
                 {text}
             </Text>
         </VStack>

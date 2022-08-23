@@ -9,7 +9,7 @@ const BecomeMember = () => {
     return (
         <>
             <Box display="flex" justifyContent={'center'} background={'#D13A3A'}>
-                <Text as={'h1'} py="48px" color={'white'} textStyle="h1">
+                <Text as={'h1'} py="48px" color={'white'} textStyle="titleMd">
                     {t('member')}
                 </Text>
             </Box>
@@ -58,12 +58,12 @@ const BecomeMember = () => {
                 <Image src="/assets/Frame.png" />
             </Box>
             <Box display="flex" justifyContent={'center'} mt="1rem">
-                <Text textStyle={'h3'} color="black">
+                <Text textStyle={'titleMd'} color="black">
                     Benaki Contemporaries
                 </Text>
             </Box>
             <Box display="flex" justifyContent={'center'} mt="1rem">
-                <Text textStyle={'md'} width="744px" color="black" textAlign={'center'}>
+                <Text textStyle={'text'} width="744px" color="black" textAlign={'center'}>
                     Το πρόγραμμα του Μουσείου, Benaki Contemporaries, έχει ως στόχο να βοηθήσει το εκθεσιακό πρόγραμμα
                     του Μουσείου στηρίζοντας τις εκθέσεις σύγχρονης τέχνης.
                 </Text>

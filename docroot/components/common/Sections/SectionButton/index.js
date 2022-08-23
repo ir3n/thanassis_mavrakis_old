@@ -17,11 +17,11 @@ const SectionButton = ({ cta, backgroundColor, text }) => {
             alignItems={'center'}
             textAlign={'center'}
         >
-            <Box as={'h3'} textStyle="h3">
+            <Box as={'h3'} textStyle="titleMd">
                 {text}
             </Box>
             <NextLink href={cta?.url || ''}>
-                <Button variant={'outline'} size={'md'}>
+                <Button variant={'outline'} size={'text'}>
                     {cta?.title}
                 </Button>
             </NextLink>

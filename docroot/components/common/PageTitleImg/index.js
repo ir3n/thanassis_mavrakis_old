@@ -14,7 +14,7 @@ export default function PageTitleImg({ title, bgColor, image }) {
             ) : (
                 <Box
                     as={'h1'}
-                    textStyle={'h1'}
+                    textStyle={'titleMd'}
                     textAlign={'center'}
                     py={'40px'}
                     color={'white'}

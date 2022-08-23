@@ -5,7 +5,7 @@ const TitleSidebar = ({ title }) => {
     const { t } = useTranslation('account');
 
     return (
-        <Box textStyle={'md'} textTransform={'uppercase'} p={'12px 0 18px 0'}>
+        <Box textStyle={'text'} textTransform={'uppercase'} p={'12px 0 18px 0'}>
             {t(title)}
         </Box>
     );

@@ -30,7 +30,7 @@ const CarouselTiles = ({ title, data }) => {
     return (
         <Box bg="darkGrey" color="white" py="35px" overflow="hidden" mb="50px">
             <Container>
-                <Text as="h2" textStyle="h4" align="center" mb="25px">
+                <Text as="h2" textStyle="titleMd" align="center" mb="25px">
                     {title}
                 </Text>
                 <CustomSlider {...settings} className="catetory-tiles-slider">

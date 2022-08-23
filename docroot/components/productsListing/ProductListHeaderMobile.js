@@ -40,7 +40,7 @@ const ProductListHeaderMobile = ({ info, breadcrumbs, isSearchResults, term }) =
                     justifyContent={'center'}
                     pt="48px"
                 >
-                    <Text textStyle={'h2'} color="white">
+                    <Text textStyle={'titleMd'} color="white">
                         {isSearchResults ? t('searchResults') : name}
                     </Text>
                     <Text

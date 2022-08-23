@@ -33,7 +33,7 @@ const LeftImgProductListMob = ({ title, text, items, image, link }) => {
                 </Link>
             </NextLink>
             <Container>
-                <Text as="h3" textStyle="h4" color="brand" mb={'10px'} align="center">
+                <Text as="h3" textStyle="titleMd" color="brand" mb={'10px'} align="center">
                     {title}
                 </Text>
                 <Text as="p" maxW="470px" align="center" m="0 auto 15px">

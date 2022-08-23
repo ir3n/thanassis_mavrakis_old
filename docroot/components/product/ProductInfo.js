@@ -66,7 +66,15 @@ export default function ProductInfo({
     }, [defaultVariation.id]);
 
     return (
-        <Box display="flex" id="info-box" overflowX={'hidden'} flexDir={'column'} mt="15px" width={'456px'} maxWidth="100%">
+        <Box
+            display="flex"
+            id="info-box"
+            overflowX={'hidden'}
+            flexDir={'column'}
+            mt="15px"
+            width={'456px'}
+            maxWidth="100%"
+        >
             <Box
                 display="flex"
                 flexDir={'row'}
@@ -77,7 +85,7 @@ export default function ProductInfo({
                 textAlign="left"
                 mb={'8px'}
             >
-                <Text as={'h1'} textStyle="lg">
+                <Text as={'h1'} textStyle="textLg">
                     {title}
                 </Text>
             </Box>
@@ -89,7 +97,7 @@ export default function ProductInfo({
                 ) : (
                     ''
                 )}
-                <Box as={'p'} fontWeight={700} textStyle="lg" mb={'20px'} color={'text.primary'} mr="12px">
+                <Box as={'p'} fontWeight={700} textStyle="textLg" mb={'20px'} color={'text.primary'} mr="12px">
                     {sizeData ? sizeData[0]?.price : defaultVariation.price}
                 </Box>
                 {defaultVariation.discount_percentage ? (
@@ -138,7 +146,7 @@ export default function ProductInfo({
                     </Text>
                     {sizeData ? sizeData[0]?.sku : masterSku}
                 </Text>
-                <Text textStyle={'caption'} fontWeight="bold">
+                <Text textStyle="caption" fontWeight="bold">
                     {availability}
                 </Text>
             </Box>
@@ -154,7 +162,7 @@ export default function ProductInfo({
                             setDetailsIsClicked(!detailsIsClicked);
                         }}
                     >
-                        <Box textStyle={'md'}>{t('description')}</Box>
+                        <Box textStyle={'text'}>{t('description')}</Box>
                         {!detailsIsClicked ? (
                             <Box fontSize="24px" padding={'4px'}>
                                 <CrossIcon />
@@ -168,7 +176,7 @@ export default function ProductInfo({
                     <AccordionPanel px="0px" pt="24px" pb="20px">
                         <Text
                             as="p"
-                            textStyle="md"
+                            textStyle="text"
                             dangerouslySetInnerHTML={{
                                 __html: description
                             }}
@@ -186,7 +194,7 @@ export default function ProductInfo({
                         _focus={{ boxShadow: 'none' }}
                         _hover={{ bg: 'white' }}
                     >
-                        <Box textStyle={'md'}>{t('details')}</Box>
+                        <Box textStyle={'text'}>{t('details')}</Box>
                         {!infoIsClicked ? (
                             <Box fontSize="24px" padding={'4px'}>
                                 <CrossIcon />
@@ -199,10 +207,10 @@ export default function ProductInfo({
                     </AccordionButton>
                     {dimension?.map(({ key, value }, index) => (
                         <AccordionPanel px="0px" pt="24px" pb="20px" key={key}>
-                            <Text textStyle={'md'} fontWeight="bold" mb="16px">
+                            <Text textStyle={'text'} fontWeight="bold" mb="16px">
                                 {key}
                             </Text>
-                            <Text textStyle={'md'}>{value}</Text>
+                            <Text textStyle={'text'}>{value}</Text>
                         </AccordionPanel>
                     ))}
                 </AccordionItem>

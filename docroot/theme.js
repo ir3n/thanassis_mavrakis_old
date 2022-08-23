@@ -39,53 +39,38 @@ const colors = {
 };
 
 const textStyles = {
-    h1: {
-        fontSize: ['40px', '48px'],
-        fontWeight: '700',
-        lineHeight: ['48px', '56px']
+    titleLg: {
+        fontSize: ['26px', '26px', '26px', '26px', '30px'],
+        lineHeight: '1.2'
     },
-    h2: {
-        fontSize: ['30px', '30px', '30px', '30px', '38px'],
-        fontWeight: '800',
-        textTransform: 'uppercase'
-    },
-    h3: {
-        fontSize: ['26px', '26px', '26px', '26px', '34px'],
-        fontWeight: '700'
-    },
-    h4: {
+    titleMd: {
         fontSize: ['20px', '20px', '20px', '20px', '26px'],
-        fontWeight: '700'
+        lineHeight: '1.5',
+        fontWeight: 700
     },
-    lg: {
-        fontSize: '16px',
-        fontWeight: '300',
-        lineHeight: '19px'
+    titleSm: {
+        fontSize: ['16px', '16px', '16px', '16px', '20px'],
+        lineHeight: '1.5'
     },
-    md: {
-        fontSize: '14px',
-        lineHeight: '16px',
-        fontWeight: '300'
+    subtitle: {
+        fontSize: '18px',
+        lineHeight: '1.2'
     },
-    sm: {
-        fontSize: ['12px', '12px', '12px', '12px', '14px'],
-        fontWeight: '300'
+    textLg: {
+        fontSize: ['14px', '14px', '14px', '14px', '16px'],
+        lineHeight: '1.5'
+    },
+    text: {
+        fontSize: ['12px', '14px', '14px', '14px', '14px'],
+        lineHeight: '1.5'
     },
     caption: {
         fontSize: '12px',
-        fontWeight: '400',
-        lineHeight: '16px'
+        lineHeight: '1.5'
     },
-    captionSm: {
+    note: {
         fontSize: '10px',
-        fontWeight: '400',
-        lineHeight: '12px'
-    },
-    menuParent: {
-        fontSize: '12px',
-        lineHeight: '14px',
-        fontWeight: '600',
-        textTransform: 'uppercase'
+        lineHeight: '1.5'
     }
 };
 

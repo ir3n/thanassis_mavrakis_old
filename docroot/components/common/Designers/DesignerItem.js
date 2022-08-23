@@ -13,7 +13,7 @@ export default function DesignerItem() {
                         <AspectRatio maxW="400px" ratio={1 / 1}>
                             <Image src={'/assets/designers-item.jpg'} objectFit="cover" alt={''} />
                         </AspectRatio>
-                        <Text as={'h4'} textStyle={'h4'} pt={'12px'}>
+                        <Text as={'h4'} textStyle={'titleMd'} pt={'12px'}>
                             {'Acrotectstudio'}
                         </Text>
                     </Link>

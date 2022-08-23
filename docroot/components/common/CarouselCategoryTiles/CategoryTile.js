@@ -16,7 +16,7 @@ const CategoryTile = ({ image, cta }) => {
             </NextLink>
             <NextLink href={cta?.url || ''} passHref>
                 <Link>
-                    <Text fontSize="18px" fontWeight="800" align="center">
+                    <Text textStyle="subtitle" fontWeight="800" align="center">
                         {cta?.title}
                     </Text>
                 </Link>

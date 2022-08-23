@@ -8,7 +8,7 @@ const SocialBlock = () => {
 
     return (
         <Box align="right">
-            <Text as="h4" textStyle="sm" color="grey" pb="15px">
+            <Text as="h4" textStyle="text" color="grey" pb="15px">
                 {t('FOLLOW US')}
             </Text>
             <SocialIcons arr={social} />

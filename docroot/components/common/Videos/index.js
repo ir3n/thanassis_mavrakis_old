@@ -7,7 +7,7 @@ const Videos = ({ title, cta, items }) => {
     return (
         <Box py={{ base: '50px', xl: '80px' }}>
             <Container>
-                <Text as="h3" textStyle="h4" color="brand" mb={'30px'} align="center">
+                <Text as="h3" textStyle="titleMd" color="brand" mb={'30px'} align="center">
                     {title}
                 </Text>
                 <Grid templateColumns={{ base: '', sm: 'repeat(3, 1fr)' }} gap={{ base: '10px', xl: '45px' }}>

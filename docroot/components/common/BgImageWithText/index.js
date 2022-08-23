@@ -15,10 +15,10 @@ const BgImageWithText = ({ image, icon, title, text, cta }) => {
             <Box backgroundColor="rgba(33, 33, 33, 0.9)" position="absolute" top="0" left="0" w="full" h="100%"></Box>
             <Box align="center" color="white" p="0 50px 20px 50px" position="relative" zIndex="1">
                 <Image src={icon} width="50px" alt={title} margin="auto" />
-                <Text as="h3" textStyle="h4" mt={{ base: '40px', lg: '15px' }} mb="15px">
+                <Text as="h3" textStyle="titleMd" mt={{ base: '40px', lg: '15px' }} mb="15px">
                     {title}
                 </Text>
-                <Text as="p" textStyle="md" my="15px" maxW="400px" m="auto">
+                <Text as="p" textStyle="text" my="15px" maxW="400px" m="auto">
                     {text}
                 </Text>
                 <Box mt="50px">

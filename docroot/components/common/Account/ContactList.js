@@ -5,7 +5,7 @@ const ContactList = () => {
     const { t } = useTranslation('account');
 
     return (
-        <Box textStyle={'md'}>
+        <Box textStyle={'text'}>
             <Text pb={'8px'}>{t('storeSupport')}</Text>
             <Text pb={'8px'}>{'the-shop@benaki.org'}</Text>
             <Text pb={'30px'}>{'+30 210 367 1045'}</Text>
