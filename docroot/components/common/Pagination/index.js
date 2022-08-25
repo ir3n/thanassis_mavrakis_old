@@ -23,6 +23,8 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
             ? endingPage - 1
             : currentpage + 1;
 
+    console.log('totalPages ', totalPages);
+
     return (
         <Box my={'20px'} justifyContent={'center'} alignItems={'center'} display={'flex'} flexDirection={'row'}>
             {!first ? (

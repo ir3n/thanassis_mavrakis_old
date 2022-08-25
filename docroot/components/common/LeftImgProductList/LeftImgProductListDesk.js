@@ -2,7 +2,7 @@ import { Text, Box, Grid, GridItem, Image, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import CustomSlider from '../CustomSlider';
-import FeaturedProduct from '../FeaturedProduct';
+import ProductTeaser from '../ProductTeaser';
 
 const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
     const settings = {
@@ -42,7 +42,7 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                             {items?.map((item, index) => {
                                 return (
                                     <Box p="0 5px" key={`image-carousel-product-${index}`}>
-                                        <FeaturedProduct />
+                                        <ProductTeaser />
                                     </Box>
                                 );
                             })}

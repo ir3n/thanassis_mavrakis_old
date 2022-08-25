@@ -1,7 +1,7 @@
 import { Text, Box, useBreakpointValue } from '@chakra-ui/react';
 import Container from '../Container';
 import CustomSlider from '../CustomSlider';
-import FeaturedProduct from '../FeaturedProduct';
+import ProductTeaser from '../ProductTeaser';
 
 const CarouselProductGrid = ({ title, items, cta }) => {
     const settings = {
@@ -43,7 +43,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                     return (
                         <Box p="0 5px" key={`grid-product-mobile-${index}`}>
                             <Box bg="lightBg">
-                                <FeaturedProduct image={item?.hover_image} />
+                                <ProductTeaser image={item?.hover_image} />
                             </Box>
                         </Box>
                     );
@@ -57,7 +57,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                         <Box p="0 10px" key={`grid-products-${index}`}>
                             {products?.map((item, index) => (
                                 <Box bg="lightBg" mb="20px" key={`grid-product-${index}`}>
-                                    <FeaturedProduct image={item?.hover_image} />
+                                    <ProductTeaser image={item?.hover_image} />
                                 </Box>
                             ))}
                         </Box>

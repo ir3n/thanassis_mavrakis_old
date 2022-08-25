@@ -2,7 +2,7 @@ import { Box, Grid, GridItem } from '@chakra-ui/layout';
 import useProducts from 'hooks/useProducts';
 import useCart from 'hooks/useCart';
 
-import FeaturedProduct from 'components/common/FeaturedProduct';
+import ProductTeaser from 'components/common/ProductTeaser';
 
 import testImage from 'public/assets/test_image.jpg';
 import { RepeatClockIcon } from '@chakra-ui/icons';
@@ -40,7 +40,7 @@ export default function UI() {
                                 index
                             ) => (
                                 <GridItem rowSpan={1} key={`Products-${index}`}>
-                                    <FeaturedProduct
+                                    <ProductTeaser
                                         product_id={product_id}
                                         tags={tags}
                                         onlineExclusive={onlineExclusive}

@@ -27,6 +27,7 @@ const colors = {
     brand: '#000000',
     white: '#FFFFFF',
     lightBg: '#F6F6F6',
+    lightBeize: '#F9F9F9',
     darkGrey: '#181818',
     grey: '#555555',
     mediumGrey: '#A2A2A2',
@@ -35,7 +36,8 @@ const colors = {
     green: '#1CA25A',
     red: '#ED1C24',
     border: '#C4C4C4',
-    newsletter: '#E4E4E4'
+    newsletter: '#E4E4E4',
+    blue: '#578AB9'
 };
 
 const textStyles = {

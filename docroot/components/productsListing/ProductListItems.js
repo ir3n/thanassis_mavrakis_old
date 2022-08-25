@@ -1,10 +1,9 @@
 import { Box, Button, Flex, Grid, GridItem, useBreakpointValue } from '@chakra-ui/react';
-import FeaturedProduct from 'components/common/FeaturedProduct';
+import ProductTeaser from 'components/common/ProductTeaser';
 import useTranslation from 'next-translate/useTranslation';
 // import { getFormattedFilters } from 'utils/helpers';
 // import Filter from 'components/common/Filter';
 import SelectedFilters from 'components/productsListing/SelectedFilters';
-
 import Pagination from 'components/common/Pagination';
 
 const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFilters, handleRemove }) => {
@@ -27,20 +26,20 @@ const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFi
                 >
                     {data?.map(
                         (
-                            { image, path, cleanUrl, title, price, product_id, mastersku, discount_percentage },
+                            { teaser_image, url, brand, title, price, product_id, mastersku, discount_percentage },
                             index
                         ) => (
-                            <GridItem rowSpan={1} key={`Products-${index}`}>
-                                <FeaturedProduct
+                            <GridItem rowSpan={1} key={`Products-${index}`} id={index}>
+                                <ProductTeaser
                                     key={product_id}
                                     title={title}
                                     product_id={product_id}
-                                    image={image}
+                                    image={teaser_image}
                                     price={price}
-                                    url={path}
+                                    brand={brand}
+                                    url={url}
                                     mastersku={mastersku}
                                     discount_percentage={discount_percentage}
-                                    // list_price_formatted={list_price_formatted}
                                 />
                             </GridItem>
                         )

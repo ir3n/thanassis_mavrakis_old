@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, Text, Link, Image } from '@chakra-ui/react';
+import { Box, Text, Link, Image, Button } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 import Tracking from 'utils/tracking';
 
-const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path, mastersku, discount_percentage }) => {
+const ProductTeaser = ({ title, product_id, key, image, price, url, brand, mastersku, discount_percentage }) => {
     const imageRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
 
@@ -19,10 +19,25 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
             display="flex"
             flexDir={'column'}
             alignItems="center"
-            // paddingX={'1rem'}
-            id="carousel-box"
+            backgroundColor={'white'}
             onClick={() => Tracking.selectItem(title, mastersku)}
+            pos={'relative'}
         >
+            <Box pos={'absolute'} textAlign={'center'} top={'8px'} left={'8px'} zIndex={'9999'}>
+                <Box w={'60px'} border={'1px solid black'} p={'8px'} textStyle={'caption'}>
+                    {'-20%'}
+                </Box>
+                <Box backgroundColor={'blue'} textStyle={'note'} color={'white'} p={'8px'} mt={'4px'}>
+                    {'WEB ONLY'}
+                </Box>
+            </Box>
+            <Box pos={'absolute'} top={'8px'} right={'8px'} zIndex={'9999'}>
+                <NextLink href={url || '#'} passHref prefetch={false}>
+                    <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
+                        <Image width={'26px'} height={'26px'} alt={title} src={'/assets/heart.png'} />
+                    </Link>
+                </NextLink>
+            </Box>
             <NextLink href={url || '#'} passHref prefetch={false}>
                 <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
                     <Box
@@ -60,19 +75,25 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
             <Box ml="10px" textAlign="center" width={'100%'}>
                 <Box display={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
                     <Box display="flex" flexDir={'column'} alignItems="flex-start">
-                        <Text textStyle={'text'} maxW="220px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
+                        <Text textStyle={'caption'} maxW="220px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
+                            <Box as={'span'} fontWeight={'700'}>
+                                {brand}
+                            </Box>
+                            {': '}
                             {title}
                         </Text>
                         <Box
                             as={'p'}
-                            textStyle={'text'}
-                            fontWeight="bold"
-                            mb={'20px'}
+                            textStyle={'textLg'}
+                            d={'flex'}
+                            alignItems={'end'}
+                            m={'10px 12px 20px 0'}
                             color={'black'}
-                            mr="12px"
-                            mt="10px"
                         >
                             {price}
+                            <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                {price}
+                            </Box>
                         </Box>
                         {discount_percentage ? (
                             <Box
@@ -90,11 +111,18 @@ const FeaturedProduct = ({ title, product_id, image, price, cleanUrl, url, path,
                     </Box>
                 </Box>
             </Box>
-            {/* <Button isLoading={loadingAddToCart} onClick={() => handleAddToCart()}>
-                Add to Cart
-            </Button> */}
+            <Button
+                variant="secondary"
+                w={'100%'}
+                color={'white'}
+                backgroundColor={'black'}
+                textTransform={'uppercase'}
+                textStyle={'caption'}
+            >
+                {'Add to Bag'}
+            </Button>
         </Box>
     );
 };
 
-export default FeaturedProduct;
+export default ProductTeaser;

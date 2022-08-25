@@ -2,7 +2,7 @@ import { Text, Box, Link, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import CustomSlider from '../CustomSlider';
-import FeaturedProduct from '../FeaturedProduct';
+import ProductTeaser from '../ProductTeaser';
 
 const BgImgProductList = ({ image, items, cta }) => {
     const settings = {
@@ -61,7 +61,7 @@ const BgImgProductList = ({ image, items, cta }) => {
                         return (
                             <Box p="0 20px 20px" key={`carousel-gifts-${index}`}>
                                 <Box bg="white" boxShadow="lg">
-                                    <FeaturedProduct image={item?.hover_image} />
+                                    <ProductTeaser image={item?.hover_image} />
                                 </Box>
                             </Box>
                         );

@@ -4,7 +4,7 @@ import Container from '../Container';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import FeaturedProduct from '../FeaturedProduct';
+import ProductTeaser from '../ProductTeaser';
 
 const LeftImgProductListMob = ({ title, text, items, image, link }) => {
     const settings = {
@@ -45,7 +45,7 @@ const LeftImgProductListMob = ({ title, text, items, image, link }) => {
                 {items?.map((item, index) => {
                     return (
                         <Box p="0 5px" key={`image-carousel-product-${index}`}>
-                            <FeaturedProduct />
+                            <ProductTeaser />
                         </Box>
                     );
                 })}

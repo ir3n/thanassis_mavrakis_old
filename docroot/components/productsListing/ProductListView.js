@@ -144,6 +144,8 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
         xxl: <ProductCategories info={productCategoryData?.info} />
     });
 
+    console.log('productCategoryData: ', productCategoryData);
+
     return (
         <>
             {productCategoryData ? (
@@ -157,7 +159,7 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                         <Box background={'white'}>{productListSettings}</Box>
                     </Box>
                     <Container>{productCategories}</Container>
-                    <Container>{numberOfProducts}</Container>
+                    {/* <Container>{numberOfProducts}</Container> */}
 
                     <Container>
                         <Box
