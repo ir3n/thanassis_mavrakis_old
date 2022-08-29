@@ -1,46 +1,35 @@
 import { useContext, useEffect, useState } from 'react';
-import { Text, Box, Button, Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@chakra-ui/react';
+import { Text, Box, Button, Flex, useToast, Image } from '@chakra-ui/react';
+import { getErrorMessage } from 'utils/helpers';
 import MainContext from 'context';
-
 import ProductQuantityBox from './ProductQuantityBox';
-import CrossIcon from '../../public/assets/cross-light.svg';
-import CloseIcon from '../../public/assets/exitbutton-light.svg';
-import ProductSize from './ProductSize';
-
+import { addToWishlist as apiAddToWishlist } from 'services/wishlist';
+import useWishlist from 'hooks/useWishlist';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import useCart from 'hooks/useCart';
+import MakeupComponent from './MakeupComponent';
+import FragranceComponent from './FragranceComponent';
+import PerfumeEnhancement from './PerfumeEnhancement';
+import { formatPrice } from 'utils/helpers';
 
-export default function ProductInfo({
-    title,
-    variations,
-    defaultVariation,
-    masterSku,
-    metalColor,
-    availability,
-    description,
-    productData,
-    dimension
-}) {
+export default function ProductInfo({ data, selectedVariation, setSelectedVariation }) {
     const { t } = useTranslation('product');
-    const [infoIsClicked, setInfoIsClicked] = useState(false);
-    const [detailsIsClicked, setDetailsIsClicked] = useState(false);
-    const [sizeData, setSizeData] = useState(null);
-
-    const { create: addToCart } = useCart();
 
     const router = useRouter();
-
-    const dataHandler = (productData) => {
-        setSizeData(productData);
-    };
+    const toast = useToast();
 
     const [loadingAddToCart, setLoadingAddToCart] = useState(false);
-    const [selectedVariation, setSelectedVariation] = useState(
-        defaultVariation?.id ? variations.find((i) => i.id === defaultVariation.id) : variations?.[0]
-    );
+    const [loadingAddToWishlist, setLoadingAddToWishlist] = useState(false);
+    const [finalPrice, setFinalPrice] = useState('');
 
     const { openCart } = useContext(MainContext);
+    const { create: addToCart } = useCart();
+    const { mutate: wishListMutate, wishListData } = useWishlist();
+
+    useEffect(() => {
+        selectedVariation && setFinalPrice(selectedVariation?.price_raw);
+    }, [selectedVariation]);
 
     const handleAddToCart = (product_id) => {
         setLoadingAddToCart(true);
@@ -59,162 +48,110 @@ export default function ProductInfo({
 
     const list = router.locale + router.asPath;
 
-    useEffect(() => {
-        setSelectedVariation(
-            defaultVariation?.id ? variations.find((i) => i.id === defaultVariation.id) : variations?.[0]
-        );
-    }, [defaultVariation.id]);
+    function isInWishList() {
+        return Boolean(wishListData.find((i) => i.variation_id === selectedVariation?.id));
+    }
+
+    const handleAddToWishlist = () => {
+        setLoadingAddToWishlist(true);
+        apiAddToWishlist(router.locale, {
+            product_variation: selectedVariation.id
+        })
+            .then(({ data }) => {
+                wishListMutate();
+                Tracking.addToWishlist(data);
+            })
+            .catch((err) => {
+                toast({
+                    description: getErrorMessage(err),
+                    position: 'top',
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true
+                });
+            })
+            .finally(() => {
+                setLoadingAddToWishlist(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+    };
 
     return (
-        <Box
-            display="flex"
-            id="info-box"
-            overflowX={'hidden'}
-            flexDir={'column'}
-            mt="15px"
-            width={'456px'}
-            maxWidth="100%"
-        >
-            <Box
-                display="flex"
-                flexDir={'row'}
-                width="406px"
-                height={'32px'}
-                justifyContent={'flex-start'}
-                alignContent={'center'}
-                textAlign="left"
-                mb={'8px'}
-            >
-                <Text as={'h1'} textStyle="textLg">
-                    {title}
+        <Box>
+            <Box>
+                <Flex justifyContent="space-between" mb="20px" align="center">
+                    <Text textStyle="caption" fontWeight="600" color="green" textTransform="uppercase">
+                        {data?.availability}
+                    </Text>
+                    <Box onClick={handleAddToWishlist} isLoading={loadingAddToWishlist} cursor="pointer">
+                        {isInWishList() ? (
+                            <Image src="/assets/heart-solid.svg" w="20px" h="20px" />
+                        ) : (
+                            <Image src="/assets/heart-outline.svg" w="20px" h="20px" />
+                        )}
+                    </Box>
+                </Flex>
+                <Flex justifyContent="space-between" align="flex-end">
+                    <Box>
+                        <Text as="h4" textStyle="titleSm" fontWeight="700">
+                            {data?.brand?.name}
+                        </Text>
+                        <Text as="h1" textStyle="titleSm" mb="10px">
+                            {selectedVariation?.name}
+                        </Text>
+                    </Box>
+                    <Box align="right" pl="30px">
+                        <Text textStyle="caption" color="mediumGrey" textDecoration="line-through">
+                            {selectedVariation?.list_price}
+                        </Text>
+                        <Text fontSize="24px" lineHeight="1.2">
+                            {formatPrice(finalPrice)}
+                        </Text>
+                    </Box>
+                </Flex>
+                <Text textStyle="caption" color="lightGrey">
+                    {selectedVariation?.sku}
                 </Text>
             </Box>
-            <Box display="flex">
-                {defaultVariation.list_price ? (
-                    <Box as={'p'} fontSize={'26px'} mb={'20px'} mr="12px" color={'lightGrey'}>
-                        <del>{defaultVariation.list_price}</del>
-                    </Box>
-                ) : (
-                    ''
-                )}
-                <Box as={'p'} fontWeight={700} textStyle="textLg" mb={'20px'} color={'text.primary'} mr="12px">
-                    {sizeData ? sizeData[0]?.price : defaultVariation.price}
-                </Box>
-                {defaultVariation.discount_percentage ? (
-                    <Box as={'p'} fontWeight={700} fontSize={'26px'} mb={'20px'} color={'brand.900'}>
-                        {defaultVariation.discount_percentage}
-                    </Box>
-                ) : (
-                    ''
-                )}
-            </Box>
 
-            <Text as={'p'} fontWeight={400} fontSize={'16px'} mb={'5px'}>
-                {metalColor && (
-                    <Text as={'span'}>
-                        <strong>{t('color')}:</strong>
-                    </Text>
-                )}
-                {metalColor?.name}
-            </Text>
+            <Box my="20px">
+                <Flex maxW={{ base: '100%', md: '210px' }}>
+                    <ProductQuantityBox />
+                    {data?.product_type === 'fragrance' && (
+                        <FragranceComponent data={data?.variations} setSelectedVariation={setSelectedVariation} />
+                    )}
+                </Flex>
 
-            <Box mb={'20px'} display="flex" flexDir={'column'}>
                 {
-                    <ProductSize
-                        sizes={productData.variations}
-                        defaultSize={productData.default_variation}
-                        sizeData={sizeData}
-                        handleSizeSelection={dataHandler}
-                    />
+                    {
+                        makeup: (
+                            <MakeupComponent
+                                data={data?.variations}
+                                setSelectedVariation={setSelectedVariation}
+                                selectedVariation={selectedVariation}
+                            />
+                        ),
+                        fragrance: (
+                            <PerfumeEnhancement
+                                data={selectedVariation?.essence_extra_doseis?.options}
+                                setFinalPrice={setFinalPrice}
+                                initPrice={selectedVariation?.price_raw}
+                            />
+                        )
+                    }[data?.product_type]
                 }
-                <ProductQuantityBox />
-                <Button
-                    variant={'primary'}
-                    size="xl"
-                    textTransform={'uppercase'}
-                    _focus={{ boxShadow: 'none' }}
-                    alignSelf={{ base: 'center', lg: 'self-start' }}
-                    onClick={() => handleAddToCart(productData?.product_id)}
-                    isLoading={loadingAddToCart}
-                    isDisabled={selectedVariation?.stock_level > 0 && selectedVariation?.status ? false : true}
-                >
-                    {t('purchase')}
-                </Button>
-                <Text as={'p'} textStyle="caption" mb={'8px'} mt="15px">
-                    <Text as={'span'} pr="2px">
-                        {t('code')}
-                    </Text>
-                    {sizeData ? sizeData[0]?.sku : masterSku}
-                </Text>
-                <Text textStyle="caption" fontWeight="bold">
-                    {availability}
-                </Text>
             </Box>
-            <Accordion allowMultiple>
-                <AccordionItem borderTop={'none'}>
-                    <AccordionButton
-                        justifyContent={'space-between'}
-                        px="0px"
-                        pb="8px"
-                        _focus={{ boxShadow: 'none' }}
-                        _hover={{ bg: 'white' }}
-                        onClick={() => {
-                            setDetailsIsClicked(!detailsIsClicked);
-                        }}
-                    >
-                        <Box textStyle={'text'}>{t('description')}</Box>
-                        {!detailsIsClicked ? (
-                            <Box fontSize="24px" padding={'4px'}>
-                                <CrossIcon />
-                            </Box>
-                        ) : (
-                            <Box fontSize="24px" padding={'4px'}>
-                                <CloseIcon />
-                            </Box>
-                        )}
-                    </AccordionButton>
-                    <AccordionPanel px="0px" pt="24px" pb="20px">
-                        <Text
-                            as="p"
-                            textStyle="text"
-                            dangerouslySetInnerHTML={{
-                                __html: description
-                            }}
-                        ></Text>
-                    </AccordionPanel>
-                </AccordionItem>
-                <AccordionItem>
-                    <AccordionButton
-                        justifyContent={'space-between'}
-                        px="0px"
-                        pb="8px"
-                        onClick={() => {
-                            setInfoIsClicked(!infoIsClicked);
-                        }}
-                        _focus={{ boxShadow: 'none' }}
-                        _hover={{ bg: 'white' }}
-                    >
-                        <Box textStyle={'text'}>{t('details')}</Box>
-                        {!infoIsClicked ? (
-                            <Box fontSize="24px" padding={'4px'}>
-                                <CrossIcon />
-                            </Box>
-                        ) : (
-                            <Box fontSize="24px" padding={'4px'}>
-                                <CloseIcon />
-                            </Box>
-                        )}
-                    </AccordionButton>
-                    {dimension?.map(({ key, value }, index) => (
-                        <AccordionPanel px="0px" pt="24px" pb="20px" key={key}>
-                            <Text textStyle={'text'} fontWeight="bold" mb="16px">
-                                {key}
-                            </Text>
-                            <Text textStyle={'text'}>{value}</Text>
-                        </AccordionPanel>
-                    ))}
-                </AccordionItem>
-            </Accordion>
+            <Button
+                onClick={() => handleAddToCart(data?.product_id)}
+                isLoading={loadingAddToCart}
+                variant="primary"
+                w="full"
+                isDisabled={selectedVariation?.stock_level > 0 && selectedVariation?.status ? false : true}
+                mt="10px"
+                mb="20px"
+            >
+                {t('purchase')}
+            </Button>
         </Box>
     );
 }

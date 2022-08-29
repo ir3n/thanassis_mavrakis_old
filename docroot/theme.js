@@ -35,7 +35,7 @@ const colors = {
     blue: '#3093EE',
     green: '#1CA25A',
     red: '#ED1C24',
-    border: '#C4C4C4',
+    border: '#E2E8F0',
     newsletter: '#E4E4E4',
     blue: '#578AB9'
 };
@@ -52,7 +52,7 @@ const textStyles = {
     },
     titleSm: {
         fontSize: ['16px', '16px', '16px', '16px', '20px'],
-        lineHeight: '1.5'
+        lineHeight: '1.2'
     },
     subtitle: {
         fontSize: '18px',

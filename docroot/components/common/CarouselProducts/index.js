@@ -57,9 +57,11 @@ const CarouselProducts = ({ title, items, cta }) => {
                     textDecoration="underline"
                     fontWeight="500"
                 >
-                    <NextLink href={cta?.url} passHref>
-                        <Link>{cta?.title}</Link>
-                    </NextLink>
+                    {cta && (
+                        <NextLink href={cta?.url} passHref>
+                            <Link>{cta?.title}</Link>
+                        </NextLink>
+                    )}
                 </Box>
             </Container>
         </Box>

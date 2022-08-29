@@ -18,19 +18,23 @@ const ProductQuantityBox = () => {
             <Box
                 borderWidth="1px"
                 borderStyle="solid"
-                borderColor="darkgrey"
-                borderRadius={'2px'}
-                width="110px"
-                height={'48px'}
+                borderColor="border"
+                borderRadius="0"
+                width="100px"
+                height="40px"
                 display="flex"
-                justifyContent={'space-around'}
+                justifyContent="space-around"
                 alignItems="center"
-                mb="24px"
-                userSelect={'none'}
+                mb="10px"
+                userSelect="none"
+                transition="all 0.3s ease"
+                _hover={{ borderColor: 'gray.300' }}
             >
-                <MinusIcon onClick={decreaseHandler} cursor="pointer" />
-                <Text textStyle="md">{number}</Text>
-                <AddIcon onClick={increaseHandler} cursor="pointer" />
+                <MinusIcon onClick={decreaseHandler} cursor="pointer" color="mediumGrey" />
+                <Text textStyle="textLg" fontWeight="600">
+                    {number}
+                </Text>
+                <AddIcon onClick={increaseHandler} cursor="pointer" color="mediumGrey" />
             </Box>
         </>
     );

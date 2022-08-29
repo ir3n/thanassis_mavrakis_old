@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 //This is useful cause of the "fakeLocale" we use
 export function getRealLocale(locale) {
@@ -7,8 +8,13 @@ export function getRealLocale(locale) {
     return locale === FAKE_LOCALE ? DEFAULT_LOCALE : locale;
 }
 
+export function isCurrentPath(path) {
+    const router = useRouter();
+    return path === `/${router.locale}${router.asPath}`;
+}
+
 export function formatPrice(price) {
-    return new Intl.NumberFormat('gr-GR', {
+    return new Intl.NumberFormat('el-GR', {
         style: 'currency',
         currency: 'EUR'
     }).format(price);
