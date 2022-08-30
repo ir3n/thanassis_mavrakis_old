@@ -55,7 +55,6 @@ const ProductListSettings = ({ pager, sort, setSelectedSort, selectedSort, isVal
                                         display="flex"
                                         w="168px"
                                         height={'32px'}
-                                        // borderRight={'0.5px solid black'}
                                         onClick={() => {
                                             handleFacetTrigger(item.facet);
                                             setIsModalOpen(true);

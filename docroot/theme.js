@@ -37,7 +37,8 @@ const colors = {
     red: '#ED1C24',
     border: '#E2E8F0',
     newsletter: '#E4E4E4',
-    blue: '#578AB9'
+    blue: '#578AB9',
+    selectedFilterGrey: '##3B4043'
 };
 
 const textStyles = {

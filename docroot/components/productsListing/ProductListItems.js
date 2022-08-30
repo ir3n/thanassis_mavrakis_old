@@ -1,32 +1,140 @@
-import { Box, Button, Flex, Grid, GridItem, useBreakpointValue } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Grid,
+    Text,
+    GridItem,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    useBreakpointValue
+} from '@chakra-ui/react';
 import ProductTeaser from 'components/common/ProductTeaser';
 import useTranslation from 'next-translate/useTranslation';
-// import { getFormattedFilters } from 'utils/helpers';
-// import Filter from 'components/common/Filter';
-import SelectedFilters from 'components/productsListing/SelectedFilters';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import ProductListSettingsMobile from './ProductListSettingsMobile';
 import Pagination from 'components/common/Pagination';
 
-const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFilters, handleRemove }) => {
+const ProductListItems = ({
+    productCategoryData,
+    data,
+    pager,
+    isValidating,
+    handleLoadMore,
+    selectedFilters,
+    sort,
+    setSelectedSort,
+    selectedSort,
+    handleRemoveFilter,
+    handleSelectFilter,
+    filterSelected
+}) => {
     const { t } = useTranslation('common');
 
-    const filterSelected = useBreakpointValue({
-        base: <></>,
-        sm: <></>,
+    const productListSettings = useBreakpointValue({
+        base: (
+            <ProductListSettingsMobile
+                facets={productCategoryData?.facets || []}
+                handleSelectFilter={handleSelectFilter}
+                pager={productCategoryData?.pager}
+                sort={productCategoryData?.sort}
+                setSelectedSort={setSelectedSort}
+                selectedSort={selectedSort}
+                selectedFilters={selectedFilters}
+                filterSelected={filterSelected}
+                handleRemoveFilter={handleRemoveFilter}
+                isMobile
+            />
+        ),
+        sm: (
+            <ProductListSettingsMobile
+                facets={productCategoryData?.facets || []}
+                handleSelectFilter={handleSelectFilter}
+                pager={productCategoryData?.pager}
+                sort={productCategoryData?.sort}
+                setSelectedSort={setSelectedSort}
+                selectedSort={selectedSort}
+                selectedFilters={selectedFilters}
+                filterSelected={filterSelected}
+                handleRemove={handleRemoveFilter}
+                isMobile
+                isValidating={isValidating}
+            />
+        ),
         md: <></>,
-        lg: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />,
-        xl: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />
+        lg: <></>,
+        xl: <></>,
+        xxl: <></>
     });
 
     return (
         <Box>
+            <Box display={'flex'} justifyContent={'space-between'}>
+                <Box display={{ base: 'none', lg: 'block' }}>
+                    <Text as="p" fontSize="16px">
+                        <Text as="span" fontWeight="bold">
+                            {isValidating ? '' : pager?.totalResults}
+                        </Text>{' '}
+                        {'products'}
+                    </Text>
+                </Box>
+
+                {productListSettings}
+
+                <Box className={'choose_btn'}>
+                    {sort ? (
+                        <Menu>
+                            <MenuButton
+                                height="40px"
+                                background="transparent"
+                                color="black"
+                                fontWeight="normal"
+                                as={Button}
+                                rightIcon={<ChevronDownIcon />}
+                                _hover={{ bg: 'transparent' }}
+                            >
+                                {'Short by: '}
+                                {selectedSort ? selectedSort.label : ''}
+                            </MenuButton>
+                            <MenuList zIndex={'1000'}>
+                                {sort?.options?.map((i) => {
+                                    return (
+                                        <MenuItem
+                                            key={i.value}
+                                            onClick={() => {
+                                                setSelectedSort(i);
+                                            }}
+                                        >
+                                            {i.label}
+                                        </MenuItem>
+                                    );
+                                })}
+                            </MenuList>
+                        </Menu>
+                    ) : null}
+                </Box>
+            </Box>
             <Box as="div" mt="16px">
                 <Grid
-                    templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4,1fr)' }}
+                    templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4,1fr)' }}
                     gap={'24px'}
                 >
                     {data?.map(
                         (
-                            { teaser_image, url, brand, title, price, product_id, mastersku, discount_percentage },
+                            {
+                                teaser_image,
+                                url,
+                                brand,
+                                title,
+                                price,
+                                product_id,
+                                mastersku,
+                                list_price,
+                                max_discount_percentage,
+                                web_only,
+                                teaser_variation_options
+                            },
                             index
                         ) => (
                             <GridItem rowSpan={1} key={`Products-${index}`} id={index}>
@@ -36,10 +144,13 @@ const ProductListItems = ({ data, pager, loadingMore, handleLoadMore, selectedFi
                                     product_id={product_id}
                                     image={teaser_image}
                                     price={price}
+                                    list_price={list_price}
                                     brand={brand}
                                     url={url}
+                                    web_only={web_only}
                                     mastersku={mastersku}
-                                    discount_percentage={discount_percentage}
+                                    discount_percentage={max_discount_percentage}
+                                    variation_options={teaser_variation_options}
                                 />
                             </GridItem>
                         )

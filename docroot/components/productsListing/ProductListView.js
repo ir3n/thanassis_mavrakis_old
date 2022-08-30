@@ -2,7 +2,6 @@ import { Box, useBreakpointValue, Text } from '@chakra-ui/react';
 import Container from 'components/common/Container';
 import ProductListHeader from './ProductsListHeader';
 import ProductListHeaderMobile from './ProductListHeaderMobile';
-import ProductListSettings from './ProductsListSettings';
 import ProductListSettingsMobile from './ProductListSettingsMobile';
 import ProductListAccordion from './ProductListAccordion';
 import ProductListItems from './ProductListItems';
@@ -12,8 +11,13 @@ import { getProductCategory } from 'services/product';
 import useProductListing from 'hooks/useProductListing';
 import ProductCategories from './ProductCategories';
 import NumberOfProducts from './NumberOfProducts';
+import SelectedFilters from './SelectedFilters';
+import { useRouter } from 'next/router';
+import BreadCrumb from 'components/common/BreadCrumb';
 
 export default function ProductListView({ page, data, info, pager, facets, sort, breadcrumbs }) {
+    const router = useRouter();
+
     const {
         handleLoadMore,
         handleRemoveFilter,
@@ -87,64 +91,24 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                 isValidating={isValidating}
             />
         ),
-        md: (
-            <ProductListSettingsMobile
-                facets={productCategoryData?.facets || []}
-                handleSelectFilter={handleSelectFilter}
-                pager={productCategoryData?.pager}
-                sort={productCategoryData?.sort}
-                setSelectedSort={setSelectedSort}
-                selectedSort={selectedSort}
-                selectedFilters={selectedFilters}
-                handleRemove={handleRemoveFilter}
-                isMobile
-                isValidating={isValidating}
-            />
-        ),
-        lg: (
-            <ProductListSettingsMobile
-                selectedSort={selectedSort}
-                facets={productCategoryData?.facets || []}
-                pager={productCategoryData?.pager}
-                sort={productCategoryData?.sort}
-                setSelectedSort={setSelectedSort}
-                selectedFilters={selectedFilters}
-                handleRemove={handleRemoveFilter}
-                isValidating={isValidating}
-            />
-        ),
-        xl: (
-            <ProductListSettingsMobile
-                selectedSort={selectedSort}
-                facets={productCategoryData?.facets || []}
-                pager={productCategoryData?.pager}
-                sort={productCategoryData?.sort}
-                setSelectedSort={setSelectedSort}
-                selectedFilters={selectedFilters}
-                handleRemove={handleRemoveFilter}
-                isValidating={isValidating}
-            />
-        ),
-        xxl: (
-            <ProductListSettings
-                selectedSort={selectedSort}
-                facets={productCategoryData?.facets || []}
-                pager={productCategoryData?.pager}
-                sort={productCategoryData?.sort}
-                setSelectedSort={setSelectedSort}
-                selectedFilters={selectedFilters}
-                handleRemove={handleRemoveFilter}
-                isValidating={isValidating}
-            />
-        )
+        md: <></>,
+        lg: <></>,
+        xl: <></>,
+        xxl: <></>
     });
 
     const productCategories = useBreakpointValue({
         base: <></>,
-        xxl: <ProductCategories info={productCategoryData?.info} />
+        lg: <ProductCategories info={productCategoryData?.info} />
     });
 
-    console.log('productCategoryData: ', productCategoryData);
+    const filterSelected = useBreakpointValue({
+        base: <></>,
+        sm: <></>,
+        md: <></>,
+        lg: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemoveFilter} />,
+        xl: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemoveFilter} />
+    });
 
     return (
         <>
@@ -153,31 +117,40 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                     {productCategoryData?.info?.metaTags && (
                         <MetaTagsHandler metaTags={productCategoryData.info.metaTags} />
                     )}
-                    <Box>
-                        {header}
-
-                        <Box background={'white'}>{productListSettings}</Box>
-                    </Box>
-                    <Container>{productCategories}</Container>
-                    {/* <Container>{numberOfProducts}</Container> */}
 
                     <Container>
-                        <Box
-                            w={['100%', '100%', '100%', '100%', '100%']}
-                            opacity={isValidating ? 0.5 : 1}
-                            transition={'all 0.3s ease-in-out'}
-                        >
-                            {!isValidating && (
-                                <ProductListItems
-                                    isValidating={isValidating}
-                                    data={productCategoryData?.data}
-                                    pager={productCategoryData?.pager}
-                                    loadingMore={loadingMore}
-                                    handleLoadMore={handleLoadMore}
-                                    selectedFilters={selectedFilters}
-                                    handleRemove={handleRemoveFilter}
-                                />
-                            )}
+                        <BreadCrumb breadcrumbs={productCategoryData?.breadcrumbs} />
+                        <Box p={'20px 0 35px 0'}>
+                            <Text as={'h1'} textStyle={'titleSm'} textAlign={'center'} textTransform={'uppercase'}>
+                                {productCategoryData?.info.name}
+                            </Text>
+                            <Text textStyle={'textLg'} textAlign={'center'} w={'65%'} m={'auto'}>
+                                {
+                                    'Quis porttitor bibendum nec duis at integer. Malesuada euismod semper tortor duis viverra mattis auctor amet lorem.'
+                                }
+                            </Text>
+                        </Box>
+                        <Box display={'flex'}>
+                            <Box mr={'50px'} mt={'40px'} w={'20%'} display={{ base: 'none', lg: 'block' }}>
+                                {filterSelected}
+                                {accordion}
+                            </Box>
+                            <Box w={'100%'} opacity={isValidating ? 0.5 : 1} transition={'all 0.3s ease-in-out'}>
+                                {!isValidating && (
+                                    <ProductListItems
+                                        isValidating={isValidating}
+                                        productCategoryData={productCategoryData}
+                                        data={productCategoryData?.data}
+                                        pager={productCategoryData?.pager}
+                                        loadingMore={loadingMore}
+                                        handleLoadMore={handleLoadMore}
+                                        sort={sort}
+                                        setSelectedSort={setSelectedSort}
+                                        handleSelectFilter={handleSelectFilter}
+                                        handleRemoveFilter={handleRemoveFilter}
+                                    />
+                                )}
+                            </Box>
                         </Box>
                     </Container>
                 </>

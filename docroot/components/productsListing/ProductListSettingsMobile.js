@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Box,
+    Image,
     Text,
     Switch,
     FormControl,
@@ -16,7 +17,8 @@ import {
 // import Filter from 'components/common/Filter';
 import ProductListFilters from './ProductListFilters';
 import BreadCrumb from 'components/common/BreadCrumb';
-import AddIcon from '../../public/assets/cross-strong-small.svg';
+import Filter from 'components/common/Designers/Filter';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import { getFormattedFilters } from 'utils/helpers';
 import useTranslation from 'next-translate/useTranslation';
 
@@ -34,40 +36,54 @@ import CustomDrawer from 'components/common/CustomDrawer';
 
 const ProductListSettingsMobile = ({
     pager,
-    sort,
-    setSelectedSort,
     handleRemove,
+    handleWornImage,
     facets,
     selectedFilters,
-    handleSelectFilter,
-    isValidating,
-    selectedSort
+    handleSelectFilter
 }) => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const formattedFilters = selectedFilters ? getFormattedFilters(selectedFilters) : [];
-    const { t } = useTranslation('product');
+    const { t } = useTranslation('common');
 
     return (
         <>
-            <Box display={'flex'} justifyContent="space-between" mx="18px">
-                <CustomDrawer
-                    drawerButtonText={t('filter')}
-                    drawerHeader={'FILTER BY'}
-                    facets={facets}
-                    sort={sort}
-                    second={false}
-                    borderRight={'0.2px solid black'}
-                    width="162px"
-                />
-                <CustomDrawer
-                    drawerButtonText={t('sort')}
-                    drawerHeader={t('sort')}
-                    facets={facets}
-                    sort={sort}
-                    second={true}
-                    setSelectedSort={setSelectedSort}
-                    width="150px"
-                />
-            </Box>
+            <Box width="100%" display={'flex'} alignItems={'center'}>
+                <Box
+                    display={{ base: 'block', sm: 'flex' }}
+                    flexDir={pager?.totalResults === 0 ? 'column' : 'row'}
+                    justifyContent={pager?.totalResults === 0 ? 'center' : 'space-between'}
+                    alignItems="center"
+                >
+                    <Box d="flex" justifyContent="space-between">
+                        {pager?.totalResults === 0 ? (
+                            ''
+                        ) : (
+                            <Box display={'flex'} alignItems={'center'}>
+                                <Image src={'/assets/filter.png'} h="14px" w="16px" alt={'filter-icon'} mr="3px" />
+                                <Button
+                                    variant="secondary"
+                                    py={'5px'}
+                                    onClick={onOpen}
+                                    size="xs"
+                                    color={'lightGrey'}
+                                    textStyle={'caption'}
+                                >
+                                    {'Φίλτρα'}
+                                </Button>
+                            </Box>
+                        )}
+                    </Box>
+                </Box>{' '}
+            </Box>{' '}
+            <ProductListFilters
+                facets={facets}
+                selectedFilters={selectedFilters}
+                handleSelectFilter={handleSelectFilter}
+                handleRemove={handleRemove}
+                isOpen={isOpen}
+                onClose={onClose}
+            />
         </>
     );
 };

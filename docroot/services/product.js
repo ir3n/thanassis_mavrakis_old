@@ -45,3 +45,10 @@ export const getProduct = (locale, productId) => {
         method: 'GET'
     });
 };
+
+export const getVariationProduct = (locale, productId, colorId) => {
+    return axios({
+        url: `${url}/${locale}/api/v1/products/${productId}/variations/${colorId}`,
+        method: 'GET'
+    });
+};

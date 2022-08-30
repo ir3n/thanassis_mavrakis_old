@@ -168,3 +168,24 @@
 .fullscreen .thumbnails-swipe-vertical {
     max-height: 100%;
 }
+
+/* product listing color carousel */
+.slick-slider.color-slider {
+    width: 100%;
+    height: 100%;
+}
+
+.slick-slider.color-slider .slick-list {
+    height: 100%;
+}
+
+.product-filter-row .chakra-checkbox__control {
+    border-radius: 50%;
+}
+.product-filter-row .chakra-checkbox__control[data-checked] {
+    background-color: #000000 !important;
+    border: #000000;
+}
+.product-filter-row .chakra-checkbox__control div {
+    display: none !important;
+}

@@ -9,3 +9,14 @@ a:focus-visible {
 .chakra-text strong {
     font-weight: 800;
 }
+
+.product-filter-wrapper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.product-filter-wrapper .product-filter-row .chakra-checkbox__label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

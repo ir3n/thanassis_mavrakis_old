@@ -4,33 +4,31 @@ import ArrowRight from '../../../public/assets/arrowright-light.svg';
 
 import _ from 'lodash';
 
-export default function Pagination({ first, last, totalPages, currentpage, onChange }) {
+export default function Pagination({ first, last, totalPages, currentPage, onChange }) {
     const MAX_NUMBER_OF_PAGES = 3;
 
     const startingPage = 0;
     const endingPage = totalPages - 1;
 
     const startingIndex =
-        currentpage + 1 <= MAX_NUMBER_OF_PAGES
+        currentPage + 1 <= MAX_NUMBER_OF_PAGES
             ? 1
-            : currentpage + 1 >= endingPage - MAX_NUMBER_OF_PAGES
-            ? currentpage - 1
-            : currentpage - 1;
+            : currentPage + 1 >= endingPage - MAX_NUMBER_OF_PAGES
+            ? currentPage - 1
+            : currentPage - 1;
     const endingIndex =
-        currentpage + 1 <= MAX_NUMBER_OF_PAGES
-            ? currentpage + 1
-            : currentpage + 1 > totalPages - MAX_NUMBER_OF_PAGES
+        currentPage + 1 <= MAX_NUMBER_OF_PAGES
+            ? currentPage + 1
+            : currentPage + 1 > totalPages - MAX_NUMBER_OF_PAGES
             ? endingPage - 1
-            : currentpage + 1;
-
-    console.log('totalPages ', totalPages);
+            : currentPage + 1;
 
     return (
         <Box my={'20px'} justifyContent={'center'} alignItems={'center'} display={'flex'} flexDirection={'row'}>
             {!first ? (
                 <Box
                     onClick={() => {
-                        onChange(currentpage - 1);
+                        onChange(currentPage - 1);
                     }}
                     cursor="pointer"
                     mr="24px"
@@ -41,7 +39,7 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
 
             <Button
                 borderRadius={'50%'}
-                border={startingPage === currentpage ? '1px solid black' : 'none'}
+                border={startingPage === currentPage ? '1px solid black' : 'none'}
                 key={`Pagination-${startingPage}`}
                 onClick={() => onChange(startingPage)}
                 w={'32px'}
@@ -53,7 +51,7 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
                 {startingPage + 1}
             </Button>
 
-            {currentpage + 1 > MAX_NUMBER_OF_PAGES && '...'}
+            {currentPage + 1 > MAX_NUMBER_OF_PAGES && '...'}
 
             {totalPages > 2 && (
                 <Box>
@@ -61,7 +59,7 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
                         return (
                             <Button
                                 borderRadius={'50%'}
-                                border={index === currentpage ? '1px solid black' : 'none'}
+                                border={index === currentPage ? '1px solid black' : 'none'}
                                 key={`Pagination-${index}`}
                                 onClick={() => onChange(index)}
                                 w={'32px'}
@@ -77,7 +75,7 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
                 </Box>
             )}
 
-            {totalPages - currentpage > MAX_NUMBER_OF_PAGES && '...'}
+            {totalPages - currentPage > MAX_NUMBER_OF_PAGES && '...'}
 
             <Button
                 borderRadius={'50%'}
@@ -95,7 +93,7 @@ export default function Pagination({ first, last, totalPages, currentpage, onCha
             {!last ? (
                 <Box
                     onClick={() => {
-                        onChange(currentpage + 1);
+                        onChange(currentPage + 1);
                     }}
                     cursor="pointer"
                     ml="24px"

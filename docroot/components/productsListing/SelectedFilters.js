@@ -4,24 +4,25 @@ import { getFormattedFilters } from 'utils/helpers';
 import Filter from 'components/common/Filter';
 
 const SelectedFilters = ({ selectedFilters, handleRemove }) => {
-  const formattedFilters = selectedFilters ? getFormattedFilters(selectedFilters) : [];
-  const { t } = useTranslation('common');
+    const formattedFilters = selectedFilters ? getFormattedFilters(selectedFilters) : [];
+    const { t } = useTranslation('common');
 
-  return (
-    <Box
-      marginLeft="-7px"
-      paddingTop="0px"
-      paddingBottom="10px"
-      display="flex"
-      flexDir="row"
-      flexFlow="wrap"
-      className="filter"
-    >
-      {formattedFilters.map((filter, index) => (
-        <Filter filter={filter} key={`selectedFilter-${index}`} handleRemove={handleRemove} />
-      ))}
-    </Box>
-  );
+    return (
+        <Box
+            marginLeft="-7px"
+            paddingTop="0px"
+            paddingBottom="10px"
+            display="flex"
+            flexDir="row"
+            flexFlow="wrap"
+            className="filter"
+            borderBottom={selectedFilters ? '1px solid #C4C4C4' : 'none'}
+        >
+            {formattedFilters.map((filter, index) => (
+                <Filter filter={filter} key={`selectedFilter-${index}`} handleRemove={handleRemove} />
+            ))}
+        </Box>
+    );
 };
 
 export default SelectedFilters;
