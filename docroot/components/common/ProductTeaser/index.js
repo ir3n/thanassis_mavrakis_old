@@ -3,6 +3,7 @@ import { Box, Text, Link, Image, Button } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import DotColor from './DotColor';
 import CustomSlider from '../CustomSlider';
+// import useProductVariation from 'hooks/useProductVariation';
 import useProductVariation from 'hooks/useProductVariation';
 
 const settings = {
@@ -53,6 +54,23 @@ const ProductTeaser = ({
             setLoaded(true);
         }
     }, []);
+
+    // const handleColorVariation = async (product_id, updatedColorId) => {
+    //     try {
+    //         const { data: newProductData } = await handleColorVariation(router.locale, productID, colorID);
+    //     } catch (err) {
+    //         toast({
+    //             description: getErrorMessage(err),
+    //             position: 'top',
+    //             status: 'error',
+    //             duration: 5000,
+    //             isClosable: true
+    //         });
+    //     } finally {
+    //         // setDeleteLoading(undefined);
+    //         // return data;
+    //     }
+    // };
 
     return (
         <Box backgroundColor={'white'} pos={'relative'}>
