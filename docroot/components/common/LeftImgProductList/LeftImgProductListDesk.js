@@ -42,7 +42,18 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                             {items?.map((item, index) => {
                                 return (
                                     <Box p="0 5px" key={`image-carousel-product-${index}`}>
-                                        <ProductTeaser />
+                                        <ProductTeaser
+                                            title={item?.title}
+                                            product_id={item?.product_id}
+                                            image={item?.teaser_image}
+                                            listPrice={item?.list_price}
+                                            price={item?.price}
+                                            url={item?.url}
+                                            brand={item?.brand}
+                                            mastersku={item?.mastersku}
+                                            discount_percentage={item?.max_discount_percentage}
+                                            webOnly={item?.web_only}
+                                        />
                                     </Box>
                                 );
                             })}

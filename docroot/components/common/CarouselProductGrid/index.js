@@ -11,7 +11,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
         slidesToShow: 2,
         slidesToScroll: 1,
         arrows: false,
-        // autoplay: true,
+        autoplay: true,
         responsive: [
             {
                 breakpoint: 768,
@@ -43,7 +43,18 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                     return (
                         <Box p="0 5px" key={`grid-product-mobile-${index}`}>
                             <Box bg="lightBg">
-                                <ProductTeaser image={item?.hover_image} />
+                                <ProductTeaser
+                                    title={item?.title}
+                                    product_id={item?.product_id}
+                                    image={item?.teaser_image}
+                                    listPrice={item?.list_price}
+                                    price={item?.price}
+                                    url={item?.url}
+                                    brand={item?.brand}
+                                    mastersku={item?.mastersku}
+                                    discount_percentage={item?.max_discount_percentage}
+                                    webOnly={item?.web_only}
+                                />
                             </Box>
                         </Box>
                     );
@@ -57,7 +68,18 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                         <Box p="0 10px" key={`grid-products-${index}`}>
                             {products?.map((item, index) => (
                                 <Box bg="lightBg" mb="20px" key={`grid-product-${index}`}>
-                                    <ProductTeaser image={item?.hover_image} />
+                                    <ProductTeaser
+                                        title={item?.title}
+                                        product_id={item?.product_id}
+                                        image={item?.teaser_image}
+                                        listPrice={item?.list_price}
+                                        price={item?.price}
+                                        url={item?.url}
+                                        brand={item?.brand}
+                                        mastersku={item?.mastersku}
+                                        discount_percentage={item?.max_discount_percentage}
+                                        webOnly={item?.web_only}
+                                    />
                                 </Box>
                             ))}
                         </Box>

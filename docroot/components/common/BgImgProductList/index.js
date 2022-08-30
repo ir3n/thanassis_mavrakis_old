@@ -12,7 +12,7 @@ const BgImgProductList = ({ image, items, cta }) => {
         slidesToShow: 2,
         slidesToScroll: 1,
         arrows: true,
-        // autoplay: true,
+        autoplay: true,
         responsive: [
             {
                 breakpoint: 768,
@@ -61,7 +61,18 @@ const BgImgProductList = ({ image, items, cta }) => {
                         return (
                             <Box p="0 20px 20px" key={`carousel-gifts-${index}`}>
                                 <Box bg="white" boxShadow="lg">
-                                    <ProductTeaser image={item?.hover_image} />
+                                    <ProductTeaser
+                                        title={item?.title}
+                                        product_id={item?.product_id}
+                                        image={item?.teaser_image}
+                                        listPrice={item?.list_price}
+                                        price={item?.price}
+                                        url={item?.url}
+                                        brand={item?.brand}
+                                        mastersku={item?.mastersku}
+                                        discount_percentage={item?.max_discount_percentage}
+                                        webOnly={item?.web_only}
+                                    />
                                 </Box>
                             </Box>
                         );
