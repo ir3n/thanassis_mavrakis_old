@@ -110,6 +110,9 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
         xl: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemoveFilter} />
     });
 
+    console.log('productCategoryData: ', productCategoryData);
+    console.log('router: ', router.locale);
+
     return (
         <>
             {productCategoryData ? (

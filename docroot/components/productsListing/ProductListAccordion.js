@@ -2,14 +2,7 @@ import { Box, Text, Accordion, AccordionItem, AccordionButton, AccordionPanel, A
 import FiltersStack from 'components/common/FiltersStack';
 import useTranslation from 'next-translate/useTranslation';
 
-const ProductListAccordion = ({
-    facets,
-    selectedFilters,
-    handleSelectFilter,
-    isMobile,
-    isValidating,
-    toggleButton
-}) => {
+const ProductListAccordion = ({ facets, selectedFilters, handleSelectFilter, toggleButton }) => {
     const { t } = useTranslation('common');
     return (
         <Accordion allowMultiple>

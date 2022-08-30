@@ -133,12 +133,12 @@ const ProductTeaser = ({
                     <CustomSlider {...settings} className="color-slider">
                         {variation_options?.map(({ attribute_color_image, variation_id, attribute_name }, index) => {
                             return (
-                                <Box className="item-color">
+                                <Box className="item-color" key={`dot-${index}`}>
                                     <DotColor
                                         image={attribute_color_image}
                                         id={variation_id}
                                         name={attribute_name}
-                                        key={`dot-${index}`}
+                                        // key={`dot-${index}`}
                                         setSelectedVariation={setSelectedVariation}
                                     />
                                 </Box>
