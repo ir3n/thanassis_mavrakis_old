@@ -29,6 +29,15 @@
 .slick-prev {
     transform: translateY(-50%) rotate(180deg) !important;
 }
+.slick-slider .slick-track {
+    display: flex;
+}
+.slick-slider .slick-slide {
+    height: auto;
+}
+.slick-slider .slick-slide > div {
+    height: 100%;
+}
 
 /* Hero Banner Slider */
 .hero-banner-slider .slick-prev {
@@ -170,15 +179,24 @@
 }
 
 /* product listing color carousel */
-.slick-slider.color-slider {
-    width: 100%;
-    height: 100%;
+.color-slider {
+    padding: 0 15px;
+}
+.color-slider .slick-slide > div {
+    height: 22px;
+}
+.color-slider .slick-prev {
+    left: 0;
+    width: 10px;
+    height: 12px;
+}
+.color-slider .slick-next {
+    right: 0;
+    width: 10px;
+    height: 12px;
 }
 
-.slick-slider.color-slider .slick-list {
-    height: 100%;
-}
-
+/* product listing filters */
 .product-filter-row .chakra-checkbox__control {
     border-radius: 50%;
 }

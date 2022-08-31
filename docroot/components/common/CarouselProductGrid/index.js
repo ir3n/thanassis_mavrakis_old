@@ -41,8 +41,8 @@ const CarouselProductGrid = ({ title, items, cta }) => {
             <CustomSlider {...settings} className="products-slider">
                 {items?.map((item, index) => {
                     return (
-                        <Box p="0 5px" key={`grid-product-mobile-${index}`}>
-                            <Box bg="lightBg">
+                        <Box p="0 5px" key={`grid-product-mobile-${index}`} h="100%">
+                            <Box bg="lightBg" h="100%">
                                 <ProductTeaser
                                     title={item?.title}
                                     product_id={item?.product_id}
@@ -54,6 +54,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                                     mastersku={item?.mastersku}
                                     discount_percentage={item?.max_discount_percentage}
                                     webOnly={item?.web_only}
+                                    largeTeaser={true}
                                 />
                             </Box>
                         </Box>
@@ -79,6 +80,7 @@ const CarouselProductGrid = ({ title, items, cta }) => {
                                         mastersku={item?.mastersku}
                                         discount_percentage={item?.max_discount_percentage}
                                         webOnly={item?.web_only}
+                                        largeTeaser={true}
                                     />
                                 </Box>
                             ))}

@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, Text, Link, Image, Button } from '@chakra-ui/react';
+import { Box, Text, Link, Image, Button, Flex } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import DotColor from './DotColor';
 import CustomSlider from '../CustomSlider';
 import useProductVariation from 'hooks/useProductVariation';
+import ProductFlags from 'components/product/ProductFlags';
 
 const settings = {
     dots: false,
-    infinite: true,
-    speed: 800,
+    infinite: false,
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 6,
     arrows: true,
     responsive: [
         {
             breakpoint: 768,
             settings: {
-                slidesToShow: 6
+                slidesToShow: 4
             }
         },
         {
-            breakpoint: 500,
+            breakpoint: 360,
             settings: {
                 slidesToShow: 6
             }
@@ -40,7 +40,8 @@ const ProductTeaser = ({
     mastersku,
     discount_percentage,
     web_only,
-    variation_options
+    variation_options,
+    largeTeaser
 }) => {
     const imageRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
@@ -55,28 +56,15 @@ const ProductTeaser = ({
     }, []);
 
     return (
-        <Box backgroundColor={'white'} pos={'relative'}>
-            <Box pos={'absolute'} textAlign={'center'} top={'8px'} left={'8px'} zIndex={'9999'}>
-                {discount_percentage ? (
-                    <Box w={'80px'} border={'1px solid black'} p={'5px'} textStyle={'caption'}>
-                        {discount_percentage}
-                    </Box>
-                ) : null}
-                {web_only ? (
-                    <Box backgroundColor={'blue'} textStyle={'note'} color={'white'} p={'8px'} mt={'4px'}>
-                        {'WEB ONLY'}
-                    </Box>
-                ) : null}
-            </Box>
-
+        <Flex backgroundColor={'white'} pos={'relative'} direction="column" h="100%">
+            <ProductFlags teaser={true} webOnly={web_only} discount={discount_percentage} />
             <Box pos={'absolute'} top={'8px'} right={'8px'} zIndex={'10'}>
                 <NextLink href={url || '#'} passHref prefetch={false}>
                     <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
-                        <Image width={'26px'} height={'26px'} alt={title} src={'/assets/heart.png'} />
+                        <Image width={'16px'} height={'16px'} alt={title} src={'/assets/heart-outline.svg'} />
                     </Link>
                 </NextLink>
             </Box>
-
             <NextLink href={url || '#'} passHref prefetch={false} w={'100%'}>
                 <Link _focus={{}} pos="relative" as={'a'} w={'100%'} data-productid={mastersku}>
                     <Box
@@ -92,16 +80,11 @@ const ProductTeaser = ({
 
                         <Image
                             ref={imageRef}
-                            width={'100%'}
-                            height={'360px'}
+                            width={'320px'}
+                            maxW="100%"
                             placeholder="blur"
-                            style={{
-                                margin: 'auto',
-                                objectFit: 'contain',
-                                maxWidth: '100%'
-                            }}
                             alt={title}
-                            src={data ? data?.attribute_color_image : image}
+                            src={data ? data?.variation_media[0]?.url : image}
                             display={loaded ? '' : 'none'}
                             onLoad={() => setLoaded(true)}
                             _focus={{}}
@@ -109,62 +92,100 @@ const ProductTeaser = ({
                     </Box>
                 </Link>
             </NextLink>
-
-            <Box px="5px" textAlign="center" width={'100%'} pos={'relative'} pt={'30px'}>
-                <Box pos={'absolute'} w={'86%'} ml={'7%'} h={'20px'} left={'0'} top={'0'} p={'0 5px'}>
-                    <CustomSlider {...settings} className="color-slider">
-                        {variation_options?.map(({ attribute_color_image, variation_id, attribute_name }, index) => {
-                            return (
-                                <Box className="item-color" key={`dot-${index}`}>
-                                    <DotColor
-                                        image={attribute_color_image}
-                                        id={variation_id}
-                                        name={attribute_name}
-                                        // key={`dot-${index}`}
-                                        setSelectedVariation={setSelectedVariation}
-                                    />
-                                </Box>
-                            );
-                        })}
-                    </CustomSlider>
+            <Flex direction="column" p="10px 15px" width={'100%'} pos={'relative'} flex="1">
+                <Box pos="relative" overflow={'hidden'} mb="10px">
+                    {variation_options?.length > 6 ? (
+                        <CustomSlider {...settings} className="color-slider">
+                            {variation_options?.map(
+                                ({ attribute_color_image, variation_id, attribute_name }, index) => {
+                                    return (
+                                        <Box className="item-color" key={`dot-${index}`}>
+                                            <DotColor
+                                                image={attribute_color_image}
+                                                id={variation_id}
+                                                name={attribute_name}
+                                                setSelectedVariation={setSelectedVariation}
+                                            />
+                                        </Box>
+                                    );
+                                }
+                            )}
+                        </CustomSlider>
+                    ) : (
+                        <Flex>
+                            {variation_options?.map(
+                                ({ attribute_color_image, variation_id, attribute_name }, index) => {
+                                    return (
+                                        <Box className="item-color" key={`dot-${index}`}>
+                                            <DotColor
+                                                image={attribute_color_image}
+                                                id={variation_id}
+                                                name={attribute_name}
+                                                setSelectedVariation={setSelectedVariation}
+                                            />
+                                        </Box>
+                                    );
+                                }
+                            )}
+                        </Flex>
+                    )}
                 </Box>
-                <Box display={'flex'} justifyContent="flex-start" className="title" mt={{ base: '15px', sm: '0' }}>
-                    <Box display="flex" flexDir={'column'} alignItems="flex-start">
-                        <Text textStyle={'caption'} minH="36px" textAlign={'left'} display="-webkit-box" noOfLines={2}>
+
+                {!largeTeaser ? (
+                    <>
+                        <Text textStyle={'caption'} mb="10px">
                             <Box as={'span'} fontWeight={'700'}>
                                 {brand}
                             </Box>{' '}
                             {data ? data?.name : title}
                         </Text>
-                        <Box
-                            as={'p'}
-                            textStyle={'textLg'}
-                            d={'flex'}
-                            alignItems={'end'}
-                            m={'10px 12px 20px 0'}
-                            color={'black'}
-                        >
-                            {data ? data?.price : price}
-                            {list_price ? (
-                                <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                        <Flex alignItems={'end'} mt="auto">
+                            <Text textStyle={'subtitle'} color={'black'} lineHeight="1.1">
+                                {data ? data?.price : price}
+                                {data ? (
+                                    <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                        {data?.list_price}
+                                    </Box>
+                                ) : (
+                                    <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                        {list_price}
+                                    </Box>
+                                )}
+                            </Text>
+
+                            {/* {list_price ? (
+                                <Text ml={'8px'} textStyle={'text'} color={'lightGrey'}>
                                     {price}
-                                </Box>
+                                </Text>
+                            ) : null} */}
+                        </Flex>
+                    </>
+                ) : (
+                    <Flex justifyContent="space-between" direction={{ base: 'column', xl: 'row' }} flex="1">
+                        <Text textStyle={'caption'} mb={{ base: '10px', xl: '0' }}>
+                            <Box as={'span'} fontWeight={'700'}>
+                                {brand}
+                            </Box>{' '}
+                            {data ? data?.name : title}
+                        </Text>
+                        <Flex alignItems={'end'} pl={{ base: '0', xl: '30px' }} mt={{ base: 'auto', xl: '0' }}>
+                            <Text textStyle={'subtitle'} color={'black'} lineHeight="1.1">
+                                {data ? data?.price : price}
+                            </Text>
+
+                            {list_price ? (
+                                <Text ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                    {price}
+                                </Text>
                             ) : null}
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
-            <Button
-                variant="secondary"
-                w={'100%'}
-                color={'white'}
-                backgroundColor={'black'}
-                textTransform={'uppercase'}
-                textStyle={'caption'}
-            >
+                        </Flex>
+                    </Flex>
+                )}
+            </Flex>
+            <Button variant="primary" minW="unset">
                 {'Add to Bag'}
             </Button>
-        </Box>
+        </Flex>
     );
 };
 

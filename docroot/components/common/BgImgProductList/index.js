@@ -59,8 +59,8 @@ const BgImgProductList = ({ image, items, cta }) => {
                 <CustomSlider {...settings} className="gifts-slider">
                     {items?.map((item, index) => {
                         return (
-                            <Box p="0 20px 20px" key={`carousel-gifts-${index}`}>
-                                <Box bg="white" boxShadow="lg">
+                            <Box p="0 20px 20px" key={`carousel-gifts-${index}`} h="100%">
+                                <Box bg="white" boxShadow="lg" h="100%">
                                     <ProductTeaser
                                         title={item?.title}
                                         product_id={item?.product_id}

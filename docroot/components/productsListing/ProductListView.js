@@ -1,5 +1,4 @@
 import { Box, useBreakpointValue, Text } from '@chakra-ui/react';
-import Container from 'components/common/Container';
 import ProductListHeader from './ProductsListHeader';
 import ProductListHeaderMobile from './ProductListHeaderMobile';
 import ProductListSettingsMobile from './ProductListSettingsMobile';
@@ -111,9 +110,6 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
         xl: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemoveFilter} />
     });
 
-    console.log('productCategoryData: ', productCategoryData);
-    console.log('router: ', router.locale);
-
     return (
         <>
             {productCategoryData ? (
@@ -122,13 +118,20 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                         <MetaTagsHandler metaTags={productCategoryData.info.metaTags} />
                     )}
 
-                    <Container>
+                    <Box maxW="1290px" px="20px" margin="auto">
                         <BreadCrumb breadcrumbs={productCategoryData?.breadcrumbs} />
-                        <Box p={'20px 0 35px 0'}>
-                            <Text as={'h1'} textStyle={'titleSm'} textAlign={'center'} textTransform={'uppercase'}>
+                        <Box p={'0 0 35px 0'}>
+                            <Text
+                                as={'h1'}
+                                textStyle={'titleSm'}
+                                textAlign={'center'}
+                                fontWeight="700"
+                                textTransform={'uppercase'}
+                            >
                                 {productCategoryData?.info.name}
                             </Text>
-                            <Text textStyle={'textLg'} textAlign={'center'} w={{ base: '85%', lg: '65%' }} m={'auto'}>
+
+                            <Text textStyle={'textLg'} textAlign={'center'} maxW={'480px'} m={'auto'}>
                                 {
                                     'Quis porttitor bibendum nec duis at integer. Malesuada euismod semper tortor duis viverra mattis auctor amet lorem.'
                                 }
@@ -157,7 +160,7 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                                 )}
                             </Box>
                         </Box>
-                    </Container>
+                    </Box>
                 </>
             ) : null}
         </>

@@ -117,8 +117,8 @@ const ProductListItems = ({
             </Box>
             <Box as="div" mt="16px">
                 <Grid
-                    templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)', lg: 'repeat(4,1fr)' }}
-                    gap={'24px'}
+                    templateColumns={{ base: '1', xs: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)', xl: 'repeat(4,1fr)' }}
+                    gap={{ base: '10px', sm: '20px' }}
                 >
                     {data?.map(
                         (
@@ -137,7 +137,7 @@ const ProductListItems = ({
                             },
                             index
                         ) => (
-                            <GridItem rowSpan={1} key={`Products-${index}`} id={index}>
+                            <GridItem key={`Products-${index}`} id={index} pos="relative" overflow="hidden" h="100%">
                                 <ProductTeaser
                                     key={product_id}
                                     title={title}

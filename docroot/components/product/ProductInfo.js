@@ -29,7 +29,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
 
     useEffect(() => {
         selectedVariation && setFinalPrice(selectedVariation?.price_raw);
-    }, [selectedVariation]);
+    }, [selectedVariation?.id]);
 
     const handleAddToCart = (product_id) => {
         setLoadingAddToCart(true);

@@ -41,7 +41,7 @@ const LeftImgProductListDesk = ({ title, text, items, image, link }) => {
                         <CustomSlider {...settings} className="image-products-slider">
                             {items?.map((item, index) => {
                                 return (
-                                    <Box p="0 5px" key={`image-carousel-product-${index}`}>
+                                    <Box p="0 5px" key={`image-carousel-product-${index}`} h="100%">
                                         <ProductTeaser
                                             title={item?.title}
                                             product_id={item?.product_id}

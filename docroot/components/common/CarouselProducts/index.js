@@ -42,21 +42,19 @@ const CarouselProducts = ({ title, items, cta }) => {
                 <CustomSlider {...settings} className="products-slider">
                     {items?.map((item, index) => {
                         return (
-                            <Box p="0 5px" key={`carousel-product-${index}`}>
-                                <Box bg="white">
-                                    <ProductTeaser
-                                        title={item?.title}
-                                        product_id={item?.product_id}
-                                        image={item?.teaser_image}
-                                        listPrice={item?.list_price}
-                                        price={item?.price}
-                                        url={item?.url}
-                                        brand={item?.brand}
-                                        mastersku={item?.mastersku}
-                                        discount_percentage={item?.max_discount_percentage}
-                                        webOnly={item?.web_only}
-                                    />
-                                </Box>
+                            <Box p="0 5px" key={`carousel-product-${index}`} h="100%">
+                                <ProductTeaser
+                                    title={item?.title}
+                                    product_id={item?.product_id}
+                                    image={item?.teaser_image}
+                                    listPrice={item?.list_price}
+                                    price={item?.price}
+                                    url={item?.url}
+                                    brand={item?.brand}
+                                    mastersku={item?.mastersku}
+                                    discount_percentage={item?.max_discount_percentage}
+                                    webOnly={item?.web_only}
+                                />
                             </Box>
                         );
                     })}

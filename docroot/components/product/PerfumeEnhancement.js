@@ -10,7 +10,6 @@ const PerfumeEnhancement = ({ data, setFinalPrice, initPrice }) => {
             w="100%"
             h="40px"
             onChange={(e) => {
-                console.log(e.target.value);
                 setFinalPrice((initPrice += e.target.value * 1));
             }}
             textStyle="text"

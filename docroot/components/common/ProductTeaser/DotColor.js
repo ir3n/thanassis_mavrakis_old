@@ -3,7 +3,7 @@ import { Box, Link, Image } from '@chakra-ui/react';
 
 const DotColor = ({ image, id, name, setSelectedVariation }) => {
     return (
-        <Box w={'18px'} h={'18px'} m={'auto'}>
+        <Box w={'22px'} h={'22px'} m="auto" p="2px">
             <Link
                 id={id}
                 display="block"

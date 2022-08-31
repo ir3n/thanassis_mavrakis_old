@@ -5,7 +5,7 @@ import NextLink from 'next/link';
 const BannerImageRight = ({ dark, text, image, title, cta, imageTitle, centerAlign }) => {
     const desktopAlign = centerAlign ? 'center' : 'normal';
     return (
-        <Container mb={{ base: '45px', xl: '100px' }} mx={{ base: '-20px', md: 'auto' }}>
+        <Container pb={{ base: '45px', xl: '100px' }} mx={{ base: '-20px', md: 'auto' }}>
             <Flex
                 overflow="hidden"
                 bg={dark ? 'brand' : 'transparent'}

@@ -3,7 +3,6 @@ import { Box, useBreakpointValue } from '@chakra-ui/react';
 import useLanding from 'hooks/useLanding';
 import useProductListing from 'hooks/useProductListing';
 import { getLandingPageData } from 'services/landingPages';
-import Container from 'components/common/Container';
 import ProductListHeader from './ProductsListHeader';
 import ProductListSettings from './ProductsListSettings';
 import ProductListSettingsMobile from './ProductListSettingsMobile';
@@ -85,7 +84,7 @@ export default function LandingListView({ page, data, info, pager, facets, sort,
 
                     {header}
                     {productListSettings}
-                    <Container>
+                    <Box maxW="1290px" px="20px" margin="auto">
                         <Box as="div" display="flex" flexDir="row" mb={'50px'}>
                             <Box w={['0', '0', '0%', '30%', '30%']}>{accordion}</Box>
                             <Box
@@ -103,7 +102,7 @@ export default function LandingListView({ page, data, info, pager, facets, sort,
                                 />
                             </Box>
                         </Box>
-                    </Container>
+                    </Box>
                 </>
             ) : null}
         </>
