@@ -3,7 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { getFormattedFilters } from 'utils/helpers';
 import Filter from 'components/common/Filter';
 
-const SelectedFilters = ({ selectedFilters, handleRemove }) => {
+const SelectedFilters = ({ selectedFilters, handleRemove, isMobile }) => {
     const formattedFilters = selectedFilters ? getFormattedFilters(selectedFilters) : [];
     const { t } = useTranslation('common');
 
@@ -16,7 +16,7 @@ const SelectedFilters = ({ selectedFilters, handleRemove }) => {
             flexDir="row"
             flexFlow="wrap"
             className="filter"
-            borderBottom={selectedFilters ? '1px solid #C4C4C4' : 'none'}
+            borderBottom={selectedFilters && !isMobile ? '1px solid #C4C4C4' : 'none'}
         >
             {formattedFilters.map((filter, index) => (
                 <Filter filter={filter} key={`selectedFilter-${index}`} handleRemove={handleRemove} />

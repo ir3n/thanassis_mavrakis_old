@@ -1,38 +1,8 @@
 import React from 'react';
-import {
-    Box,
-    Image,
-    Text,
-    Switch,
-    FormControl,
-    FormLabel,
-    Menu,
-    Button,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    useDisclosure,
-    Checkbox
-} from '@chakra-ui/react';
-// import Filter from 'components/common/Filter';
+import { Box, Image, Button, useDisclosure } from '@chakra-ui/react';
 import ProductListFilters from './ProductListFilters';
-import BreadCrumb from 'components/common/BreadCrumb';
-import Filter from 'components/common/Designers/Filter';
-import { ChevronDownIcon } from '@chakra-ui/icons';
 import { getFormattedFilters } from 'utils/helpers';
 import useTranslation from 'next-translate/useTranslation';
-
-import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton
-} from '@chakra-ui/react';
-import { useRef } from 'react';
-import CustomDrawer from 'components/common/CustomDrawer';
 
 const ProductListSettingsMobile = ({
     pager,
@@ -40,7 +10,9 @@ const ProductListSettingsMobile = ({
     handleWornImage,
     facets,
     selectedFilters,
-    handleSelectFilter
+    handleSelectFilter,
+    isValidating,
+    isMobile
 }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const formattedFilters = selectedFilters ? getFormattedFilters(selectedFilters) : [];
@@ -60,7 +32,22 @@ const ProductListSettingsMobile = ({
                             ''
                         ) : (
                             <Box display={'flex'} alignItems={'center'}>
-                                <Image src={'/assets/filter.png'} h="14px" w="16px" alt={'filter-icon'} mr="3px" />
+                                <Box pos={'relative'}>
+                                    <Image src={'/assets/filter.png'} h="14px" w="16px" alt={'filter-icon'} mr="3px" />
+                                    <Box
+                                        pos={'absolute'}
+                                        top={'-20px'}
+                                        right={'-15px'}
+                                        as="span"
+                                        fontSize={'9px'}
+                                        backgroundColor={'red'}
+                                        borderRadius={'50%'}
+                                        color={'white'}
+                                        padding={'4px 8px'}
+                                    >
+                                        {isValidating ? '' : pager?.totalResults}
+                                    </Box>
+                                </Box>
                                 <Button
                                     variant="secondary"
                                     py={'5px'}
@@ -83,6 +70,7 @@ const ProductListSettingsMobile = ({
                 handleRemove={handleRemove}
                 isOpen={isOpen}
                 onClose={onClose}
+                isMobile={isMobile}
             />
         </>
     );

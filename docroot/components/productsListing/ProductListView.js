@@ -74,6 +74,7 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                 selectedSort={selectedSort}
                 selectedFilters={selectedFilters}
                 handleRemove={handleRemoveFilter}
+                isValidating={isValidating}
                 isMobile
             />
         ),
@@ -127,7 +128,7 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                             <Text as={'h1'} textStyle={'titleSm'} textAlign={'center'} textTransform={'uppercase'}>
                                 {productCategoryData?.info.name}
                             </Text>
-                            <Text textStyle={'textLg'} textAlign={'center'} w={'65%'} m={'auto'}>
+                            <Text textStyle={'textLg'} textAlign={'center'} w={{ base: '85%', lg: '65%' }} m={'auto'}>
                                 {
                                     'Quis porttitor bibendum nec duis at integer. Malesuada euismod semper tortor duis viverra mattis auctor amet lorem.'
                                 }
@@ -151,6 +152,7 @@ export default function ProductListView({ page, data, info, pager, facets, sort,
                                         setSelectedSort={setSelectedSort}
                                         handleSelectFilter={handleSelectFilter}
                                         handleRemoveFilter={handleRemoveFilter}
+                                        selectedFilters={selectedFilters}
                                     />
                                 )}
                             </Box>

@@ -7,20 +7,29 @@ import {
     DrawerBody,
     DrawerFooter,
     Drawer,
-    useBreakpointValue
+    useBreakpointValue,
+    Text
 } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 import ProductListAccordion from './ProductListAccordion';
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import SelectedFilters from './SelectedFilters';
-const ProductListFilters = ({ facets, selectedFilters, handleSelectFilter, handleRemove, isOpen, onClose }) => {
+const ProductListFilters = ({
+    facets,
+    selectedFilters,
+    handleSelectFilter,
+    handleRemove,
+    isOpen,
+    onClose,
+    isMobile
+}) => {
     const { t } = useTranslation('common');
 
     const filterSelected = useBreakpointValue({
-        base: <></>,
-        sm: <></>,
-        md: <></>,
+        base: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />,
+        sm: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />,
+        md: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />,
         lg: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />,
         xl: <SelectedFilters selectedFilters={selectedFilters} handleRemove={handleRemove} />
     });
@@ -30,26 +39,36 @@ const ProductListFilters = ({ facets, selectedFilters, handleSelectFilter, handl
             <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
                 <DrawerOverlay />
                 <DrawerContent>
-                    <CloseIcon
-                        _hover={{ cursor: 'pointer' }}
-                        onClick={onClose}
-                        backgroundColor="black"
+                    <Box
+                        display={'flex'}
+                        alignItems={'center'}
+                        textStyle={'caprion'}
+                        color={'lightGrey'}
                         pos="absolute"
                         top="0"
-                        left="-45px"
-                        w="45px"
-                        h="45px"
-                        p="12px"
-                        color="white"
-                        borderRadius="5px"
-                    />
-                    <DrawerHeader>
-                        {t('filters')}
-                        {filterSelected}
+                        right="0"
+                    >
+                        <Text>{'Close'}</Text>
+                        <CloseIcon
+                            _hover={{ cursor: 'pointer' }}
+                            onClick={onClose}
+                            w="35px"
+                            h="35px"
+                            p="12px"
+                            color="lightGrey"
+                            borderRadius="5px"
+                        />
+                    </Box>
+                    <DrawerHeader pb={'0'} pt={'30px'}>
+                        <SelectedFilters
+                            selectedFilters={selectedFilters}
+                            handleRemove={handleRemove}
+                            isMobile={true}
+                        />
                     </DrawerHeader>
 
                     <DrawerBody>
-                        <Box w="100%" h="100%" pos="relative">
+                        <Box w="100%" h="100%" pos="relative" borderTop={'1px solid #C4C4C4'}>
                             <Box maxH="100%">
                                 <ProductListAccordion
                                     facets={facets}
@@ -63,8 +82,14 @@ const ProductListFilters = ({ facets, selectedFilters, handleSelectFilter, handl
                     </DrawerBody>
 
                     <DrawerFooter>
-                        <Button backgroundColor="black" onClick={onClose} w="90%">
-                            {t('showProducts')}
+                        <Button
+                            backgroundColor="white"
+                            border={'1px solid #000000'}
+                            m={'auto'}
+                            onClick={onClose}
+                            w="90%"
+                        >
+                            {'Καθαρισμός όλων'}
                         </Button>
                     </DrawerFooter>
                 </DrawerContent>
