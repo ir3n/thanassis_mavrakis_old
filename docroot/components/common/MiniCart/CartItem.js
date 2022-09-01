@@ -22,7 +22,7 @@ export default function CartItem({
                 <Box w={'20%'}>
                     <Image src={image} w={'100%'} h={'auto'} alt={''} />
                 </Box>
-                <Box w={'55%'} paddingLeft={'12px'}>
+                <Box w={'40%'} paddingLeft={'12px'}>
                     <Box textStyle={'caption'} display="flex" flexDirection={'column'}>
                         <Text pb={'8px'}>{title}</Text>
                         <Text pb={'8px'} color={'darkGrey'}>
@@ -31,15 +31,24 @@ export default function CartItem({
                         <Text>{price}</Text>
                     </Box>
                 </Box>
-                <Box w={'25%'}>
-                    <Box textStyle={'caption'} display="flex" flexDirection={'column'} h={'100%'} justifyContent={'center'}>
+                <Box w={'40%'}>
+                    <Box
+                        textStyle={'caption'}
+                        display="flex"
+                        flexDirection={'row'}
+                        h={'100%'}
+                        w={'100%'}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                    >
                         <Box
                             display={'flex'}
                             alignItems={'center'}
                             justifyContent={'space-around'}
                             border={'1px solid #000000'}
-                            p={'20px 0'}
-                            mb={'12px'}
+                            p={'7px 0'}
+                            mr={'12px'}
+                            w={'70%'}
                         >
                             <Link
                                 onClick={() => {
@@ -57,9 +66,17 @@ export default function CartItem({
                                 <Image src={'/assets/plus.svg'} w={'12px'} h={'12px'} alt={'add'} />
                             </Link>
                         </Box>
-                        <Link onClick={() => handleRemoveItem(item.order_item_id)}>
-                            <Image m={'auto'} src={'/assets/remove-button.svg'} w={'12px'} h={'12px'} alt={'remove'} />
-                        </Link>
+                        <Box>
+                            <Link onClick={() => handleRemoveItem(item.order_item_id)}>
+                                <Image
+                                    m={'auto'}
+                                    src={'/assets/remove-button.svg'}
+                                    w={'12px'}
+                                    h={'12px'}
+                                    alt={'remove'}
+                                />
+                            </Link>
+                        </Box>
                     </Box>
                 </Box>
             </Box>

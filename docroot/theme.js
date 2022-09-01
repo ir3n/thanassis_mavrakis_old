@@ -138,7 +138,7 @@ const components = {
                 bg: 'green',
                 color: 'white',
                 _hover: {
-                    bg: 'red'
+                    bg: 'black'
                 }
             }
         },

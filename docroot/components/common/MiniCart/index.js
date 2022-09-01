@@ -88,17 +88,7 @@ export const MiniCart = ({ boxSize }) => {
                 className={'ammMiniCart__trigger'}
                 onClick={toggleCart}
             >
-                <Box
-                    pos={'absolute'}
-                    top={'-12px'}
-                    left={'10px'}
-                    w={'25px'}
-                    textStyle={'captionSm'}
-                    lineHeight={'12px'}
-                >
-                    {cartData?.order_items?.length}
-                </Box>
-                {cartState ? <CartSvgBlack /> : <CartSvg />}
+                <CartSvg />
 
                 {cartData?.order_items && cartData?.order_items.length > 0 ? (
                     <Box
@@ -123,22 +113,29 @@ export const MiniCart = ({ boxSize }) => {
             </Box>
             <Drawer isOpen={cartState} placement="right" onClose={closeCart} finalFocusRef={btnRef} size={drawerSize}>
                 <DrawerContent
-                    h={{ sm: '100vh', md: 'calc(100vh - 85px)' }}
-                    w={{ sm: '100vw !important', md: '50vw !important', xxxl: '30vw !important' }}
+                    h={{ sm: '100vh', md: 'calc(100vh - 52px)' }}
+                    // w={{ sm: '100vw !important', md: '50vw !important', xxxl: '30vw !important' }}
+                    w={'25% !important'}
                     bottom={'0'}
                     top={'unset !important'}
                     p={{ sm: '0 30px 0 40px', md: '0 40px 0 40px' }}
                 >
                     <DrawerCloseButton _focus={{}} _hover={'none'} right={'30px'} />
-                    <DrawerHeader mr={'20px'} borderBottom={'2px solid #FF8234'}>
+                    <DrawerHeader
+                        mr={'20px'}
+                        borderBottom={'2px solid #000000'}
+                        display={'flex'}
+                        alignItems={'center'}
+                        justifyContent={'center'}
+                    >
                         <Image
                             src={'/assets/shopping-cart-icon.png'}
-                            width={'48px'}
-                            height={'48px'}
-                            m={'auto'}
+                            width={'45px'}
+                            height={'30px'}
+                            pr={'12px'}
                             alt={'cart'}
                         />
-                        <Text textAlign={'center'} pt={'15px'}>
+                        <Text textAlign={'center'} pt={'7px'}>
                             {t('mycart')}{' '}
                             {cartData?.order_items && cartData?.order_items.length > 0 ? (
                                 <Text color={'brand.900'} as={'span'} fontWeight={'normal'}>
@@ -198,7 +195,7 @@ export const MiniCart = ({ boxSize }) => {
                             justifyContent={'center'}
                             p={'15px 0px'}
                             mr={'20px'}
-                            borderTop={'2px solid #FF8234'}
+                            borderTop={'2px solid #000000'}
                         >
                             <Box display={'flex'} flexDirection={'column'} w={'100%'}>
                                 <Box display={'flex'} flexDirection={'row'} justifyContent={'space-between'}>

@@ -22,10 +22,11 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
     const [loadingAddToCart, setLoadingAddToCart] = useState(false);
     const [loadingAddToWishlist, setLoadingAddToWishlist] = useState(false);
     const [finalPrice, setFinalPrice] = useState('');
+    const [selectedEssence, setSelectedEssence] = useState();
 
     const { openCart } = useContext(MainContext);
     const { create: addToCart } = useCart();
-    const { mutate: wishListMutate, wishListData } = useWishlist();
+    // const { mutate: wishListMutate, wishListData } = useWishlist();
 
     useEffect(() => {
         selectedVariation && setFinalPrice(selectedVariation?.price_raw);
@@ -36,9 +37,16 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
         addToCart([
             {
                 purchased_entity_type: 'commerce_product_variation',
-                purchased_entity_id: product_id,
+                purchased_entity_id: selectedVariation?.id,
                 quantity: '1',
-                combine: true
+                combine: true,
+                product_type: selectedVariation?.attribute_type,
+                essence_item_code:
+                    selectedVariation?.attribute_type === 'fragrance'
+                        ? selectedVariation?.essence_extra_doseis?.essence_item_code
+                        : null,
+                essence_qnt: selectedEssence?.essence_qnt,
+                essence_price: selectedEssence?.essence_price
             }
         ]).finally(() => {
             setLoadingAddToCart(false);
@@ -48,33 +56,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
 
     const list = router.locale + router.asPath;
 
-    function isInWishList() {
-        return Boolean(wishListData.find((i) => i.variation_id === selectedVariation?.id));
-    }
-
-    const handleAddToWishlist = () => {
-        setLoadingAddToWishlist(true);
-        apiAddToWishlist(router.locale, {
-            product_variation: selectedVariation.id
-        })
-            .then(({ data }) => {
-                wishListMutate();
-                Tracking.addToWishlist(data);
-            })
-            .catch((err) => {
-                toast({
-                    description: getErrorMessage(err),
-                    position: 'top',
-                    status: 'error',
-                    duration: 9000,
-                    isClosable: true
-                });
-            })
-            .finally(() => {
-                setLoadingAddToWishlist(false);
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-    };
+    console.log('data: ', selectedVariation);
 
     return (
         <Box>
@@ -83,13 +65,13 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
                     <Text textStyle="caption" fontWeight="600" color="green" textTransform="uppercase">
                         {data?.availability}
                     </Text>
-                    <Box onClick={handleAddToWishlist} isLoading={loadingAddToWishlist} cursor="pointer">
+                    {/* <Box onClick={handleAddToWishlist} isLoading={loadingAddToWishlist} cursor="pointer">
                         {isInWishList() ? (
                             <Image src="/assets/heart-solid.svg" w="20px" h="20px" />
                         ) : (
                             <Image src="/assets/heart-outline.svg" w="20px" h="20px" />
                         )}
-                    </Box>
+                    </Box> */}
                 </Flex>
                 <Flex justifyContent="space-between" align="flex-end">
                     <Box>
@@ -136,6 +118,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
                                 data={selectedVariation?.essence_extra_doseis?.options}
                                 setFinalPrice={setFinalPrice}
                                 initPrice={selectedVariation?.price_raw}
+                                setSelectedEssence={setSelectedEssence}
                             />
                         )
                     }[data?.product_type]
@@ -146,7 +129,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
                 isLoading={loadingAddToCart}
                 variant="primary"
                 w="full"
-                isDisabled={selectedVariation?.stock_level > 0 && selectedVariation?.status ? false : true}
+                isDisabled={selectedVariation?.stock_level > 0 ? false : true}
                 mt="10px"
                 mb="20px"
             >

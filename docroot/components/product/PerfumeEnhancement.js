@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
 import { Box, Select } from '@chakra-ui/react';
 
-const PerfumeEnhancement = ({ data, setFinalPrice, initPrice }) => {
+const PerfumeEnhancement = ({ data, setFinalPrice, initPrice, setSelectedEssence }) => {
     return (
         <Select
             placeholder="Select extra doses"
@@ -10,12 +10,15 @@ const PerfumeEnhancement = ({ data, setFinalPrice, initPrice }) => {
             w="100%"
             h="40px"
             onChange={(e) => {
-                setFinalPrice((initPrice += e.target.value * 1));
+                console.log(data[e.target.value]);
+                console.log(!data[e.target.value] ? initPrice : initPrice + data[e.target.value]?.essence_price);
+                setFinalPrice(!data[e.target.value] ? initPrice : initPrice + data[e.target.value]?.essence_price);
+                setSelectedEssence(data[e.target.value]);
             }}
             textStyle="text"
         >
             {data?.map((item, index) => (
-                <option key={`perfume-enhancement-${index}`} value={item?.essence_price}>
+                <option key={`perfume-enhancement-${index}`} value={index}>
                     {item?.essence_price_label}
                 </option>
             ))}

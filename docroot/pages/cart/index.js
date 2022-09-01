@@ -1,11 +1,15 @@
 import { useContext } from 'react';
 import MainContext from 'context';
-import { Box, Checkbox, Text, Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import { Box, Flex, Link, Button, FormControl, FormLabel, Input, useBreakpointValue } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
 import useCart from 'hooks/useCart';
 import { useRouter } from 'next/router';
-import CartItem from './CartItem';
+import CartItem from 'components/common/Cart/CartItem';
+import CartSum from 'components/common/Cart/CartSum';
 import Container from 'components/common/Container';
+import TableTitle from 'components/common/Cart/TableTitle';
+import ShippingNote from 'components/common/Cart/ShippingNote';
+import ClearAll from 'components/common/Cart/ClearAll';
 
 export default function Cart() {
     const { t } = useTranslation('cart');
@@ -36,121 +40,105 @@ export default function Cart() {
         removeItemFromCart({ order_id: cartData.order_id, order_item_id });
     };
 
+    const cartTableTitle = useBreakpointValue({
+        base: <></>,
+        sm: <></>,
+        md: <></>,
+        lg: <TableTitle />,
+        xl: <TableTitle />,
+        xxl: <TableTitle />
+    });
+
+    const shippingNoteBox = useBreakpointValue({
+        base: <></>,
+        sm: <></>,
+        md: <></>,
+        lg: <ShippingNote />,
+        xl: <ShippingNote />,
+        xxl: <ShippingNote />
+    });
+
+    const shippingNoteBoxMobile = useBreakpointValue({
+        base: <ShippingNote />,
+        sm: <ShippingNote />,
+        md: <ShippingNote />,
+        lg: <></>,
+        xl: <></>,
+        xxl: <></>
+    });
+
+    const clearAllMobile = useBreakpointValue({
+        base: <ClearAll />,
+        sm: <ClearAll />,
+        md: <ClearAll />,
+        lg: <></>,
+        xl: <></>,
+        xxl: <></>
+    });
+
+    const clearAll = useBreakpointValue({
+        base: <></>,
+        sm: <></>,
+        md: <></>,
+        lg: <ClearAll />,
+        xl: <ClearAll />,
+        xxl: <ClearAll />
+    });
+
     return (
         <>
             <Box>
-                <Box as={'h1'} textStyle={'titleMd'} textAlign={'center'} py={'40px'} backgroundColor={'brand'}>
-                    {t('mycartTitle')}
-                </Box>
                 <Container my={'40px'}>
-                    <Box display={'flex'} borderBottom={'2px solid #FF8234'}>
-                        <Box w={'40%'} display={'flex'}>
-                            <Text textStyle={'text'} pb={'8px'}>
-                                {t('item')}
-                            </Text>
-                        </Box>
-                        <Box w={{ base: '30%', lg: '20%' }}>
-                            <Text textStyle={'text'} pb={'8px'}>
-                                {t('price')}
-                            </Text>
-                        </Box>
-                        <Box w={{ base: '30%', lg: '20%' }} textAlign={{ base: 'right', lg: 'center' }}>
-                            <Text textStyle={'text'} pb={'8px'}>
-                                {t('quantity')}
-                            </Text>
-                        </Box>
-                        <Box
-                            display={{ base: 'none', lg: 'block' }}
-                            w={{ base: '25%', lg: '20%' }}
-                            textAlign={{ lg: 'right' }}
-                        >
-                            <Text textStyle={'text'} pb={'8px'}>
-                                {t('subtotal')}
-                            </Text>
-                        </Box>
+                    <Box
+                        textStyle={'subtitle'}
+                        textAlign={{ base: 'center', lg: 'left' }}
+                        textTransform={'uppercase'}
+                        p={{ base: '0 0 25px 0', lg: '40px 0 25px 0' }}
+                        fontWeight={'700'}
+                    >
+                        {'ΚΑΛΑΘΙ'}
                     </Box>
+                    {shippingNoteBoxMobile}
 
-                    {cartData?.order_items && cartData?.order_items.length > 0 ? (
-                        <Box>
-                            {cartData?.order_items.map((i) => {
-                                return (
-                                    <CartItem
-                                        key={i.order_item_id}
-                                        order_id={cartData.order_id}
-                                        handleRemoveItem={handleRemoveItem}
-                                        handleUpdateQuantity={handleUpdateQuantity}
-                                        quantity={i.quantity}
-                                        item={i}
-                                        path={i.path}
-                                        image={i.image}
-                                        sku={i.sku}
-                                        price={i.price}
-                                        title={i.product_title}
-                                    />
-                                );
-                            })}
-                        </Box>
-                    ) : null}
-
-                    <Box display={'flex'} justifyContent={'end'}>
-                        <Box w={{ base: '100%', lg: '35%' }}>
-                            {!cartData || !cartData.order_items || cartData.order_items.length === 0 ? null : (
-                                <Box
-                                    display={'flex'}
-                                    justifyContent={'end'}
-                                    textAlign={'right'}
-                                    p={'18px 0px 30px 0px'}
-                                >
-                                    <Text textStyle={'text'} pb={'8px'} pr={'20%'}>
-                                        {t('total')}
-                                    </Text>
-                                    <Text textStyle={'sm'}>{cartData.total_price}</Text>
+                    <Flex
+                        direction={{ base: 'column', lg: 'row' }}
+                        borderTop={{ base: '1px solid #000000', lg: 'none' }}
+                    >
+                        <Box w={{ base: '100%', lg: '70%' }} marginRight={'10px'}>
+                            {cartTableTitle}
+                            {cartData?.order_items && cartData?.order_items.length > 0 ? (
+                                <Box>
+                                    {cartData?.order_items.map((i) => {
+                                        return (
+                                            <CartItem
+                                                key={i.order_item_id}
+                                                order_id={cartData.order_id}
+                                                handleRemoveItem={handleRemoveItem}
+                                                handleUpdateQuantity={handleUpdateQuantity}
+                                                quantity={i.quantity}
+                                                item={i}
+                                                path={i.path}
+                                                image={i.image}
+                                                sku={i.sku}
+                                                price={i.price}
+                                                title={i.product_title}
+                                            />
+                                        );
+                                    })}
                                 </Box>
-                            )}
-
-                            <FormControl>
-                                <FormLabel htmlFor="cupon">
-                                    <Text textStyle={'sm'}>Κουπόνια</Text>
-                                </FormLabel>
-                                <Input id="cupon" fontSize={'14px'} placeholder="Κουπόνι Έκπτωσης" />
-                            </FormControl>
-                            <Button
-                                variant="primary"
-                                w={'75%'}
-                                textTransform={'uppercase'}
-                                textStyle={'text'}
-                                mt={'12px'}
-                            >
-                                {'checkout'}
-                            </Button>
-                            <Checkbox className="checkBoxCart">
-                                {`Με την εγγραφή σας αποδέχεστε την Πολιτική Απορρήτου και τους 'Ορους Χρήσης`}
-                            </Checkbox>
+                            ) : null}
                         </Box>
-                    </Box>
+                        {clearAllMobile}
+                        <Box
+                            w={{ base: '100%', lg: '30%' }}
+                            mt={{ base: '45px', lg: '0' }}
+                            marginLeft={{ base: '0', lg: '10px' }}
+                        >
+                            <CartSum cartData={cartData} shippingNoteBox={shippingNoteBox} cart />
+                        </Box>
+                    </Flex>
+                    {clearAll}
                 </Container>
-
-                {/* {cartData?.order_items && cartData?.order_items.length > 0 ? (
-                    <Box>
-                        {cartData?.order_items.map((i) => {
-                            return (
-                                <CartItem
-                                    key={i.order_item_id}
-                                    order_id={cartData.order_id}
-                                    handleRemoveItem={handleRemoveItem}
-                                    handleUpdateQuantity={handleUpdateQuantity}
-                                    quantity={i.quantity}
-                                    item={i}
-                                    path={i.path}
-                                    image={i.image}
-                                    sku={i.sku}
-                                    price={i.price}
-                                    title={i.product_title}
-                                />
-                            );
-                        })}
-                    </Box>
-                ) : null} */}
             </Box>
         </>
     );

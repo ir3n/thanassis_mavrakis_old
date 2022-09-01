@@ -37,7 +37,7 @@ const MainLayout = ({ children }) => {
                 {header}
                 {menu}
             </Box>
-            <Box as={'main'} backgroundColor={'lightBeize'}>
+            <Box as={'main'}>
                 {globalSections?.map(
                     (section, index) =>
                         section?.type == 'stripe_with_text' && (
