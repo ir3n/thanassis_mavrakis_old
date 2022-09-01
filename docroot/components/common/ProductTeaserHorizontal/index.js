@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Box, Text, Link, Image, Button, Flex } from '@chakra-ui/react';
 import NextLink from 'next/link';
-import DotColor from './DotColor';
+import DotColor from '../ProductTeaser/DotColor';
 import CustomSlider from '../CustomSlider';
 import useProductVariation from 'hooks/useProductVariation';
 import ProductFlags from 'components/product/ProductFlags';
@@ -28,7 +28,7 @@ const settings = {
     ]
 };
 
-const ProductTeaser = ({
+const ProductTeaserHorizontal = ({
     title,
     product_id,
     key,
@@ -40,8 +40,7 @@ const ProductTeaser = ({
     mastersku,
     discount_percentage,
     web_only,
-    variation_options,
-    largeTeaser
+    variation_options
 }) => {
     const imageRef = useRef(null);
     const [loaded, setLoaded] = useState(false);
@@ -56,17 +55,26 @@ const ProductTeaser = ({
     }, []);
 
     return (
-        <Flex backgroundColor={'white'} pos={'relative'} direction="column" h="100%">
+        <Flex
+            backgroundColor={'white'}
+            pos={'relative'}
+            direction={{ base: 'column', sm: 'row' }}
+            h="100%"
+            p={{ base: '15px 0 0', sm: '15px 25px 25px 15px' }}
+            maxW="500px"
+            m="auto"
+        >
             <ProductFlags teaser={true} webOnly={web_only} discount={discount_percentage} />
-            <Box pos={'absolute'} top={'8px'} right={'8px'} zIndex={'10'}>
+            <Box display={{ base: 'block', sm: 'none' }} position="absolute" top="15px" right="15px" zIndex="1">
                 <NextLink href={url || '#'} passHref prefetch={false}>
-                    <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
+                    <Link _focus={{}} pos="relative" as={'a'} ml="auto" data-productid={mastersku}>
                         <Image width={'16px'} height={'16px'} alt={title} src={'/assets/heart-outline.svg'} />
                     </Link>
                 </NextLink>
             </Box>
-            <NextLink href={url || '#'} passHref prefetch={false} w={'100%'}>
-                <Link _focus={{}} pos="relative" as={'a'} w={'100%'} data-productid={mastersku}>
+
+            <NextLink href={url || '#'} passHref prefetch={false} w={'100%'} flex="1">
+                <Link _focus={{}} pos="relative" as={'a'} w={'100%'} flex="1" data-productid={mastersku}>
                     <Box
                         _focus={{}}
                         display="flex"
@@ -92,8 +100,15 @@ const ProductTeaser = ({
                     </Box>
                 </Link>
             </NextLink>
-            <Flex direction="column" p="10px 15px" width={'100%'} pos={'relative'} flex="1">
-                <Box pos="relative" overflow={'hidden'} mb="10px">
+            <Flex direction="column" p={{ base: '0', sm: '20px 0 0 20px' }} width={'100%'} pos={'relative'} flex="1">
+                <Text textStyle={'caption'} mb="10px" p={{ base: '0 20px', sm: '0' }}>
+                    <Box as={'span'} fontWeight={'700'}>
+                        {brand}
+                    </Box>{' '}
+                    {data ? data?.name : title}
+                </Text>
+
+                <Box pos="relative" overflow={'hidden'} mb="10px" p={{ base: '0 20px', sm: '0' }}>
                     {variation_options?.length > 6 ? (
                         <CustomSlider {...settings} className="color-slider">
                             {variation_options?.map(
@@ -131,56 +146,33 @@ const ProductTeaser = ({
                     )}
                 </Box>
 
-                {!largeTeaser ? (
-                    <>
-                        <Text textStyle={'caption'} mb="10px">
-                            <Box as={'span'} fontWeight={'700'}>
-                                {brand}
-                            </Box>{' '}
-                            {data ? data?.name : title}
-                        </Text>
-                        <Flex alignItems={'end'} mt="auto">
-                            <Text textStyle={'subtitle'} color={'black'} lineHeight="1.1">
-                                {data ? data?.price : price}
-                                {data ? (
-                                    <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
-                                        {data?.list_price}
-                                    </Box>
-                                ) : (
-                                    <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
-                                        {list_price}
-                                    </Box>
-                                )}
-                            </Text>
-                        </Flex>
-                    </>
-                ) : (
-                    <Flex justifyContent="space-between" direction={{ base: 'column', xl: 'row' }} flex="1">
-                        <Text textStyle={'caption'} mb={{ base: '10px', xl: '0' }}>
-                            <Box as={'span'} fontWeight={'700'}>
-                                {brand}
-                            </Box>{' '}
-                            {data ? data?.name : title}
-                        </Text>
-                        <Flex alignItems={'end'} pl={{ base: '0', xl: '30px' }} mt={{ base: 'auto', xl: '0' }}>
-                            <Text textStyle={'subtitle'} color={'black'} lineHeight="1.1">
-                                {data ? data?.price : price}
-                            </Text>
-
-                            {list_price ? (
-                                <Text ml={'8px'} textStyle={'text'} color={'lightGrey'}>
-                                    {price}
-                                </Text>
-                            ) : null}
-                        </Flex>
-                    </Flex>
-                )}
+                <Flex alignItems={'end'} mt="auto" mb="20px" p={{ base: '0 20px', sm: '0' }}>
+                    <Text textStyle={'subtitle'} color={'black'} lineHeight="1.1">
+                        {data ? data?.price : price}
+                        {data ? (
+                            <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                {data?.list_price}
+                            </Box>
+                        ) : (
+                            <Box as={'span'} ml={'8px'} textStyle={'text'} color={'lightGrey'}>
+                                {list_price}
+                            </Box>
+                        )}
+                    </Text>
+                    <Box display={{ base: 'none', sm: 'block' }} ml="auto">
+                        <NextLink href={url || '#'} passHref prefetch={false}>
+                            <Link _focus={{}} pos="relative" as={'a'} data-productid={mastersku}>
+                                <Image width={'16px'} height={'16px'} alt={title} src={'/assets/heart-outline.svg'} />
+                            </Link>
+                        </NextLink>
+                    </Box>
+                </Flex>
+                <Button variant="primary" minW="unset">
+                    {'Add to Bag'}
+                </Button>
             </Flex>
-            <Button variant="primary" minW="unset">
-                {'Add to Bag'}
-            </Button>
         </Flex>
     );
 };
 
-export default ProductTeaser;
+export default ProductTeaserHorizontal;

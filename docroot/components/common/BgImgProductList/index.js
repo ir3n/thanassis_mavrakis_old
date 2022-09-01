@@ -2,7 +2,7 @@ import { Text, Box, Link, Image } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import Container from '../Container';
 import CustomSlider from '../CustomSlider';
-import ProductTeaser from '../ProductTeaser';
+import ProductTeaserHorizontal from '../ProductTeaserHorizontal';
 
 const BgImgProductList = ({ image, items, cta }) => {
     const settings = {
@@ -15,13 +15,7 @@ const BgImgProductList = ({ image, items, cta }) => {
         autoplay: true,
         responsive: [
             {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 500,
+                breakpoint: 900,
                 settings: {
                     slidesToShow: 1
                 }
@@ -41,7 +35,7 @@ const BgImgProductList = ({ image, items, cta }) => {
                 bgRepeat="no-repeat"
                 mb={{ base: '50px', lg: '90px' }}
             ></Box>
-            <Container marginTop="-390px">
+            <Container marginTop={{ base: '-390px', sm: '-350px' }}>
                 <NextLink href={cta?.url} passHref>
                     <Link>
                         <Text
@@ -61,7 +55,7 @@ const BgImgProductList = ({ image, items, cta }) => {
                         return (
                             <Box p="0 20px 20px" key={`carousel-gifts-${index}`} h="100%">
                                 <Box bg="white" boxShadow="lg" h="100%">
-                                    <ProductTeaser
+                                    <ProductTeaserHorizontal
                                         title={item?.title}
                                         product_id={item?.product_id}
                                         image={item?.teaser_image}
