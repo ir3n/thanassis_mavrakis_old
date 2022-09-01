@@ -5,10 +5,9 @@ import FadeIn from 'components/transitions/FadeIn';
 import NextLink from 'next/link';
 import BreadCrumb from 'components/common/BreadCrumb';
 import Container from 'components/common/Container';
-import useUser from 'hooks/useUser';
 import Tracking from 'utils/tracking';
 
-const errorPage = () => {
+const ErrorPage = () => {
     const breadcrumbs = [
         {
             name: 'Home',
@@ -21,10 +20,7 @@ const errorPage = () => {
     ];
 
     const { t } = useTranslation('error');
-    const { isLoggedIn } = useUser();
-    useEffect(() => {
-        Tracking.pageView('404', isLoggedIn());
-    }, []);
+
     return (
         <FadeIn>
             <Container>
@@ -37,17 +33,17 @@ const errorPage = () => {
                         fontWeight="100"
                         letterSpacing="10px"
                     >
-                        404
+                        {'404'}
                     </Text>
                     <Text as="h2" textStyle="titleMd" mb="15px">
-                        Whoops! Something went wrong.
+                        {'Whoops! Something went wrong.'}
                     </Text>
                     <Text as="p" textStyle="textLg" mb="40px" color="lightGrey">
-                        The page you're looking for wasn't found.
+                        {`The page you're looking for wasn't found.`}
                     </Text>
                     <NextLink href="/" passHref>
                         <Button variant="primary" w={{ base: 'full', sm: 'auto' }}>
-                            BACK TO HOME
+                            {'BACK TO HOME'}
                         </Button>
                     </NextLink>
                 </Box>
@@ -56,4 +52,4 @@ const errorPage = () => {
     );
 };
 
-export default errorPage;
+export default ErrorPage;
