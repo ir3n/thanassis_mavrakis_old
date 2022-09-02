@@ -11,127 +11,12 @@ import LeftImgProductList from '../LeftImgProductList';
 import BgImageWithText from '../BgImageWithText';
 import CarouselProductGrid from '../CarouselProductGrid';
 import BgImgProductList from '../BgImgProductList';
-import LeftArrow from '/public/assets/leftarrow.svg';
-import RightArrow from '/public/assets/rightarrow.svg';
 
 // import Tracking from 'utils/tracking';
 
 export const RenderSections = ({ sections }) => {
-    const responsiveProduct = [
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 992,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 5,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 576,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 320,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: false
-            }
-        }
-    ];
-    // const responsiveBanner = [
-    //     {
-    //         breakpoint: 1200,
-    //         settings: {
-    //             slidesToShow: 3,
-    //             slidesToScroll: 4,
-    //             infinite: true,
-    //             dots: false
-    //         }
-    //     },
-    //     {
-    //         breakpoint: 992,
-    //         settings: {
-    //             slidesToShow: 3,
-    //             slidesToScroll: 5,
-    //             infinite: true,
-    //             dots: false
-    //         }
-    //     },
-    //     {
-    //         breakpoint: 768,
-    //         settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 3,
-    //             infinite: true,
-    //             dots: false
-    //         }
-    //     },
-    //     {
-    //         breakpoint: 576,
-    //         settings: {
-    //             slidesToShow: 2,
-    //             slidesToScroll: 2,
-    //             infinite: true,
-    //             dots: false
-    //         }
-    //     },
-    //     {
-    //         breakpoint: 320,
-    //         settings: {
-    //             slidesToShow: 1,
-    //             slidesToScroll: 1,
-    //             infinite: true,
-    //             dots: false
-    //         }
-    //     }
-    // ];
-
-    function SampleNextArrow(props) {
-        const { className, onClick } = props;
-        return (
-            <Box className={className} id="product-carousel-nextarrow" zIndex={10} onClick={onClick}>
-                <RightArrow />
-            </Box>
-        );
-    }
-
-    function SamplePrevArrow(props) {
-        const { className, onClick } = props;
-        return (
-            <Box className={className} id="product-carousel-prevarrow" zIndex={10} onClick={onClick}>
-                <LeftArrow />
-            </Box>
-        );
-    }
-
     return (
-        <div>
+        <Box overflow="hidden">
             {sections?.map((section, index) => {
                 switch (section?.type) {
                     case 'slider':
@@ -143,25 +28,6 @@ export const RenderSections = ({ sections }) => {
                                 title={section?.title}
                                 items={section?.items}
                                 cta={section?.cta}
-                            />
-                        );
-                    case 'carousel_banner':
-                        return (
-                            <CarouselProducts
-                                key={section?.type + index}
-                                settings={{
-                                    dots: false,
-                                    infinite: true,
-                                    speed: 500,
-                                    slidesToShow: 3,
-                                    slidesToScroll: 1,
-                                    nextArrow: <SampleNextArrow />,
-                                    prevArrow: <SamplePrevArrow />,
-                                    responsive: responsiveBanner
-                                }}
-                                data={section?.items}
-                                type={section?.type}
-                                title={section?.carousel_title}
                             />
                         );
                     case 'carousel_tile':
@@ -250,7 +116,7 @@ export const RenderSections = ({ sections }) => {
                         );
                 }
             })}
-        </div>
+        </Box>
     );
 };
 
