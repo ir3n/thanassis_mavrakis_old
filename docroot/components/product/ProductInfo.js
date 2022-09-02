@@ -23,10 +23,10 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
     const [loadingAddToWishlist, setLoadingAddToWishlist] = useState(false);
     const [finalPrice, setFinalPrice] = useState('');
     const [selectedEssence, setSelectedEssence] = useState();
+    const [number, setNumber] = useState(1);
 
     const { openCart } = useContext(MainContext);
     const { create: addToCart } = useCart();
-    // const { mutate: wishListMutate, wishListData } = useWishlist();
 
     useEffect(() => {
         selectedVariation && setFinalPrice(selectedVariation?.price_raw);
@@ -38,7 +38,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
             {
                 purchased_entity_type: 'commerce_product_variation',
                 purchased_entity_id: selectedVariation?.id,
-                quantity: '1',
+                quantity: number,
                 combine: true,
                 product_type: selectedVariation?.attribute_type,
                 essence_item_code:
@@ -98,7 +98,7 @@ export default function ProductInfo({ data, selectedVariation, setSelectedVariat
 
             <Box my="20px">
                 <Flex maxW={{ base: '100%', md: '210px' }}>
-                    <ProductQuantityBox />
+                    <ProductQuantityBox setNumber={setNumber} number={number} />
                     {data?.product_type === 'fragrance' && (
                         <FragranceComponent data={data?.variations} setSelectedVariation={setSelectedVariation} />
                     )}

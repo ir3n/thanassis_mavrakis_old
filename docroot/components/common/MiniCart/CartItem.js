@@ -1,32 +1,36 @@
 import { Box, Image, Text, Link } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
 
-export default function CartItem({
-    item,
-    quantity,
-    order_id,
-    order_item_id,
-    handleRemoveItem,
-    handleUpdateQuantity,
-    path,
-    image,
-    sku,
-    title,
-    price
-}) {
+export default function CartItem({ item, quantity, handleRemoveItem, handleUpdateQuantity, image, title, price }) {
     const { t } = useTranslation('cart');
+
+    const mlOrColor = () => {
+        switch (item?.attribute_type) {
+            case 'fragrance':
+                return 'Ποσότητα ml ' + item?.attribute_name;
+            case 'makeup':
+                return 'Απόχρωση ' + item?.attribute_name;
+            default:
+                return '';
+        }
+    };
 
     return (
         <>
-            <Box display={'flex'} py={'15px'} mr={'20px'} borderBottom={'1px solid #C4C4C4'}>
+            <Box display={'flex'} py={'15px'} mr={{ base: '0', lg: '20px' }} borderBottom={'1px solid #C4C4C4'}>
                 <Box w={'20%'}>
                     <Image src={image} w={'100%'} h={'auto'} alt={''} />
                 </Box>
                 <Box w={'40%'} paddingLeft={'12px'}>
                     <Box textStyle={'caption'} display="flex" flexDirection={'column'}>
-                        <Text pb={'8px'}>{title}</Text>
-                        <Text pb={'8px'} color={'darkGrey'}>
-                            {sku}
+                        <Text textStyle={'note'} fontWeight={'700'}>
+                            {item?.brand}
+                        </Text>
+                        <Text noOfLines={1} textStyle={'note'}>
+                            {title}
+                        </Text>
+                        <Text pb={'8px'} color={'darkGrey'} textStyle={'note'} fontWeight={'700'}>
+                            {mlOrColor(item?.attribute_type)}
                         </Text>
                         <Text>{price}</Text>
                     </Box>

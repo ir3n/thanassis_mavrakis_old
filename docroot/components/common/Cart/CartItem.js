@@ -1,7 +1,8 @@
-import { Box, Link, Text, Image, useToast, Flex, Button } from '@chakra-ui/react';
+import { Box, Link, Text, Image, useToast, Flex, Button, useBreakpointValue } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
+import PriceTitleMobile from './PriceTitleMobile';
 
-export default function CartItem({ item, handleRemoveItem, handleUpdateQuantity, image, sku, price }) {
+export default function CartItem({ item, handleRemoveItem, handleUpdateQuantity, image, sku, unit_price, price }) {
     const toast = useToast();
     const { t } = useTranslation('cart');
 
@@ -15,6 +16,15 @@ export default function CartItem({ item, handleRemoveItem, handleUpdateQuantity,
                 return '';
         }
     };
+
+    const priceTitleMobile = useBreakpointValue({
+        base: <PriceTitleMobile />,
+        sm: <PriceTitleMobile />,
+        md: <PriceTitleMobile />,
+        lg: <></>,
+        xl: <></>,
+        xxl: <></>
+    });
 
     return (
         <>
@@ -51,14 +61,21 @@ export default function CartItem({ item, handleRemoveItem, handleUpdateQuantity,
                         )}
                     </Box>
                 </Flex>
-                <Box w={{ base: '100%', lg: '55%' }} display={'flex'} mt={{ base: '45px', lg: '0' }}>
+                {priceTitleMobile}
+                <Box
+                    w={{ base: '100%', lg: '55%' }}
+                    display={'flex'}
+                    mt={{ base: '10px', lg: '0' }}
+                    mb={{ base: '10px', lg: '0' }}
+                >
                     <Box
                         w={{ base: '33%', lg: '27%' }}
                         display={'flex'}
-                        alignItems={'center'}
-                        justifyContent={{ base: 'center', lg: 'left' }}
+                        flexDirection={'column'}
+                        alignItems={'left'}
+                        justifyContent={{ base: 'center', lg: 'center' }}
                     >
-                        <Text textStyle={'sm'}>{price}</Text>
+                        <Text textStyle={'sm'}>{unit_price}</Text>
                     </Box>
                     <Box
                         w={{ base: '33%', lg: '27%' }}
@@ -95,16 +112,14 @@ export default function CartItem({ item, handleRemoveItem, handleUpdateQuantity,
                     <Box
                         display={'flex'}
                         alignItems={'center'}
-                        justifyContent={{ base: 'center', lg: 'left' }}
+                        justifyContent={{ base: 'right', lg: 'left' }}
                         w={{ base: '33%', lg: '36%' }}
-                        textAlign={'right'}
                     >
                         <Text textStyle={'sm'}>{price}</Text>
                     </Box>
                     <Box
                         display={{ base: 'none', lg: 'flex' }}
                         alignItems={'center'}
-                        // justifyContent={'flex-end'}
                         justifyContent={{ base: 'center', lg: 'flex-end' }}
                         w={'10%'}
                     >

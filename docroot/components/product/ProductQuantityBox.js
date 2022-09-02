@@ -1,9 +1,9 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Link } from '@chakra-ui/react';
 import { useState } from 'react';
 
-const ProductQuantityBox = () => {
-    const [number, setNumber] = useState(1);
+const ProductQuantityBox = ({ setNumber, number }) => {
+    // const [number, setNumber] = useState(1);
 
     const decreaseHandler = () => {
         number === 0 ? setNumber(number) : setNumber(number - 1);
@@ -31,9 +31,24 @@ const ProductQuantityBox = () => {
                 _hover={{ borderColor: 'gray.300' }}
             >
                 <MinusIcon onClick={decreaseHandler} cursor="pointer" color="mediumGrey" />
+                {/* <Link
+                    onClick={() => {
+                        handleUpdateQuantity(item.order_item_id, Number(item.quantity) + 1, 'ascendant');
+                    }}
+                >
+                    <Image src={'/assets/plus.svg'} w={'12px'} h={'12px'} alt={'add'} />
+                </Link> */}
+
                 <Text textStyle="textLg" fontWeight="600">
                     {number}
                 </Text>
+                {/* <Link
+                    onClick={() => {
+                        handleUpdateQuantity(item.order_item_id, Number(item.quantity) - 1, 'descendant');
+                    }}
+                >
+                    <Image src={'/assets/minus.svg'} w={'10px'} h={'10px'} alt={'remove'} />
+                </Link> */}
                 <AddIcon onClick={increaseHandler} cursor="pointer" color="mediumGrey" />
             </Box>
         </>

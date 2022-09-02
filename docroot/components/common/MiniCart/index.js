@@ -113,16 +113,15 @@ export const MiniCart = ({ boxSize }) => {
             </Box>
             <Drawer isOpen={cartState} placement="right" onClose={closeCart} finalFocusRef={btnRef} size={drawerSize}>
                 <DrawerContent
-                    h={{ sm: '100vh', md: 'calc(100vh - 52px)' }}
-                    // w={{ sm: '100vw !important', md: '50vw !important', xxxl: '30vw !important' }}
-                    w={'25% !important'}
-                    bottom={'0'}
-                    top={'unset !important'}
-                    p={{ sm: '0 30px 0 40px', md: '0 40px 0 40px' }}
+                    h={{ base: 'calc(100vh - 65px) !important', md: 'calc(100vh - 52px) !important' }}
+                    w={{ base: '85% !important', lg: '25% !important' }}
+                    bottom={{ base: 'unset !important', lg: '0 !important' }}
+                    top={{ base: '65px !important', lg: 'unset !important' }}
+                    p={{ base: '0 15px 0 15px', md: '0 40px 0 40px' }}
                 >
-                    <DrawerCloseButton _focus={{}} _hover={'none'} right={'30px'} />
+                    <DrawerCloseButton _focus={{}} _hover={'none'} right={{ base: '10px', lg: '30px' }} />
                     <DrawerHeader
-                        mr={'20px'}
+                        mr={{ base: '0', lg: '20px' }}
                         borderBottom={'2px solid #000000'}
                         display={'flex'}
                         alignItems={'center'}
@@ -169,7 +168,7 @@ export const MiniCart = ({ boxSize }) => {
                                             image={i.image}
                                             sku={i.sku}
                                             price={i.price}
-                                            title={i.product_title}
+                                            title={i.variation_title}
                                         />
                                     );
                                 })}
@@ -194,7 +193,7 @@ export const MiniCart = ({ boxSize }) => {
                         <DrawerFooter
                             justifyContent={'center'}
                             p={'15px 0px'}
-                            mr={'20px'}
+                            mr={{ base: '0', lg: '20px' }}
                             borderTop={'2px solid #000000'}
                         >
                             <Box display={'flex'} flexDirection={'column'} w={'100%'}>

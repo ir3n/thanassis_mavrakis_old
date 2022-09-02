@@ -85,6 +85,8 @@ export default function Cart() {
         xxl: <ClearAll />
     });
 
+    console.log('cartData: ', cartData);
+
     return (
         <>
             <Box>
@@ -120,6 +122,7 @@ export default function Cart() {
                                                 path={i.path}
                                                 image={i.image}
                                                 sku={i.sku}
+                                                unit_price={i.unit_price}
                                                 price={i.price}
                                                 title={i.product_title}
                                             />
