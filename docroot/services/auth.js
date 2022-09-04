@@ -1,9 +1,10 @@
-import { baseURL, authKey, clientId, clientSecret } from 'utils/config';
+import { baseURL, apiURL, authKey, clientId, clientSecret } from 'utils/config';
 import CookieHelper from 'utils/cookie';
 import axios from 'axios';
+
 import { addSeconds, compareAsc } from 'date-fns';
-const loginUrl = baseURL + '/oauth/token';
-const logoutUrl = baseURL + '/oauth/access-token';
+const url = `${apiURL}`;
+const logoutUrl = baseURL + '/oauth/token';
 let firstTimeFail = false;
 let requestsQueue = [];
 export let defaultHeaders = {
@@ -26,7 +27,7 @@ export const isSavedTokenExpired = (authInfo = JSON.parse(CookieHelper.load('aut
     return hasExpired;
 };
 
-export const login = (username, password) => {
+export const login = (username, password, locale) => {
     let data = new FormData();
     let cartHeaders = { 'Commerce-Cart-Token': CookieHelper.load('cartToken') };
     data.append('username', username);
@@ -36,7 +37,7 @@ export const login = (username, password) => {
     data.append('client_id', clientId);
     data.append('client_secret', clientSecret);
     return axios({
-        url: loginUrl,
+        url: `${url}/${locale}/oauth/token?_format=json`,
         method: 'POST',
         data: data,
         headers: { ...loginHeaders, ...cartHeaders },
@@ -44,27 +45,10 @@ export const login = (username, password) => {
     });
 };
 
-export const loginWithFB = (facebook_access_token, facebook_user_id, facebook_token_expires_in) => {
+export const refreshToken = (locale = 'el') => {
+    const authInfo = CookieHelper.load('auth');
     let data = new FormData();
-    let cartHeaders = { 'Commerce-Cart-Token': CookieHelper.load('cartToken') };
-    data.append('facebook_access_token', facebook_access_token);
-    data.append('facebook_user_id', facebook_user_id);
-    data.append('facebook_token_expires_in', facebook_token_expires_in);
-    data.append('grant_type', 'facebook_login_grant');
-    //data.append("scope", "write");
-    data.append('client_id', clientId);
-    data.append('client_secret', clientSecret);
-    return axios({
-        url: loginUrl,
-        method: 'POST',
-        data: data,
 
-        headers: { ...loginHeaders, ...cartHeaders },
-        clearCredentialsOnError: true
-    });
-};
-export const refreshToken = (authInfo = CookieHelper.load('auth')) => {
-    let data = new FormData();
     if (authInfo) {
         data.append('grant_type', 'refresh_token');
         data.append('refresh_token', JSON.parse(authInfo).refresh_token);
@@ -75,7 +59,7 @@ export const refreshToken = (authInfo = CookieHelper.load('auth')) => {
         //store.dispatch(clearUser());
     }
     return axios({
-        url: loginUrl,
+        url: `${url}/${locale}/oauth/token?_format=json`,
         method: 'POST',
         data: data,
         clearCredentialsOnError: true,
@@ -101,12 +85,15 @@ export const clearAuthInfo = () => {
 };
 export const getAuthorizationHeaders = (authInfo = CookieHelper.load('auth')) => {
     let authHeaderValue = null;
+
     if (authInfo) {
         authHeaderValue = JSON.parse(authInfo).access_token;
+        return {
+            Authorization: 'Bearer ' + authHeaderValue
+        };
     }
-    return Object.assign({}, getDefaultHeaders(), {
-        Authorization: 'Bearer ' + authHeaderValue
-    });
+
+    return getDefaultHeaders();
 };
 export const getDefaultHeaders = () => {
     return defaultHeaders;
@@ -143,9 +130,19 @@ export const setFirstTimeFail = (value) => {
 export const getAuthorizationHeadersWithCookie = () => {
     let headers = { 'Commerce-Cart-Token': CookieHelper.load('cartToken') };
 
+    console.log('headers', headers);
+
     if (CookieHelper.load('auth')) {
         headers = { ...headers, ...getAuthorizationHeaders() };
     }
 
     return headers;
+};
+
+export const hasToken = () => {
+    if (typeof window === 'undefined') {
+        return false;
+    } else {
+        return Boolean(CookieHelper.load('auth'));
+    }
 };

@@ -1,6 +1,5 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Checkbox } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
-import FormCheckBox from '../Forms/FormCheckBox';
 import FormInput from '../Forms/FormInput';
 
 const ResetPass = () => {
@@ -34,9 +33,9 @@ const ResetPass = () => {
                         {t('save')}
                     </Button>
                     <Box textStyle={'text'}>
-                        <FormCheckBox
-                            label={"Με την εγγραφή σας αποδέχεστε την Πολιτική Απορρήτου και τους 'Ορους Χρήσης'"}
-                        />
+                        <Checkbox>
+                            {"Με την εγγραφή σας αποδέχεστε την Πολιτική Απορρήτου και τους 'Ορους Χρήσης'"}
+                        </Checkbox>
                     </Box>
                 </Box>
             </Box>

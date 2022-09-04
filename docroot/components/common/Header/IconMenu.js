@@ -2,22 +2,16 @@ import { memo } from 'react';
 import NextLink from 'next/link';
 import { Box, Flex, Link } from '@chakra-ui/react';
 import MiniCart from '../MiniCart';
-import User from '../../../public/assets/user-outline.svg';
+import Login from '../Login';
 import useTranslation from 'next-translate/useTranslation';
 
-const IconMenu = () => {
+const IconMenu = ({ offset }) => {
     const { t } = useTranslation('header');
 
     return (
         <Flex position="relative" alignItems="center">
-            <NextLink href="/account/information" prefetch={false} passHref>
-                <Link>
-                    <User />
-                </Link>
-            </NextLink>
-            <Box>
-                <MiniCart />
-            </Box>
+            <Login offset={offset} />
+            <MiniCart />
         </Flex>
     );
 };

@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Input, FormErrorMessage } from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, FormErrorMessage, Box, Image } from '@chakra-ui/react';
 
 export default function FormInput({
     label,
@@ -14,31 +14,47 @@ export default function FormInput({
     onChange,
     upperCase,
     value,
-    backgroundColor,
-    color
+    type
 }) {
     return (
-        <FormControl isRequired={isRequired} id={id} isInvalid={error} {...controlProps} w={'100%'}>
-            <FormLabel textStyle="labelText" marginBottom="0" {...labelProps}>
-                {label}
-            </FormLabel>
+        <FormControl variant="floating" isRequired={isRequired} id={id} isInvalid={error} w={'100%'} {...controlProps}>
+            {label && (
+                <FormLabel fontSize={'14px'} marginBottom="5px" {...labelProps}>
+                    {label}
+                </FormLabel>
+            )}
             <Input
                 textTransform={upperCase ? 'uppercase' : 'none'}
                 onChange={onChange}
-                type={'text'}
+                borderColor={'border'}
+                _hover={{ borderColor: 'brand' }}
+                _focus={{ borderColor: 'brand', boxShadow: 'none' }}
+                _focusVisible={{ borderColor: 'border', boxShadow: 'none' }}
+                placeholder={placeholder || ' '}
+                type={type}
                 borderRadius="0"
-                placeholder={placeholder}
-                borderColor={'borderForm'}
-                backgroundColor={backgroundColor}
-                color={color}
+                backgroundColor="lightBg"
+                color="darkGrey"
                 isInvalid={error}
                 isDisabled={isDisabled}
                 isReadOnly={isReadOnly}
                 isRequired={isRequired}
                 value={value}
-                {...inputProps}
                 width={'100%'}
+                height={'40px'}
+                mb="20px"
+                {...inputProps}
             />
+
+            {error ? (
+                <Box pos={'absolute'} top={'13px'} right={'18px'}>
+                    <Image src={'/assets/error.png'} alt="error" />
+                </Box>
+            ) : // <Box pos={'absolute'} top={'13px'} right={'18px'}>
+            //     <Image src={'/assets/check.png'} alt="correct" />
+            // </Box>
+            null}
+
             <FormErrorMessage>{error}</FormErrorMessage>
         </FormControl>
     );

@@ -29,7 +29,7 @@ const BecomeMember = () => {
             </Box>
             <Box mt="56px">
                 <CardMember
-                    color="blue"
+                    color="lightBlue"
                     image={'/assets/dummyBanner.png'}
                     text="member"
                     link="check privilages"

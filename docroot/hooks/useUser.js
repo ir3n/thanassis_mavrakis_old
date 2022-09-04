@@ -1,36 +1,30 @@
+import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import { getUser as apiGetUser } from 'services/user';
-import { useEffect } from 'react';
-import CookieHelper from '../utils/cookie';
+import { getErrorMessage, getRealLocale, handleFormError } from 'utils/helpers';
+import { hasToken } from 'services/auth';
 
 export const useUser = (authRoute) => {
     const router = useRouter();
-    const { locale } = router;
+    const locale = getRealLocale(router.locale);
 
-    const queryKey = ['user', locale];
-
-    function hasToken() {
-        if (typeof window === 'undefined') {
-            return false;
-        } else {
-            return Boolean(CookieHelper.load('auth'));
-        }
-    }
+    const queryKey = ['user', locale, hasToken()];
 
     const {
         data: userData,
         error,
-        isValidating
+        isValidating,
+        isLoading
     } = useQuery(
         queryKey,
         hasToken()
-            ? async (locale) => {
+            ? async () => {
                   const response = await apiGetUser(locale);
-                  return response;
+                  return response.data;
               }
             : null,
-        { refetchOnMount: true }
+        { refetchOnMount: true, refetchOnWindowFocus: true, onError: handleFormError }
     );
 
     useEffect(() => {
@@ -47,8 +41,9 @@ export const useUser = (authRoute) => {
     return {
         userData: userData ? userData : { id: null },
         isValidating,
+        isLoading,
         isLoggedIn,
-        error
+        error: error && getErrorMessage(error)
     };
 };
 

@@ -32,13 +32,12 @@ const colors = {
     grey: '#555555',
     mediumGrey: '#A2A2A2',
     lightGrey: '#C6C6C6',
-    blue: '#3093EE',
     green: '#1CA25A',
     red: '#ED1C24',
     border: '#E2E8F0',
     newsletter: '#E4E4E4',
-    blue: '#578AB9',
-    selectedFilterGrey: '##3B4043'
+    lightBlue: '#578AB9',
+    selectedFilterGrey: '#3B4043'
 };
 
 const textStyles = {
@@ -139,6 +138,28 @@ const components = {
                 color: 'white',
                 _hover: {
                     bg: 'black'
+                }
+            },
+            fb: {
+                backgroundColor: '#4A65AF',
+                backgroundImage: 'url(/assets/fb-cta.svg)',
+                backgroundPosition: '20px center',
+                backgroundRepeat: 'no-repeat',
+                color: 'white',
+                transition: 'all 0.3s ease',
+                _hover: {
+                    filter: 'brightness(1.1)'
+                }
+            },
+            google: {
+                backgroundColor: '#5282EF',
+                backgroundImage: 'url(/assets/google-cta.svg)',
+                backgroundPosition: '20px center',
+                backgroundRepeat: 'no-repeat',
+                color: 'white',
+                transition: 'all 0.3s ease',
+                _hover: {
+                    filter: 'brightness(1.1)'
                 }
             }
         },

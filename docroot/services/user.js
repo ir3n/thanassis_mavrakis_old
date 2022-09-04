@@ -1,16 +1,10 @@
 import axios from 'axios';
 import { apiURL } from 'utils/config';
 import { getRealLocale } from 'utils/helpers';
-import { getAuthorizationHeaders } from './auth';
+import { getAuthorizationHeaders, getAuthorizationHeadersWithCookie } from './auth';
 
 const url = apiURL;
 
-/**
- * Register new user
- * @param locale
- * @param resource
- * @returns {AxiosPromise}
- */
 export const register = (locale, resource) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/user/register`,
@@ -28,12 +22,6 @@ export const personalInfo = (locale, resource) => {
     });
 };
 
-/**
- * Change password
- * @param locale
- * @param password
- * @returns {AxiosPromise}
- */
 export const changePassword = (locale, resource) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/user`,
@@ -43,37 +31,30 @@ export const changePassword = (locale, resource) => {
     });
 };
 
-/**
- * Get user info
- * @param locale
- * @returns {AxiosPromise}
- */
 export const getUser = (locale) => {
     return axios({
-        url: `${url}/${getRealLocale(locale)}/api/v1/user/personal_information`,
+        url: `${url}/${locale}/api/v1/user/personal_information`,
         method: 'GET',
         headers: getAuthorizationHeaders()
     });
 };
 
-/**
- *
- * @param locale
- * @returns {AxiosPromise}
- */
 export const getOrders = (locale) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/user/orders`,
         method: 'GET',
-        headers: getAuthorizationHeaders()
+        headers: getAuthorizationHeadersWithCookie()
     });
 };
 
-/**
- * Get wishlist
- * @param locale
- * @returns {AxiosPromise}
- */
+export const getOrder = (locale, order_id) => {
+    return axios({
+        url: `${url}/${getRealLocale(locale)}/api/v1/user/orders/${order_id}`,
+        method: 'GET',
+        headers: getAuthorizationHeadersWithCookie()
+    });
+};
+
 export const getWishlist = (locale) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/user/wishlist`,
@@ -82,11 +63,6 @@ export const getWishlist = (locale) => {
     });
 };
 
-/**
- * Get addresses
- * @param locale
- * @returns {AxiosPromise}
- */
 export const getAddresses = (locale) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/profiles`,
@@ -99,7 +75,7 @@ export const postNewAddress = (locale, resource) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/profile`,
         method: 'POST',
-        data: { ...resource, country_code: 'GR', langcode: 'el' },
+        data: { ...resource, langcode: 'el' },
         headers: getAuthorizationHeaders()
     });
 };
@@ -121,15 +97,9 @@ export const deleteAddress = (locale, id) => {
     });
 };
 
-/**
- * Request Password Change
- * @param locale
- * @returns {AxiosPromise}
- */
-
 export const requestPasswordChange = (locale, email) => {
     return axios({
-        url: `${url}/${getRealLocale(locale)}/api/v1/password/reset`,
+        url: `${url}/${getRealLocale(locale)}/api/v1/user/password/reset/init`,
         method: 'POST',
         data: { mail: email }
     });
@@ -137,7 +107,7 @@ export const requestPasswordChange = (locale, email) => {
 
 export const resetPassword = (locale, token, password) => {
     return axios({
-        url: `${url}/${getRealLocale(locale)}/api/v1/user/password/reset?_format=json`,
+        url: `${url}/${getRealLocale(locale)}/api/v1/user/password/reset`,
         method: 'POST',
         data: { token: token, password: password }
     });

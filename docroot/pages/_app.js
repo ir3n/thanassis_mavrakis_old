@@ -7,6 +7,7 @@ import CookieHelper from 'utils/cookie';
 import MainLayout from 'components/layouts/MainLayout';
 import { ToastContainer } from 'react-toastify';
 import uuid from 'react-uuid';
+import 'services/interceptors';
 import 'react-toastify/dist/ReactToastify.css';
 import 'styles/globals.css';
 import 'styles/overrides.css';

@@ -33,10 +33,10 @@ export default function ProductFlags({ teaser, webOnly, discount }) {
                     minW="50px"
                     align="center"
                     fontWeight="600"
-                    bg="blue"
+                    bg="lightBlue"
                     color="white"
                     border="1px solid"
-                    borderColor="blue"
+                    borderColor="lightBlue"
                     textStyle="note"
                     mb="3px"
                 >

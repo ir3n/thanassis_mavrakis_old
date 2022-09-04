@@ -4,7 +4,7 @@ import Logo from '../Logo';
 import Burger from '../Burger';
 import LanguageForm from '../Header/LanguageForm';
 import { useState, useEffect } from 'react';
-import MobileUserNav from './MobileUserNav';
+import Login from '../Login';
 import GlobalSearch from '../GlobalSearch';
 import WishListIndicator from '../WishListIndicator';
 import LevelOneMobileMenu from './LevelOneMobileMenu';
@@ -12,7 +12,7 @@ import MiniCart from '../MiniCart';
 import useMenu from 'hooks/useMenu';
 import useTranslation from 'next-translate/useTranslation';
 
-const HeaderMobile = () => {
+const HeaderMobile = ({ offset }) => {
     const { menuData, isLoading } = useMenu('main');
     const [isActive, setIsActive] = useState(false);
     const [mobileMenuPosition, setMobileMenuPosition] = useState(0);
@@ -49,7 +49,7 @@ const HeaderMobile = () => {
                             <Logo />
                         </Box>
 
-                        <MobileUserNav />
+                        <Login offset={offset} />
                         <WishListIndicator />
                         <GlobalSearch />
                         <MiniCart boxSize={{ base: '1.2rem', sm: '1.2rem' }} />

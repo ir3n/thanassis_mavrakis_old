@@ -10,7 +10,7 @@ export const clientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 export const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
 // export const clientSecret = 'abc123';
 
-export const authKey = 'Basic ZGVtbzpyb2NrZXRwYXRo';
+export const authKey = 'Basic ' + btoa(clientId + ':' + clientSecret);
 export const FACEBOOK_APP_ID = '186522703260527';
 
 export const MINIMUM_AMOUNT_FOR_FREE_SHIPPING = 45;
