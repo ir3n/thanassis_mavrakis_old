@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
-import { Text, Box, Button, Flex, useToast } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 export default function ProductFlags({ teaser, webOnly, discount }) {
     return (

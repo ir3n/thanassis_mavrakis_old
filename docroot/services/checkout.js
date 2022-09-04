@@ -2,11 +2,8 @@ import axios from 'axios';
 import { apiURL } from 'utils/config';
 const url = `${apiURL}`;
 import { getAuthorizationHeadersWithCookie } from './auth';
-/**
- * Returns the current status of the checkout
- * @param locale
- * @returns {AxiosPromise}
- */
+import { getRealLocale } from 'utils/helpers';
+
 export const getCheckout = (locale) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/checkout`,
@@ -15,34 +12,6 @@ export const getCheckout = (locale) => {
     });
 };
 
-/**
- * Create a new checkout address
- * @param checkoutId
- * @param data
- * @param locale
- * @returns {AxiosPromise}
- */
-/*
-* Request body
-{
-  "address": {
-    "langcode": "el",
-    "country_code": "GR",
-    "administrative_area": "NSW",
-    "locality": "Athens",
-    "dependent_locality": null,
-    "postal_code": "11527",
-    "sorting_code": null,
-    "address_line1": "Demo street 25",
-    "address_line2": "",
-    "organization": "RocketPath",
-    "given_name": "John",
-    "additional_name": null,
-    "family_name": "Smith"
-  },
-  "telephone": 6978164443
-}
-* */
 export const createCheckoutProfile = (locale, checkoutId, data) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/checkout/${checkoutId}/profile`,
@@ -76,13 +45,6 @@ export const deleteCoupon = (locale, checkoutId, code) => {
     });
 };
 
-/**
- * Add a shipping method
- * @param locale
- * @param checkoutId
- * @param shipping
- * @returns {AxiosPromise}
- */
 export const checkoutShippingMethod = (locale, checkoutId, shipping, shippingExtraOptions) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/checkout/${checkoutId}/shipping`,
@@ -92,13 +54,13 @@ export const checkoutShippingMethod = (locale, checkoutId, shipping, shippingExt
     });
 };
 
-/**
- * Add a billing address
- * @param locale
- * @param checkoutId
- * @param billing
- * @returns {AxiosPromise}
- */
+export const getCountries = (locale) => {
+    return axios({
+        url: `${url}/${getRealLocale(locale)}/api/v1/checkout/countries`,
+        method: 'GET'
+    });
+};
+
 export const addBillingAddress = (locale, checkoutId, billing) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/checkout/${checkoutId}/billing`,
@@ -125,13 +87,6 @@ export const addInvoice = (locale, checkoutId, resource) => {
     });
 };
 
-/**
- * Add a payment method
- * @param locale
- * @param checkoutId
- * @param gateway
- * @returns {AxiosPromise}
- */
 export const addPaymentMethod = (locale, checkoutId, gateway) => {
     return axios({
         url: `${url}/${getRealLocale(locale)}/api/v1/checkout/${checkoutId}/payment`,

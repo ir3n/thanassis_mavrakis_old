@@ -36,6 +36,7 @@ const colors = {
     red: '#ED1C24',
     border: '#E2E8F0',
     newsletter: '#E4E4E4',
+    //CAUTION: DO NOT CHANGE THIS TO "blue" ever again. It will break the chakra checkboxes for reasons only now to chakra
     lightBlue: '#578AB9',
     selectedFilterGrey: '#3B4043'
 };

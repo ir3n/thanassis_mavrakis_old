@@ -1,7 +1,7 @@
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { getCheckout } from 'services/checkout';
 import { useRouter } from 'next/router';
-import { getRealLocale, handleFormError } from 'utils/helpers';
+import { getErrorMessage, getRealLocale, handleFormError } from 'utils/helpers';
 import CookieHelper from 'utils/cookie';
 
 export default function useCheckout() {
@@ -9,21 +9,28 @@ export default function useCheckout() {
     const realLocale = getRealLocale(router.locale);
     const cartToken = CookieHelper.load('cartToken');
     const queryKey = ['checkout', realLocale, cartToken];
-
-    const fetcher = async () => {
-        const checkoutResponse = await getCheckout(realLocale);
-        return checkoutResponse.data;
-    };
+    const queryClient = useQueryClient();
 
     const {
         data: checkoutData,
         isLoading,
         error
-    } = useQuery(queryKey, fetcher, {
-        refetchOnWindowFocus: false,
-        enabled: !!cartToken,
-        onError: handleFormError
-    });
+    } = useQuery(
+        queryKey,
+        async () => {
+            const checkoutResponse = await getCheckout(realLocale);
+            return checkoutResponse.data;
+        },
+        {
+            refetchOnWindowFocus: false,
+            enabled: !!cartToken,
+            onError: handleFormError
+        }
+    );
 
-    return { checkoutData, isLoading, error };
+    const updateCheckoutData = (updatedData) => {
+        queryClient.setQueryData(queryKey, (oldData) => updatedData);
+    };
+
+    return { checkoutData, updateCheckoutData, isLoading, error: error && getErrorMessage(error) };
 }

@@ -1,9 +1,8 @@
-import { Box, Image, Text, Button, FormControl, Link, Input, Checkbox } from '@chakra-ui/react';
+import { Box, Text, Button, Link } from '@chakra-ui/react';
 import useTranslation from 'next-translate/useTranslation';
 import NextLink from 'next/link';
 import TotalPriceBox from '../TotalPriceBox';
 import Coupon from './Coupon';
-import ShippingNote from './ShippingNote';
 
 export default function CartSum({ cartData, shippingNoteBox, cart }) {
     const { t } = useTranslation('cart');
@@ -26,32 +25,13 @@ export default function CartSum({ cartData, shippingNoteBox, cart }) {
                         </Text>
 
                         <TotalPriceBox data={cartData} />
-
-                        {cart ? (
-                            ''
-                        ) : (
-                            <Box mt={'30px'}>
-                                <Box d={'flex'}>
-                                    <Checkbox mr={'12px'} mb={'8px'}></Checkbox>
-                                    <Text textStyle={'sm'}>{'Εγγραφή στο Newsletter'}</Text>
-                                </Box>
-                                <Box d={'flex'}>
-                                    <Checkbox mr={'12px'} mb={'8px'}></Checkbox>
-                                    <Text textStyle={'sm'}>{'Συσκευασία Δώρου'}</Text>
-                                </Box>
-                                <Box d={'flex'}>
-                                    <Checkbox mr={'12px'} mb={'8px'}></Checkbox>
-                                    <Text textStyle={'sm'}>{'Προσθήκη Ευχετηρίου μηνύματος'}</Text>
-                                </Box>
-                            </Box>
-                        )}
                     </Box>
                     {cartData?.adjustments?.map((i) => {
                         switch (i?.type) {
                             case 'shipping':
                                 return (
                                     <Box
-                                        d={'flex'}
+                                        display="flex"
                                         textAlign={'right'}
                                         justifyContent={'space-between'}
                                         py={'10px'}
@@ -64,7 +44,7 @@ export default function CartSum({ cartData, shippingNoteBox, cart }) {
                             case 'custom':
                                 return (
                                     <Box
-                                        d={'flex'}
+                                        display="flex"
                                         textAlign={'right'}
                                         justifyContent={'space-between'}
                                         py={'10px'}

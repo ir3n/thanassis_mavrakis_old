@@ -1,4 +1,4 @@
-import { useContext, memo, useEffect, useState, useRef } from 'react';
+import { useContext, memo, useEffect, useRef } from 'react';
 import MainContext from 'context';
 import NextLink from 'next/link';
 import {
@@ -16,14 +16,13 @@ import {
     useBreakpointValue
 } from '@chakra-ui/react';
 import CartSvg from '../../../public/assets/cart-outline.svg';
-import CartSvgBlack from '../../../public/assets/CartSvgBlack.svg';
 import useTranslation from 'next-translate/useTranslation';
 import useCart from 'hooks/useCart';
 import CartItem from './CartItem';
 import { useRouter } from 'next/router';
 import Discount from './Discount';
 
-export const MiniCart = ({ boxSize }) => {
+export const MiniCart = () => {
     const { t } = useTranslation('cart');
     const {
         cartData,
@@ -51,14 +50,11 @@ export const MiniCart = ({ boxSize }) => {
         closeCart();
     };
 
-    const goToCart = () => {
-        router.push('/cart');
-    };
     const goToCheckout = () => {
         router.push('/checkout');
     };
 
-    const handleUpdateQuantity = (id, quantity, type) => {
+    const handleUpdateQuantity = (id, quantity) => {
         if (quantity === 0) {
             handleRemoveItem(id);
             return;
@@ -216,7 +212,13 @@ export const MiniCart = ({ boxSize }) => {
                                         </Link>
                                     </NextLink>
 
-                                    <Button variant="primary" w={'100%'} textTransform={'uppercase'} textStyle={'text'}>
+                                    <Button
+                                        variant="primary"
+                                        w={'100%'}
+                                        textTransform={'uppercase'}
+                                        textStyle={'text'}
+                                        onClick={goToCheckout}
+                                    >
                                         {t('checkout')}
                                     </Button>
                                 </Box>

@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { getProduct, getProductCategory } from 'services/product';
 import { getAllPaths, getPathProps } from 'services/paths';
-// import { getSingleBlog, getBlogListing } from 'services/blog';
-// import { getBasicPages } from 'services/basicPages';
 import { getLandingPageData } from 'services/landingPages';
 import ProductListView from 'components/productsListing/ProductListView';
-// import SearchProductListView from 'components/productsListing/SearchProductListView';
 import ProductPage from 'components/product/ProductPage';
-// import Blog from 'components/blog';
-// import BasicPages from 'components/common/BasicPages';
 import { getRealLocale } from 'utils/helpers';
 import FadeIn from 'components/transitions/FadeIn';
 import LandingListView from '../components/productsListing/LandingListView';
-// import Tracking from '../utils/tracking';
-// import useUser from 'hooks/useUser';
-// import BlogCategoryView from 'components/blog/BlogCategoryView';
 
 async function getPageDataByType(pageProps, query, correctLocale) {
     let apiGetPageData, pageData;
@@ -25,9 +16,6 @@ async function getPageDataByType(pageProps, query, correctLocale) {
             break;
         case 'taxonomy_term':
             switch (pageProps.bundle) {
-                // case 'blog_category':
-                //   apiGetPageData = getBlogListing;
-                //   break;
                 default:
                     apiGetPageData = getProductCategory;
                     break;
@@ -35,12 +23,6 @@ async function getPageDataByType(pageProps, query, correctLocale) {
             break;
         case 'node':
             switch (pageProps.bundle) {
-                // case 'page':
-                //     apiGetPageData = getBasicPages;
-                //     break;
-                // case 'article':
-                //     apiGetPageData = getSingleBlog;
-                //     break;
                 case 'landing_page':
                     apiGetPageData = getLandingPageData;
                     break;
@@ -200,92 +182,23 @@ export default function Pages(props) {
         }
     }, [props.page]);
 
-    const router = useRouter();
-    const [clientProps, setClientProps] = useState({ ...props });
-
-    useEffect(() => {
-        setClientProps({ ...props });
-
-        refreshPageDataByType(props.page);
-    }, [props.page]);
-
-    async function refreshPageDataByType(pageProps) {
-        let apiGetPageData;
-        const locale = router.locale;
-        switch (pageProps?.type) {
-            case 'commerce_product':
-                apiGetPageData = getProduct;
-                break;
-            case 'taxonomy_term':
-                switch (pageProps.bundle) {
-                    case 'blog_category':
-                        apiGetPageData = getBlogListing;
-                        break;
-                    default:
-                        apiGetPageData = getProductCategory;
-                        break;
-                }
-            case 'node':
-                switch (pageProps.bundle) {
-                    case 'page':
-                        apiGetPageData = getBasicPages;
-                        break;
-                    case 'article':
-                        apiGetPageData = getSingleBlog;
-                        break;
-                    case 'landing_page':
-                        apiGetPageData = getLandingPageData;
-                        break;
-                }
-                break;
-        }
-
-        if (!apiGetPageData) {
-            return false;
-        }
-
-        try {
-            const { data } = await apiGetPageData(locale, pageProps.id, 0);
-
-            setClientProps({ page: pageProps, pageData: data });
-        } catch (err) {
-            console.log('error getting page data', err);
-        }
-    }
-
     const renderPageBasedOnType = (props) => {
         switch (props?.page?.type) {
             case 'commerce_product':
                 return <ProductPage {...props.pageData} page={{ ...props.page }} pageData={props.pageData} />;
             case 'taxonomy_term':
                 switch (props?.page?.bundle) {
-                    // case 'blog_category':
-                    //     return (
-                    //         <BlogCategoryView
-                    //             data={props.pageData}
-                    //             categoryId={props.page.id}
-                    //             page={{ ...props.page }}
-                    //         />
-                    //     );
                     default:
                         return <ProductListView {...props.pageData} page={{ ...props.page }} />;
                 }
                 break;
-            // case 'searchResults':
-            //     return <SearchProductListView {...props.pageData} page={{ ...props.page }} />;
             case 'node':
                 switch (props?.page?.bundle) {
                     case 'landing_page':
                         return <LandingListView {...props.pageData} page={{ ...props.page }} />;
-                    // case 'page':
-                    //     return <BasicPages {...props.pageData} page={{ ...props.page }} />;
-                    // case 'designer':
-                    //     return <BasicPages {...props.pageData} page={{ ...props.page }} />;
-                    // case 'article':
-                    //     return <Blog {...props.pageData} page={{ ...props.page }} />;
                 }
         }
     };
 
-    return <FadeIn>{renderPageBasedOnType(clientProps)}</FadeIn>;
+    return <FadeIn>{renderPageBasedOnType(props)}</FadeIn>;
 }

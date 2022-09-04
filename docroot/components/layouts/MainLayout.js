@@ -40,7 +40,7 @@ const MainLayout = ({ children }) => {
             <Box as={'main'}>
                 {globalSections?.map(
                     (section, index) =>
-                        section?.type == 'stripe_with_text' && (
+                        section?.type === 'stripe_with_text' && (
                             <Stripe color={section?.color} text={section?.text} key={`${section?.type}-${index}`} />
                         )
                 )}
@@ -51,7 +51,7 @@ const MainLayout = ({ children }) => {
 
             {globalSections?.map(
                 (section, index) =>
-                    section?.type == 'usp' && <Usp items={section?.items} key={`${section?.type}-${index}`} />
+                    section?.type === 'usp' && <Usp items={section?.items} key={`${section?.type}-${index}`} />
             )}
 
             {footer}
