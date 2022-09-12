@@ -1,8 +1,0 @@
-{
-    "localeDetection": false,
-    "locales": ["my", "el", "en"],
-    "defaultLocale": "my",
-    "pages": {
-        "*": ["common", "header", "footer", "cart", "product", "designers", "account", "shops"]
-    }
-}

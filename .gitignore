@@ -15,3 +15,4 @@ sftp-config.json
 # Remove local files backups from repositories
 *-files.tar.gz
 
+node_modules
