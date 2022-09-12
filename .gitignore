@@ -5,14 +5,4 @@
 # files.
 #
 
-# Docker env specific
-.idea/
-.docker-sync/
-.DS_Store
-*/.DS_Store
-sftp-config.json
-
-# Remove local files backups from repositories
-*-files.tar.gz
-
-node_modules
+styles/node_modules
