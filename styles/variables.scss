@@ -1,0 +1,30 @@
+// Colors
+$darkblue: #000930;
+$red: #a51003;
+$darkred: #5f0200;
+$whiteish: #f4f4f4;
+$dark: #22222b;
+$blue: #00316d;
+$lightblue: #005cad;
+
+// Breakpoints
+$tab: 768;
+$desk: 1024;
+
+@mixin breakpoint($breakpoint) {
+  @media only screen and (max-width: $breakpoint + 'px') {
+    @content;
+  }
+}
+
+@mixin container {
+  max-width: 1300px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 0 auto;
+
+  @include breakpoint($desk) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

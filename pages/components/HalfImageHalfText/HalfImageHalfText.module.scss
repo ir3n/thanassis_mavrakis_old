@@ -1,0 +1,29 @@
+.halfComponent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+  color: $dark;
+
+  @include breakpoint($tab) {
+    display: block;
+    margin-bottom: 70px;
+  }
+}
+.imageWrapper {
+  position: relative;
+  max-width: 385px;
+
+  @include breakpoint($tab) {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  img {
+    transition: all 5s ease;
+
+    @include breakpoint($desk) {
+      max-width: 165px;
+    }
+  }
+}
