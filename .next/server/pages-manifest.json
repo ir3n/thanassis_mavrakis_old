@@ -1,14 +1,5 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/api/hello": "pages/api/hello.js",
-  "/components/Footer/Footer": "pages/components/Footer/Footer.html",
-  "/components/HalfImageHalfText/HalfImageHalfText": "pages/components/HalfImageHalfText/HalfImageHalfText.html",
-  "/components/Header/Header": "pages/components/Header/Header.html",
-  "/components/TitleImagesCta/TitleImagesCta": "pages/components/TitleImagesCta/TitleImagesCta.html",
-  "/components/WorkItem/WorkItem": "pages/components/WorkItem/WorkItem.html",
-  "/": "pages/index.html",
-  "/work": "pages/work.html",
-  "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/_document": "pages/_document.js"
 }
