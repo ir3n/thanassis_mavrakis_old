@@ -6,3 +6,5 @@
 #
 
 styles/node_modules
+.next
+node_modules

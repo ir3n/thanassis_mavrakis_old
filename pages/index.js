@@ -94,7 +94,7 @@ export default function Home({ red }) {
                   opacity: red ? '0' : '1',
                 }}
               >
-                <img src={image.src} />
+                <img src={image.src} alt='Thanassis Mavrakis' />
               </div>
             );
           })}
@@ -110,7 +110,7 @@ export default function Home({ red }) {
                   opacity: red ? '1' : '0',
                 }}
               >
-                <img src={image.src} />
+                <img src={image.src} alt='Thanassis Mavrakis' />
               </div>
             );
           })}
