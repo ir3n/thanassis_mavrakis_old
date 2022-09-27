@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }) {
   const [red, setRed] = useState(false);
 
-  setInterval(() => {
-    setRed(!red);
-  }, 15000);
+  useEffect(() => {
+    setInterval(() => {
+      setRed(!red);
+    }, 15000);
+  });
 
   return (
     <>
