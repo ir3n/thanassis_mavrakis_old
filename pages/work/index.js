@@ -16,6 +16,11 @@ export default function Work({ red }) {
       url: 'https://www.figma.com/proto/EL0zLCb5z0kafGva7JAmfj/Sound-Wave?page-id=525%3A628&node-id=525%3A1446&viewport=896%2C634%2C0.06&scaling=min-zoom',
     },
     {
+      title: 'The Elf House',
+      img: 'elf-house.png',
+      url: 'https://www.figma.com/proto/EzUsOVBz42VDZS5vytD58g/The-elf-house?page-id=105%3A515&node-id=105%3A516&viewport=978%2C1127%2C0.26&scaling=min-zoom&starting-point-node-id=105%3A516&show-proto-sidebar=1',
+    },
+    {
       title: 'Blossoms',
       img: 'blossom.png',
       url: 'https://www.figma.com/proto/QUKK3U40OIDbYsZS9h1jET/Blossoms?page-id=507%3A490&node-id=507%3A592&viewport=999%2C442%2C0.05&scaling=min-zoom',
