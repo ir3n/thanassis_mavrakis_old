@@ -12,18 +12,20 @@
 }
 .imageWrapper {
   position: relative;
-  max-width: 385px;
+  width: 385px;
+  height: 385px;
+
+  @include breakpoint($desk) {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
 
   @include breakpoint($tab) {
-    max-width: 100%;
     text-align: center;
   }
 
   img {
     transition: all 5s ease;
-
-    @include breakpoint($desk) {
-      max-width: 165px;
-    }
   }
 }

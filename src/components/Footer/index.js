@@ -2,7 +2,31 @@
 
 import { useContext } from "react";
 import { ColorContext } from "@/providers/color-provider";
+import Image from "next/image";
 import styles from "./Footer.module.scss";
+
+const socialLinks = [
+  {
+    name: "Instagram",
+    icon: "instagram.svg",
+    link: "https://www.instagram.com/thanassis.mavrakis/",
+  },
+  {
+    name: "Linkedin",
+    icon: "linkedin.svg",
+    link: "https://www.linkedin.com/in/thanassis-mavrakis-231b3a244",
+  },
+  {
+    name: "Email",
+    icon: "email.svg",
+    link: "mailto:thanassis.mavrakis@gmail.com",
+  },
+  {
+    name: "Shutterstock",
+    icon: "shutterstock.svg",
+    link: "https://www.shutterstock.com/g/George+Griever?rid=432729803",
+  },
+];
 
 const Footer = ({ executeScroll, scrollRef }) => {
   const { red } = useContext(ColorContext);
@@ -14,18 +38,22 @@ const Footer = ({ executeScroll, scrollRef }) => {
         backgroundColor: red ? "#5F0200" : "#000930",
       }}
     >
-      <img
+      <Image
         className={styles.footer__bg}
         src="/images/footer/footer-blue.svg"
+        width={2538}
+        height={900}
         alt="Let's create together"
         style={{
           opacity: red ? "0" : "1",
         }}
       />
       <div className="absolute">
-        <img
+        <Image
           className={styles.footer__bg}
           src="/images/footer/footer-red.svg"
+          width={2538}
+          height={900}
           alt="Let's create together"
           style={{
             opacity: red ? "1" : "0",
@@ -38,39 +66,22 @@ const Footer = ({ executeScroll, scrollRef }) => {
           Let's create together
         </h2>
         <div className={styles.social}>
-          <div className={styles.social__icon}>
-            <a
-              href="https://www.instagram.com/thanassis.mavrakis/"
-              target="_blank"
+          {socialLinks?.map((item, i) => (
+            <div
+              key={`footer-social-${item.name}`}
+              className={styles.social__icon}
             >
-              Instagram
-              <img src="/images/footer/instagram.svg" alt="Instagram" />
-            </a>
-          </div>
-          <div className={styles.social__icon}>
-            <a
-              href="https://www.linkedin.com/in/thanassis-mavrakis-231b3a244"
-              target="_blank"
-            >
-              Linkedin
-              <img src="/images/footer/linkedin.svg" alt="Linkedin" />
-            </a>
-          </div>
-          <div className={styles.social__icon}>
-            <a href="mailto:thanassis.mavrakis@gmail.com">
-              Email
-              <img src="/images/footer/email.svg" alt="Email" />
-            </a>
-          </div>
-          <div className={styles.social__icon}>
-            <a
-              href="https://www.shutterstock.com/g/George+Griever?rid=432729803"
-              target="_blank"
-            >
-              Shutterstock
-              <img src="/images/footer/shutterstock.svg" alt="Shutterstock" />
-            </a>
-          </div>
+              <a href={item.link} target="_blank">
+                {item.name}
+                <Image
+                  src={`/images/footer/${item.icon}`}
+                  width={55}
+                  height={55}
+                  alt={item.name}
+                />
+              </a>
+            </div>
+          ))}
         </div>
 
         <div className={styles.copyright}>
@@ -88,7 +99,12 @@ const Footer = ({ executeScroll, scrollRef }) => {
             : window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         }}
       >
-        <img src="/images/footer/top-arrow.svg" alt="Scroll to top" />
+        <Image
+          src="/images/footer/top-arrow.svg"
+          width={6}
+          height={72}
+          alt="Scroll to top"
+        />
       </button>
     </footer>
   );

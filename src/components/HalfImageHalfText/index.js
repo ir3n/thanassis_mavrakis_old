@@ -1,23 +1,30 @@
-import styles from './HalfImageHalfText.module.scss';
+import Image from "next/image";
+import styles from "./HalfImageHalfText.module.scss";
 
 const HalfImageHalfText = ({ img, imgRed, text, reverse, red }) => {
   return (
-    <div className={`${styles.halfComponent} ${reverse ? 'reverse' : ''}`}>
-      <p className='text half'>{text}</p>
+    <div className={`${styles.halfComponent} ${reverse ? "reverse" : ""}`}>
+      <p className="text half">{text}</p>
       <div className={styles.imageWrapper}>
-        <img
+        <Image
           src={img}
-          alt='Thanassis Mavrakis'
+          // width={400}
+          // height={400}
+          fill
+          alt="Thanassis Mavrakis"
           style={{
-            opacity: red ? '0' : '1',
+            opacity: red ? "0" : "1",
           }}
         />
-        <div className='absolute'>
-          <img
+        <div className="absolute">
+          <Image
             src={imgRed}
-            alt='Thanassis Mavrakis'
+            // width={400}
+            // height={400}
+            fill
+            alt="Thanassis Mavrakis"
             style={{
-              opacity: red ? '1' : '0',
+              opacity: red ? "1" : "0",
             }}
           />
         </div>

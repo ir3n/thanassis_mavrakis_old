@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { ColorContext } from "@/providers/color-provider";
+import Image from "next/image";
 import WorkItem from "@/components/WorkItem";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -124,10 +125,13 @@ export default function Work() {
           <h2 className="large-title">Illustrations</h2>
           <div className={styles.illustrationsWrapper}>
             {illustrations?.map(({ title, img }, index) => (
-              <img
+              <Image
+                key={`illustration-${index}`}
                 src={`/images/work/${img}`}
+                width={590}
+                height={330}
                 alt={title}
-                key={`logo-${index}`}
+                style={{ height: "auto" }}
               />
             ))}
           </div>

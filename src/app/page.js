@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "@/components/Header";
 import HalfImageHalfText from "@/components/HalfImageHalfText";
 import TitleImagesCta from "@/components/TitleImagesCta";
@@ -70,7 +71,12 @@ export default function Home() {
                   opacity: red ? "0" : "1",
                 }}
               >
-                <img src={image} alt="Thanassis Mavrakis" />
+                <Image
+                  src={image}
+                  width={2563}
+                  height={1440}
+                  alt="Hero banner scenery in blue colors"
+                />
               </div>
             );
           })}
@@ -86,7 +92,12 @@ export default function Home() {
                   opacity: red ? "1" : "0",
                 }}
               >
-                <img src={image} alt="Thanassis Mavrakis" />
+                <Image
+                  src={image}
+                  width={2563}
+                  height={1440}
+                  alt="Hero banner scenery in red colors"
+                />
               </div>
             );
           })}
