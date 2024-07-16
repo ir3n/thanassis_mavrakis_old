@@ -1,22 +1,18 @@
 {
-  "name": "thanassis",
+  "name": "thanassis_mavrakis_old_updated",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3005",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sass": "1.53.0",
-    "swiper": "8.3.2"
-  },
-  "devDependencies": {
-    "eslint": "8.20.0",
-    "eslint-config-next": "12.2.2"
+    "next": "14.2.5",
+    "react": "^18",
+    "react-dom": "^18",
+    "sass": "^1.77.8",
+    "swiper": "^11.1.5"
   }
 }

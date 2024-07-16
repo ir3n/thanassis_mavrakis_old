@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap');
-@import './variables.scss';
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&display=swap");
+@import "./variables.scss";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Oswald', sans-serif;
   scroll-behavior: smooth;
   position: relative;
 }
@@ -158,12 +157,12 @@ img {
   }
 
   &:after {
-    content: '' !important;
+    content: "" !important;
   }
 }
 .swiper-button-next {
   right: 0 !important;
-  background-image: url(../public/images/arrow-right.svg);
+  background-image: url("/images/arrow-right.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -171,7 +170,7 @@ img {
 .swiper-button-prev {
   right: 150px !important;
   left: auto !important;
-  background-image: url(../public/images/arrow-left.svg);
+  background-image: url("/images/arrow-left.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
